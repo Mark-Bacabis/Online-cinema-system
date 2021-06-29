@@ -95,7 +95,7 @@ document.getElementById('isLogin').addEventListener('click', function(){
 // LIGHT AND DARK MODE SCRIPT 
 
 
-var darkMode = document.getElementById('dark-mode').innerHTML;
+var darkMode = document.getElementById('dark-mode');
 
 
 // DARK-LIGHT CHANGE BUTTON
@@ -103,7 +103,6 @@ const light = document.querySelector('.light-mode');
 const para = document.querySelector('.light-mode p');
 const img = document.querySelector('.light-mode img');
 const imgPosition = document.getElementById('icon').style.right;
-
 
 // LOGIN MODAL
 const loginBg = document.querySelector('.login-container');
