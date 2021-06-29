@@ -102,7 +102,6 @@
 <header>
     <div class="nav-search-area">
         <div class="logo">
-            <?php echo "Sample"?>
             <a href="./index.php"> Logo </a>   
         </div>
 
