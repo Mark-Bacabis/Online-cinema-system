@@ -1,0 +1,205 @@
+
+.picker-container {
+    position: relative;
+    height: 84vh;
+    width: 100%;
+    display:inline-flex;
+}
+.picker-container .container{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    
+}
+.picker-container .movie-details{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.picker-container .movie-details .poster-movie{
+    width: 280px;
+    height: 380px;
+}
+
+.movie-details .poster-movie img{
+    width: 100%;
+    height: 100%;
+}
+.movie-details .poster-movie h3{
+    width: 100%;
+    text-align: center;
+}
+
+.seat-picker-container .legend-container{
+    margin: 30px auto;
+    width: max-content;
+    height: max-content;
+    display: flex;
+}
+.seat-picker-container .legend-container .seat-legend{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 0 5px;
+}
+.seat-picker-container .legend-container .seat-legend div{
+   width: 40px;
+   height: 40px;
+   margin-left: 5px;
+   border-top-left-radius: 10px;
+   border-top-right-radius: 10px;
+}
+
+.legend-container .seat-legend .vacant{
+    background: #38393f;
+}
+.legend-container .seat-legend .selected{
+    background: crimson;
+}
+
+.legend-container .seat-legend .occupied{
+    background: #bcbfd3;
+}
+
+.picker-container .seat-picker-container .seat-picker{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 50px;
+}
+.picker-container .seat-picker .picker-1  th {
+    height: 20px;
+}
+  
+.picker-container .seat-picker .picker-1 tr td {
+    width: 45px;
+    height: 45px;
+    margin: 0;
+}
+  
+.picker-container .seat-picker .picker-1 tr td [type="checkbox"] {
+    appearance: none;
+    outline: none;
+    background-color: #38393f;
+    cursor: pointer;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+  
+.picker-container .seat-picker .picker-1 tr td [type="checkbox"]:checked {
+    background-color: crimson;
+}
+  
+.picker-container .seat-picker .picker-1 tr .seat {
+    width: 80%;
+    height: 80%;
+}
+
+.picker-container .screen {
+    height: 25px;
+    width: 400px;
+    position: absolute;
+    top: 21%;
+    left: 35%;
+    border: none;
+    background-color: white;
+    box-shadow: 0px 7px 15px 4px rgba(255, 255, 255, 0.452);
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color: black;
+}
+  
+.picker-container .guide {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: max-content;
+    text-align: center;
+}
+  
+.picker-container .guide ul li {
+    display: inline-block;
+    width: 80px;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin: 0;
+    font-size: 14px;
+}
+  
+.picker-container .guide ul li div{
+    width: 30px;
+    height: 30px;
+    margin: 0 auto;
+    margin-bottom: 7px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+  
+  .picker-container .guide ul li .na {
+    background-color: #38393f;
+}
+  
+.picker-container .guide ul li .selected {
+    background-color: crimson;
+}
+  
+.picker-container .guide ul li .occupied {
+    background-color: #bcbfd3;
+}
+
+.output-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.output-container .overlay{
+    position: absolute;
+    width: 100%;
+    height: 90%;
+    top: 0%;
+}
+
+.output-container table tr td{
+    padding: 5px 0px;
+}
+.output-container table tr td:first-child{
+    padding-right:20px;
+}
+
+.output-container table tr td input{
+    width: 90%;
+    padding: 5px 10px;
+    border: 1px solid black;
+}
+.output-container .buttons{
+    position: absolute;
+    bottom: 12%;
+    right: 11%;
+    display: flex;
+
+}
+.output-container .buttons button{
+    padding: 7px 12px;
+    margin-left: 5px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.output-container .buttons button.book{
+    background: green;
+}
+.output-container .buttons button.cancel{
+    background: red;
+}
+

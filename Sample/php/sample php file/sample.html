@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<script>
+    $(document).ready(function(){
+        
+        $('.chckbox').click(function(){
+            var price = 100;
+            var text = "";
+            $('.chckbox:checked').each(function(){
+                text += $(this).val() + ',';
+            });
+            text = text.substring(0, text.length - 1);
+            $("#selectedSeats").val(text);
+           
+            var count = $('[type="checkbox"]:checked').length;
+
+            $("#count").val(count);
+
+            $("#totalPrice").val(count * price);
+        });
+    });
+</script>
+<body>
+    <div class="seat-container">
+
+        <ul class="legends-container">
+            <li> N/A <span class="vacant">  </span></li>
+            <li> SELECTED <span class="selected">  </span></li>
+        </ul>
+            
+        
+        <table>
+            <th>
+                <td> 1 </td>
+                <td> 2 </td>
+                <td> 3 </td>
+                <td> 4 </td>
+                <td> 5 </td>
+            </th>
+            <tr>
+                <td> A </td>
+                <td> <input type="checkbox" class="chckbox" value="A1"> </td>
+                <td> <input type="checkbox" class="chckbox" value="A2"> </td>
+                <td> <input type="checkbox" class="chckbox" value="A3"> </td>
+                <td> <input type="checkbox" class="chckbox" value="A4"> </td>
+                <td> <input type="checkbox" class="chckbox" value="A5"> </td>
+            </tr>
+        </table>
+
+        <div class="text-area">
+            <input type="text" name="seatNo" id="selectedSeats" placeholder=" Seat number/s selected">
+            <input type="text" name="nthOfseatsSelected" id="count" placeholder="No.of selected seats">
+            <input type="text" name="totalPrice" id="totalPrice" placeholder="totalPrice">
+        </div>
+    </div>
+
+    
+   
+</body>
+
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .chckbox{
+        appearance: none;
+        width: 50px;
+        height: 50px;
+        background: grey;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        cursor: pointer;
+    }
+    .chckbox:checked{
+        background: crimson;
+    }
+    table{
+        text-align: center;
+    }
+    .legends-container{
+        width: max-content;
+        text-align: center;
+        display: flex;
+    }
+    .legends-container li{
+        display: inline-block;
+        margin: 0 10px;
+        color: rgb(0, 0, 0);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    .legends-container li span{
+        width: 50px;
+        height: 50px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        margin-left: 10px;
+    }
+    .vacant{
+        background: gray;
+    }
+    .selected{
+        background: crimson;
+    }
+
+    .text-area input{
+        border: 1px solid black;
+        outline: none;
+        padding: 5px;
+    }
+</style>
+</html>

@@ -1,0 +1,767 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: poppins;
+}
+body{
+  background: rgb(17, 17, 26);
+  padding-top: 15vh;
+  color: white;
+}
+
+
+/* HEADER */
+header{
+  position: fixed;
+  top: 0%;
+  height: 15vh;
+  width: 100%;
+  z-index: 100;
+}
+
+header .nav-search-area{
+  top: 0%;
+  position: absolute;
+  height: 70%;
+  width: 100%;
+  background: rgb(17, 17, 26);
+}
+
+header .nav-search-area .logo {
+  font-size: 32px;
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+ 
+}
+header .nav-search-area .logo a{
+  color: crimson;
+  text-decoration: none;
+}
+
+
+header .nav-search-area .light-and-dark{
+  position: absolute;
+  right: 3%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+header .nav-search-area .light-and-dark .light-mode{
+  position: relative;
+  border-radius: 20px;
+  padding: 0 10px;
+  height: 25px;
+  width: 40px;
+  border: 1px solid white;
+  cursor: pointer;
+}
+
+header .nav-search-area .light-and-dark .light-mode p{
+  position: absolute;
+  left: 35%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 10px;
+  color: white;
+  transition: ease-in-out .2s;
+}
+header .nav-search-area .light-and-dark  .light-mode img{
+  position: absolute;
+  right: 3%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 35%;
+  height: 85%;
+  background: rgb(252, 252, 252);
+  border-radius: 50%;
+  transition: ease-in-out .3s;
+}
+
+
+
+header .nav-search-area .search{
+  position: absolute;
+  left: 20%;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+}
+header .nav-search-area .search input{
+  width: 450px;
+  font-size: 16px;
+  padding: 7px 10px;
+  outline: none;
+  border: 1px solid rgb(17, 17, 26);
+  border-right: none;
+  background: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+}
+header .nav-search-area .search button{
+  font-size: 16px;
+  padding: 7px 10px;
+  outline: none;
+  border: none;
+  background: crimson;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+header .nav-search-area .search button:hover{
+  background: rgb(201, 18, 55);
+}
+
+
+/* is not Login */
+header .nav-search-area .login{
+  position: absolute;
+  right: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+header .nav-search-area .login img{
+  width: 40px;
+  height: 40px;
+  filter: invert(1);
+  cursor: pointer;
+}
+
+/* is Login */
+header .nav-search-area .isLogin{
+  position: absolute;
+  right: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+  justify-content: center;
+  align-items: center;
+  cursor: default;
+}
+header .nav-search-area .isLogin .fullname{
+  margin-right: 10px;
+  font-size: 18px;
+}
+header .nav-search-area .isLogin .profile{
+  background: crimson;
+  border-radius: 50%;
+  padding: 5px;
+  text-align: center;
+  cursor: pointer;
+}
+header .nav-search-area .isLogin .profile h1{
+  font-size: 18px;
+  color: white;
+}
+
+
+
+header .nav-bar{
+  bottom: 0;
+  position: absolute;
+  height: 30%;
+  width: 100%;
+  background:crimson;
+} 
+header .nav-bar ul{
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+}
+header .nav-bar ul li{
+  display: inline-block;
+  height: 100%;
+  margin: 0 7px;
+}
+header .nav-bar ul li:first-child{
+  margin-left: 0;
+}
+header .nav-bar ul li a{
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-size: 14px;
+  transition: ease-in-out .4s;
+}
+header .nav-bar ul li a:hover{
+  color: rgb(247, 247, 247);
+}
+
+
+
+
+
+header .login-container{
+  right: 10%;
+  top: 70%;
+  position: absolute;
+  width: 300px;
+  height: 350px;
+  background: rgb(17, 17, 26);
+  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.548);
+  border: 1px solid rgba(47, 47, 71, 0.623);
+  border-top: none;
+  color: white;
+  display: none;
+}
+.login-container table{
+  width: 80%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.login-container table td{
+  text-align: center;
+}
+.login-container table th{
+  font-size: 30px;
+  text-align: left;
+  padding-left: 10px;
+}
+.login-container table td input{
+  width: 200px;
+  padding: 3px 7px;
+  margin: 10px 0 ;
+  outline: none;
+  border-radius: 2px;
+  border: 1px solid rgb(17, 17, 26);
+  font-size: 14px;
+}
+.login-container table td input[type="submit"]{
+  width: 215px;
+  border: none;
+  font-size: 16px;
+  background: crimson;
+  cursor: pointer;
+  color: white;
+}
+.login-container table td a{
+  color: crimson;
+  font-size: 12px;
+  text-decoration: none;
+  text-align: left;
+}
+.login-container table td a:hover{
+  text-decoration: underline;
+}
+
+.login-container .other-account{
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+.login-container .other-account p{
+  margin: 7px 0;
+  font-size: 14px;
+}
+
+.login-container .other-account button{
+  background: none;
+  border: none;
+  width: 25px;
+  height: 25px;
+  margin: 0 5px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.login-container .other-account button img{
+  width: 100%;
+  height: 100%;
+}
+
+
+
+.login-container .reg{
+  width: max-content;
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  font-size: 12px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.login-container .reg a{
+  font-size: 12px;
+  margin-left: 5px;
+  color: crimson;
+}
+
+
+
+header .user-login-container{
+  right: 10%;
+  top: 70%;
+  position: absolute;
+  width: max-content;
+  height: max-content;
+  background: rgb(17, 17, 26);
+  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.548);
+  border: 1px solid rgba(47, 47, 71, 0.623);
+  border-top: none;
+  display: none;
+  cursor: pointer;
+  
+}
+header .user-login-container ul{
+  width: 100%;
+}
+header .user-login-container ul li{
+  position: relative;
+  list-style: none;
+  padding: 0 10px;
+ 
+}
+header .user-login-container ul li button{
+  border: none;
+  background: none;
+  width: 100%;
+  height: 100%;
+  text-align: right;
+  font-size:15px;
+  line-height: 30px;
+  padding-right: 5px;
+  cursor: pointer;
+  color: white;
+  
+}
+header .user-login-container ul li:hover{
+  background: rgba(220, 20, 60, 0.514);
+}
+
+
+
+
+.scrolling{
+  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.288);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Slider */
+.slider-container {
+  margin-top: 10px;
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  overflow: hidden;
+  padding-top: 4%;
+}
+.slider-container h1{
+  position: absolute;
+  left: 10%;
+  top: 0%;
+  text-transform:capitalize;
+}
+.slider-container .slide-holder{
+  position: absolute;
+  height: 90%;
+  display: inline-flex;
+}
+
+.slider-container .slide-holder .imgHolder{
+  position: relative;
+  list-style: none;
+  width: 700px;
+  height: 100%;
+  bottom: 0%;
+
+}
+.slider-container .slide-holder .imgHolder .overlay{
+  position: absolute;
+  width: 95.5%;
+  height: 95%;
+  background: rgba(0, 0, 0, 0.548);
+  z-index: 2;
+  border-radius: 10px;
+  opacity: 0;
+}
+.slider-container .slide-holder .imgHolder .overlay:hover{
+  opacity: 1;
+  transition: ease-in-out .4s;
+}
+.slider-container .slide-holder .imgHolder img{
+  position: absolute;
+  width: 95.5%;
+  height: 95%;
+  top: 0%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.slider-container .slide-holder .imgHolder .movie-text{
+  position: absolute;
+  z-index: 1;
+  left: 5%;
+  top: 5%;
+  color: white;
+}
+
+.slider-container .slide-holder .imgHolder .movie-text a{
+  color: white;
+  text-decoration: none;
+  font-size: 34px;
+  font-weight: bold;
+}
+.slider-container .slide-holder .imgHolder .movie-text p{
+  color: rgb(230, 230, 230);
+}
+
+.slider-container .slide-holder .imgHolder a:hover{
+  color: rgb(255, 234, 234);
+  transition: ease-in-out .4s;
+}
+
+
+
+/* BUTTONS */
+.slider-container button{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: .6;
+  z-index: 10;
+}
+#prevBtn{
+  left: 3%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: opacity ease-in-out .3s;
+}
+#prevBtn img{
+  width: 70px;
+  height: 70px;
+  filter: brightness(0) invert(1);
+}
+#nxtBtn{
+  right: 3%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: opacity ease-in-out .3s;
+}
+#nxtBtn img{
+  width: 70px;
+  height: 70px;
+  filter: brightness(0) invert(1);
+}
+
+.slider-container button:hover{
+  opacity: 1;
+}
+
+/* Slider */
+
+
+
+
+
+
+
+
+
+/* New release */
+.new-release-container {
+  position: relative;
+  height: 80vh;
+  width: 100%;
+}
+
+.new-release-container .title-container {
+  position: absolute;
+  top: 7%;
+  left: 10%;
+}
+
+
+.new-release-container .see-all {
+  text-decoration: none;
+  color: red;
+  position: absolute;
+  top: 12%;
+  right: 10%;
+}
+
+.new-release-container .see-all:hover {
+  color: white;
+}
+
+.new-release-container .movie-poster {
+  position: absolute;
+  width: 80.99%;
+  left: 10%;
+  top: 20%;
+  height: 70%;
+  overflow: hidden;
+}
+
+.new-release-container .movie-poster ul {
+  position: absolute;
+  width: max-content;
+  height: 100%;
+  text-align: left;
+}
+
+.new-release-container .movie-poster ul li {
+  position: relative;
+  display: inline-block;
+  list-style: none;
+  height: 100%;
+  width: 215px;
+}
+
+.new-release-container .movie-poster ul li img {
+  height: 90%;
+  width: 100%;
+}
+
+.new-release-container .movie-poster ul li a {
+  text-decoration: none;
+  color: white;
+  padding: 5px 15px;
+  background: red;
+  border-radius: 10px;
+  font-size: 14px;
+  width: max-content;
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.new-release-container .movie-poster ul li a:hover {
+  background: #e20202;
+} 
+
+
+
+/* PREMIERE */
+.premiere-container {
+  position: relative;
+  height: 70vh;
+  overflow: hidden;
+  background: rgb(34, 34, 51);
+}
+
+.premiere-container .title-container {
+  position: absolute;
+  top: 7%;
+  left: 10%;
+}
+
+.premiere-container .title-container h1 {
+  color: white;
+}
+
+.premiere-container .title-container p {
+  color: #cccccc;
+}
+
+.premiere-container .see-all {
+  text-decoration: none;
+  color: red;
+  position: absolute;
+  top: 15%;
+  right: 10%;
+}
+
+.premiere-container .see-all:hover {
+  color: red;
+}
+
+.premiere-container .movie-poster {
+  position: absolute;
+  width: 80.99%;
+  left: 10%;
+  top: 25%;
+  height: 65%;
+  overflow: hidden;
+}
+
+.premiere-container .movie-poster ul {
+  position: absolute;
+  width: max-content;
+  height: 100%;
+  text-align: left;
+}
+
+.premiere-container .movie-poster ul li {
+  display: inline-block;
+  list-style: none;
+  height: 100%;
+  width: 215px;
+}
+
+.premiere-container .movie-poster ul li img {
+  height: 100%;
+  width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Coming soon */
+.upcoming-container {
+  position: relative;
+  height: 70vh;
+}
+
+.upcoming-container .upcoming-title {
+  position: absolute;
+  top: 5%;
+  left: 10%;
+}
+
+.upcoming-container .see-all {
+  text-decoration: none;
+  color: #c50000;
+  position: absolute;
+  top: 10%;
+  right: 10%;
+}
+
+.upcoming-container .see-all:hover {
+  color: #970000;
+}
+
+.upcoming-container .poster-container {
+  position: absolute;
+  left: 10%;
+  top: 55%;
+  transform: translateY(-50%);
+  height: 75%;
+  width: 82%;
+  display: flex;
+}
+
+.upcoming-container .poster-container .upc-movie-poster{
+  position: relative;
+  width: 19%;
+  height: 100%;
+  margin: 0 3px;
+  cursor: default;
+}
+
+.upcoming-container .poster-container .upc-movie-poster img {
+  width: 100%;
+  height: 85%;
+}
+
+.upcoming-container .poster-container .upc-movie-poster h2 {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, 50%);
+  font-size: 14px;
+  font-weight: normal;
+  text-align: center;
+}
+
+
+
+
+.footer-container{
+  position: relative;
+  height: 50vh;
+  background: #1b1d24;
+  padding: 0 10%;
+  display: flex;
+  padding-top: 5%;
+}
+.footer-container div{
+  width: 80%;
+}
+.footer-container div h3{
+  color: whitesmoke;
+}
+.footer-container div li{
+  list-style: none;
+  line-height: 28px;
+}
+.footer-container div li a{
+  color: rgb(148, 148, 148);
+  text-decoration: none;
+  
+}
+.footer-container div li a:hover{
+  color: crimson;
+}
+
+.footer-container .contactUs input, textarea{
+  outline: none;
+  padding: 7px;
+  background: none;
+  border: 1px solid rgb(148, 148, 148);
+  margin: 10px 0;
+  color: white;
+  width: 260px;
+}
+.footer-container .contactUs button{
+  margin-top: -20px;
+  padding: 7px 10px;
+  border-radius: 20px;
+  background: crimson;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.footer-container .followUs{
+  position: absolute;
+  width: max-content;
+  height: max-content;
+  top: 70%;
+  transform: translateY(-50%);
+}
+.footer-container .followUs ul li{  
+  list-style: none;
+  display: inline-block;
+  margin: 0 5px;
+  margin-top: 5px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.footer-container .followUs ul li:first-child{
+  margin-left: 0%;
+}  
+.footer-container .followUs ul li img{
+  width: 100%;
+  height: 100%;
+}
+
+.footer-container .copyright{
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  color:rgb(148, 148, 148);
+}
