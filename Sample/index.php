@@ -94,7 +94,7 @@
 <body>
 
 <div class="isOff">
-    <p id="dark-mode"> Off </p>
+    <p id="dark-mode">  </p>
 </div>
 
 
