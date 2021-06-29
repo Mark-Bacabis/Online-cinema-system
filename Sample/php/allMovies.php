@@ -1,6 +1,7 @@
 <?php
-    error_reporting(0);
+    
     session_start();
+    error_reporting(0);
     $conn = mysqli_connect('localhost','root','','online_ticket_reservation');
 
     
@@ -9,7 +10,7 @@
 
     $query = $_GET['query'];
 
-
+    echo $movieTitle;
 
 
 ?>
