@@ -8,34 +8,18 @@
     $userID = $_SESSION['userID'];
 
 // SELECT MOVIES BY DATE TODAY
-    $select = "SELECT DISTINCT movie.*, mdate.availableDate 
-    FROM movie 
-    JOIN movie_available_date mdate
-    ON movie.movieID = mdate.movieID
-    WHERE mdate.availableDate = '$dateToday'
+    $select = "SELECT * FROM movie 
     ORDER BY movie.movieID DESC";
 
     $query = mysqli_query($conn, $select);
 
-    $firstData  = mysqli_query($conn, "SELECT DISTINCT movie.*, mdate.availableDate 
-    FROM movie 
-    JOIN movie_available_date mdate
-    ON movie.movieID = mdate.movieID
-    WHERE mdate.availableDate = '2021-06-22'
+    $firstData  = mysqli_query($conn, "SELECT * FROM movie 
     ORDER BY movie.movieID DESC LIMIT 1");
 
-    $secondData  = mysqli_query($conn, "SELECT DISTINCT movie.*, mdate.availableDate 
-    FROM movie 
-    JOIN movie_available_date mdate
-    ON movie.movieID = mdate.movieID
-    WHERE mdate.availableDate = '2021-06-22'
+    $secondData  = mysqli_query($conn, "SELECT * FROM movie 
     ORDER BY movie.movieID DESC LIMIT 1,1");
 
-    $lastData  = mysqli_query($conn, "SELECT DISTINCT movie.*, mdate.availableDate 
-    FROM movie 
-    JOIN movie_available_date mdate
-    ON movie.movieID = mdate.movieID
-    WHERE mdate.availableDate = '2021-06-22'
+    $lastData  = mysqli_query($conn, "SELECT * FROM movie 
     ORDER BY movie.movieID ASC LIMIT 1");
 
     $lastImage = $lastData-> fetch_assoc();
@@ -205,7 +189,6 @@
 
 <!-- NOW SHOWING -->
     <div class="slider-container" id="slider-container">
-        <h1> Now Showing </h1>
             <ul class="slide-holder">
 
                 <li class="imgHolder" id="lastImage"> 
@@ -349,7 +332,7 @@
 <!-- FOOTER -->
     <footer class="footer-container">
         <div class="About">
-            <h3> About </h3>
+            <h3> <?=$dateToday?> </h3>
             <ul>
                 <li><a href="#"> About us</a></li>
                 <li><a href="#"> Terms and agreement </a></li>
