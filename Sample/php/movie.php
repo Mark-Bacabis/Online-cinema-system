@@ -3,8 +3,7 @@
     
     error_reporting(0);
     session_start();
-    $conn = mysqli_connect('localhost','root','','online_ticket_reservation');
-
+    include "../connection.php";
     
     $movieTitle = $_GET['movie'];  
     $userID = $_SESSION['userID'];

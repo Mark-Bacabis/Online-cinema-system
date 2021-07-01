@@ -1,8 +1,8 @@
 <?php
     session_start();
-
     error_reporting(0);
-    $conn = mysqli_connect('localhost','root','','online_ticket_reservation');
+    include "./connection.php";
+    
     $dateToday = DATE('Y-m-d');
 
     $userID = $_SESSION['userID'];

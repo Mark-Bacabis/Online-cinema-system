@@ -1,43 +1,235 @@
+body{
+    padding-top: 10vh;
+    background: whitesmoke;
+    color: black;
+}
+header{
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    background:rgb(238, 232, 232);
+    z-index: 100;
+}
+
+header .logo{
+    position: absolute;
+    left: 10%;
+}
+
+header .account{
+    position: absolute;
+    right: 10%;
+    display: flex;
+    align-items: center;
+}
+
+header .account .profile{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-left: 15px;
+}
+header .account .profile img{
+    width: 100%;
+    height: 100%;
+}
+
+
+
+
+
+
 
 .payment-container{
+    position: relative;
     width: 100%;
-    height: 85vh;
+    height:  90vh;
+    display: flex;
+}
+
+.payment-box{
+    position: relative;
+    width: 100%;
+    padding: 5% 0;
+    display: grid;
+}
+
+.payment-box .button-container{
+    position: absolute;
+    width: 100%;
+    height: 10%;
+    top: 0%;
+    background: crimson;
+    display: flex;
+    align-items: center;
+}
+.payment-box .button-container h3{
+    margin-left: 25px;
+    color: white;
+}
+
+.payment-box .button-container button{
+    padding: 0 15px;
+    height: 100%;
+    border: none;
+    background: rgb(184, 18, 51);
+    font-size: 16px;
+    cursor: pointer;
+    color: white;
+}
+.payment-box .button-container button.paypal{
+    margin-left: 20px;
+    background: whitesmoke;
+    color: black;
+}
+
+.credit-container{
+    position: absolute;
+    width: 100%;
+    height: 90%;
+    bottom: 0;
+    display: none;
+    
+}
+.payment-box .credit-payment{
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.payment .credit{
-    line-height: 40px;
-}
-.payment .credit input{
-    padding: 5px 10px;
-    font-size: 15px;
-    outline: none;
-    width: 300px;
-    text-align: left;
-}
 
-.payment  .flex input{
+.payment-box .credit-payment table{
+    line-height: 34px;
+    margin: 0 auto;
+}
+.payment-box .credit-payment h3{
+    font-weight: normal;
+    margin-left: 10px;
+}
+.payment-box .credit-payment input{
+    width: 300px;
+    padding: 3px 10px;
+    font-size: 16px;
+    outline: none;
+}
+.payment-box .credit-payment .flex input{
     width: 60px;
 }
-
-.payment .divider{
-    margin-top: 10px;
+.payment-box .credit-payment .pay-now-btn{
+    width: 100%;
+    padding: 5px 10px;
+    font-size: 18px;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    background: crimson;
+    margin-top: 15px;
+    color: white;
+    border-radius: 6px;
+}
+.divider{
     display: flex;
     align-items: center;
 }
-.payment .divider hr{
-    width: 100%;
+.divider hr{
+    width: 100px;
+    margin: 0 5px;
+}
+
+.divider button{
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: crimson;
     margin: 0 10px;
+    cursor: pointer;
+    text-align: center;
+    width: max-content;
+}
+.divider button:hover{
+    text-decoration: underline;
 }
 
 
-.payment .paypal-container{
-    width: 90%;
-    margin: 0 auto;
-    margin-top: 10px;
+
+.paypal-payment{
+    position: absolute;
+    width: 100%;
+    height: 90%;
+    bottom: 0%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.payment .paypal-container p{
-    margin: 5px 0 5px 10px ;
-    font-size: 15px;
+
+.paypal-payment #paypal-btn{
+    width: 340px;
+    z-index: 1;
 }
+
+
+
+
+.movie-selected{
+    position: relative;
+    width: 60%;
+    border-left: 2px solid;
+}
+.movie-selected img{
+    width: 80%;
+    height: 70%;
+    position: absolute;
+    right: 0;
+    top: 10%;
+}
+
+
+
+
+
+.order-summary-container{
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.order-summary-container table{
+    line-height: 34px;
+    padding: 15px 15px 55px 15px;
+    border: 2px solid;
+}
+.order-summary-container table tr td hr{
+    border-style:dashed;
+    margin: 10px 0;
+}
+
+.order-summary-container table h4{
+    line-height: 22px;
+}
+.order-summary-container table td:last-child{
+    text-align: right;
+}
+
+.order-summary-container table .center{
+    text-align: center;
+}
+.order-summary-container table .ticket{
+    font-size: 25px;
+    margin-bottom: -10px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.order-summary-container table .amount-payable{
+    margin-top: 50px;
+}
+
+
+
+
+
+
+

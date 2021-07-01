@@ -1,18 +1,18 @@
 <?php
-    session_start();
-    include "../connection.php";
+        session_start();
+        include "../connection.php";
 
-    if(isset($_POST['book'])){
+            //SESSION
         $movieID = $_SESSION['movieID'];
         $userID = $_SESSION['userID'];
-        $seats = $_POST['seat'];
-        $date = $_POST['date'];
-        $cinema = $_POST['cinema'];
-        $showTime = $_POST['showTime'];
-        $priceTicket = $_POST['price'];
-        $numberOfSeats = $_POST['nthOfSeats'];
-        $seatNumbers = $_POST['seatNo'];
-        $totalPrice = $_POST['totalPrice'];
+        $seats = $_SESSION['seats'];
+        $date = $_SESSION['date'];
+        $cinema = $_SESSION['cinema'];
+        $showTime = $_SESSION['showTime'];
+        $priceTicket = $_SESSION['priceTicket'];
+        $numberOfSeats = $_SESSION['numberOfseats'];
+        $seatNumbers = $_SESSION['seatNumbers'];
+        $totalPrice = $_SESSION['totalPrice'];
 
         $userQuery = mysqli_query($conn, "SELECT * FROM user WHERE userID = '$userID'");
         $userResult = mysqli_fetch_assoc($userQuery);
@@ -27,6 +27,9 @@
         $userEmail = $userResult['email'];
         $cinemaID = $cinemaResult['cinemaID'];
 
+        echo $cinema;
+
+        
         foreach($seats as $seatSelected){
             $insertIntoSeats = "INSERT INTO `seat_tbl`
             (`userID`, `movieID`, `date`, `cinemaID`, `showID`, `seatNumber`) 
@@ -36,11 +39,19 @@
             $seatQuery = mysqli_query($conn, $insertIntoSeats);
         }
 
+        
+
         $insertIntoBook = "INSERT INTO `booking_tbl`
         (`dateBooked`, `userID`, `userEmail`, `movieID`, `dateToday`, `cinemaID`, `showID`, `ticketPrice`, `numberOfSeats`, `seatNumber`, `totalPrice`) 
         VALUES 
         ('$date','$userID','$userEmail','$movieID',CURRENT_DATE(),'$cinemaID','$showID', $priceTicket,$numberOfSeats,'$seatNumbers', $totalPrice)";
 
         $bookQuery = mysqli_query($conn, $insertIntoBook);
-    }
+
+        if(!$bookQuery){
+            echo error_log($bookQuery);
+        }
+        else{
+            header("location:../process/thankyou.php");
+        }
 ?>

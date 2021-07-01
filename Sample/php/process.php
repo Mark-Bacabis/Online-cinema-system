@@ -1,6 +1,5 @@
 <?php
-    $conn = mysqli_connect('localhost','root','','online_ticket_reservation');
-
+    include "../connection.php";
    
 
     if(isset($_POST['date'])){

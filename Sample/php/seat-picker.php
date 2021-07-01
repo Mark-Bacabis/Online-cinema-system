@@ -1,7 +1,7 @@
 <?php
    
     session_start();
-    $conn = mysqli_connect('localhost','root','','online_ticket_reservation');
+   include "../connection.php";
 
     $movieID = $_SESSION['movieID'];
     $userID = $_SESSION['userID'];
@@ -205,7 +205,7 @@
         </div>
 
         <div class="container seat-picker-container">
-            <form action="process-picker.php" method="post">
+<form action="../payment-page.php" method="post">
             <div class="legend-container">
                 <div class="seat-legend">
                     <p> N/A </p>
@@ -356,7 +356,7 @@
                     <button type="submit" name="cancel" class="cancel"> Cancel </button>
                     <button type="submit" name="book" class="book"> Book </button>
                 </div>
-            </form>
+</form>
         </div>
     </div>
 <!-- SEAT PICKER -->
