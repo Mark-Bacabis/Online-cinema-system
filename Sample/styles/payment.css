@@ -1,0 +1,43 @@
+
+.payment-container{
+    width: 100%;
+    height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.payment .credit{
+    line-height: 40px;
+}
+.payment .credit input{
+    padding: 5px 10px;
+    font-size: 15px;
+    outline: none;
+    width: 300px;
+    text-align: left;
+}
+
+.payment  .flex input{
+    width: 60px;
+}
+
+.payment .divider{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+.payment .divider hr{
+    width: 100%;
+    margin: 0 10px;
+}
+
+
+.payment .paypal-container{
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+.payment .paypal-container p{
+    margin: 5px 0 5px 10px ;
+    font-size: 15px;
+}
