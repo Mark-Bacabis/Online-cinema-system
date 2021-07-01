@@ -12,7 +12,7 @@
     FROM movie 
     JOIN movie_available_date mdate
     ON movie.movieID = mdate.movieID
-    WHERE mdate.availableDate = '2021-06-22'
+    WHERE mdate.availableDate = '$dateToday'
     ORDER BY movie.movieID DESC";
 
     $query = mysqli_query($conn, $select);
@@ -94,7 +94,7 @@
 <body>
 
 <div class="isOff">
-    <p id="dark-mode"> On </p>
+    <p id="dark-mode"> </p>
 </div>
 
 
