@@ -175,14 +175,15 @@ header .account .profile img{
 .movie-selected{
     position: relative;
     width: 60%;
-    border-left: 2px solid;
+    border-left: 2px solid;;
 }
 .movie-selected img{
     width: 80%;
     height: 70%;
     position: absolute;
     right: 0;
-    top: 10%;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 

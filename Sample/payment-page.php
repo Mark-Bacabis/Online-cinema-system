@@ -57,6 +57,30 @@
     <link rel="stylesheet" href="./styles/payment.css">
     <title>Document</title>
 </head>
+
+<!-- IF USER LOG IN OR NOT -->
+<?php
+        if($userID != null){?>
+            <style>
+                #isNotLogin{
+                    display: none;
+                }
+                #isLogin{
+                    display: flex;
+                }
+            </style>
+        <?php } elseif($userID == null) { ?>
+            <style>
+                #isNotLogin{
+                    display: flex;
+                }
+                #isLogin{
+                    display: none;
+                }
+            </style>
+
+    <?php } ?>
+<!-- IF USER LOG IN OR NOT -->
 <body>
    
     <header>
@@ -67,7 +91,8 @@
         <div class="account">
             <h3> <?=$userResult['firstName']?> <?=$userResult['lastName']?> </h3>
             <div class="profile">
-                <img src="./icon/login.png" alt="">
+                <img src="./icon/login.png" id="isNotLogin" >
+                <img src="./user-profile/<?=$userResult['profile']?>" id="isLogin" >
             </div>
         </div>
     </header>
@@ -85,7 +110,7 @@
                 <div class="credit-payment">
                     <table border="0">
                         <tr>
-                            <th colspan="2"> <h2> Payment Options </h2> </th>
+                            <td colspan="2"> <h2> Payment Options </h2> </td>
                         </tr>
                         <tr>
                             <td colspan="2">
@@ -140,7 +165,7 @@
         <div class="order-summary-container">
             <table border="0">
                 <tr>
-                    <th> <h2> ORDER SUMMARY </h2></th>
+                    <th> <h2> Booking Summary </h2></th>
                 </tr>
                 <tr>
                     <td> <h3> <?=$movieResult['Title']?> </h3></td>
