@@ -178,7 +178,11 @@
 
                 <tr >
                     <td class="amount-payable"> Amount Payable </td>
-                    <td> <?=$totalPrice?>  </td>
+                    <td class="amout"> 
+                        <div class="price-overlay">
+                        </div> 
+                        <input type="text" id="totalPrice" value="<?=$totalPrice?>"> 
+                    </td>
                 </tr>
                 
             </table>

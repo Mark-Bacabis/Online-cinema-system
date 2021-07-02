@@ -1,5 +1,8 @@
 const paypalClicked = document.querySelector(".paypal");
 const creditBtnClicked = document.querySelector(".credit-btn");
+const totalPrice = document.getElementById("totalPrice").value;
+
+
 
 const paypalContainer = document.querySelector(".paypal-payment");
 const creditContainer = document.querySelector(".credit-container");
@@ -34,6 +37,7 @@ creditBtnClicked.addEventListener('click', function(){
 
 
 
+
 paypal.Buttons({
   style:{
       color: "gold",
@@ -45,7 +49,7 @@ createOrder: function(data, actions) {
 return actions.order.create({
   purchase_units: [{
     amount: {
-      value: 1000
+      value: totalPrice
     }
   }]
 });
