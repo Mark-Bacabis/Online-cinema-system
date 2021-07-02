@@ -113,21 +113,21 @@
     
     
     <!-- IF USER IS LOGIN -->        
-        <div class="isLogin">
-            <?php
-                $firstLetter = mysqli_query($conn, "SELECT firstName, lastName, LEFT(firstName , 1) as FirstLetter,  LEFT(lastName , 1) as LastLetter FROM user WHERE userID = '$userID'");
+            <div class="isLogin">
+                <?php
+                    $userQry = mysqli_query($conn, "SELECT * FROM user WHERE userID = '$userID'");
 
-                $firstLetterUser = $firstLetter->fetch_assoc();
-            ?>
-            <div class="fullname">
-                <p> <?=$firstLetterUser['firstName']?> <?=$firstLetterUser['lastName']?> </p>
+                    $user = $userQry->fetch_assoc();
+                ?>
+                <div class="fullname">
+                    <p> <?=$user['firstName']?> </p>
+                </div>
+
+                <div class="profile"  id="isLogin">
+                    <img src="../user-profile/<?=$user['profile']?>" alt="">
+                </div>           
             </div>
-
-            <div class="profile"  id="isLogin">
-            <h1> <?=$firstLetterUser['FirstLetter']?><?=$firstLetterUser['LastLetter']?> </h1>    
-            </div>           
-        </div>
-    <!-- IF USER IS LOGIN -->
+        <!-- IF USER IS LOGIN -->
        
 
     <div class="light-and-dark" id="light-dark">
@@ -205,7 +205,7 @@
         </div>
 
         <div class="container seat-picker-container">
-<form action="../payment-page.php" method="post">
+    <form action="../payment-page.php" method="post">
             <div class="legend-container">
                 <div class="seat-legend">
                     <p> N/A </p>
@@ -356,7 +356,7 @@
                     <button type="submit" name="cancel" class="cancel"> Cancel </button>
                     <button type="submit" name="book" class="book"> Book </button>
                 </div>
-</form>
+    </form>
         </div>
     </div>
 <!-- SEAT PICKER -->
