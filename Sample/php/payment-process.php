@@ -38,7 +38,7 @@
             
             $seatQuery = mysqli_query($conn, $insertIntoSeats);
         }
-
+        
         
 
         $insertIntoBook = "INSERT INTO `booking_tbl`
