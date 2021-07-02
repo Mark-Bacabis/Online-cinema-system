@@ -86,7 +86,7 @@
 <header>
     <div class="nav-search-area">
         <div class="logo">
-            <a href="./index.php"> Logo </a>   
+            <a href="./index.php"> NXTFLIX </a>   
         </div>
 
         <div class="search">
@@ -104,16 +104,16 @@
         <!-- IF USER IS LOGIN -->        
             <div class="isLogin">
                 <?php
-                    $firstLetter = mysqli_query($conn, "SELECT firstName, lastName, LEFT(firstName , 1) as FirstLetter,  LEFT(lastName , 1) as LastLetter FROM user WHERE userID = '$userID'");
+                    $userQry = mysqli_query($conn, "SELECT * FROM user WHERE userID = '$userID'");
 
-                    $firstLetterUser = $firstLetter->fetch_assoc();
+                    $user = $userQry->fetch_assoc();
                 ?>
                 <div class="fullname">
-                    <p> <?=$firstLetterUser['firstName']?> <?=$firstLetterUser['lastName']?> </p>
+                    <p> <?=$user['firstName']?> </p>
                 </div>
 
                 <div class="profile"  id="isLogin">
-                <h1> <?=$firstLetterUser['FirstLetter']?><?=$firstLetterUser['LastLetter']?> </h1>    
+                    <img src="./user-profile/<?=$user['profile']?>" alt="">
                 </div>           
             </div>
         <!-- IF USER IS LOGIN -->
@@ -175,9 +175,11 @@
     <!-- USER MODAL -->
         <div class="user-login-container">
             <ul>
-                <form action="./process/login.php" method="post">
+                
+                    <li> <button class="chngePW"> My Account </button> </li>
                     <li> <button class="chngePW"> Change password </button> </li>
                     <li> <button class="bkHistory"> Booking history </button> </li>
+                <form action="./process/login.php" method="post">
                     <li> <button class="logout" type="submit" name="logout"> Logout  </button> </li>
                 </form>
             </ul>

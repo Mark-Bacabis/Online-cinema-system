@@ -28,7 +28,7 @@ header .nav-search-area{
 }
 
 header .nav-search-area .logo {
-  font-size: 32px;
+
   position: absolute;
   top: 50%;
   left: 10%;
@@ -36,8 +36,10 @@ header .nav-search-area .logo {
  
 }
 header .nav-search-area .logo a{
+  font-size: 32px;
   color: crimson;
   text-decoration: none;
+  font-weight: bold;
 }
 
 
@@ -82,9 +84,9 @@ header .nav-search-area .light-and-dark  .light-mode img{
 
 header .nav-search-area .search{
   position: absolute;
-  left: 20%;
+  left: 50%;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translate(-50%, -50%);
   display: flex;
 }
 header .nav-search-area .search input{
@@ -131,24 +133,25 @@ header .nav-search-area .isLogin{
   right: 10%;
   top: 50%;
   transform: translateY(-50%);
-  justify-content: center;
   align-items: center;
   cursor: default;
 }
 header .nav-search-area .isLogin .fullname{
-  margin-right: 10px;
+  margin-right: 15px;
   font-size: 18px;
+  font-weight: bold;
 }
 header .nav-search-area .isLogin .profile{
   background: crimson;
   border-radius: 50%;
-  padding: 5px;
-  text-align: center;
   cursor: pointer;
+  width: 45px;
+  height: 42px;
+  overflow: hidden;
 }
-header .nav-search-area .isLogin .profile h1{
-  font-size: 18px;
-  color: white;
+header .nav-search-area .isLogin .profile img{
+  width: 100%;
+  height: 100%;
 }
 
 
