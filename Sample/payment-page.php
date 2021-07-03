@@ -14,7 +14,6 @@
     $totalPrice = $_POST['totalPrice'];
 
 
-    
     //SESSION
     $_SESSION['movieID'] = $movieID;
     $_SESSION['userID'] = $userID;
