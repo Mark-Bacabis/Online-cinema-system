@@ -91,7 +91,7 @@ document.getElementById('isLogin').addEventListener('click', function(){
 
 
 
-
+/*
 // LIGHT AND DARK MODE SCRIPT 
 
 
@@ -179,7 +179,7 @@ light.addEventListener('click', function(){
 
 console.log(darkMode);
 
-
+*/
 
 
 

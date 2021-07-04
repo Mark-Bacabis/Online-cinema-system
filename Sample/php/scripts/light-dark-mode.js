@@ -1,5 +1,5 @@
 
-
+/*
 // LIGHT AND DARK MODE SCRIPT 
 
 // DARK-LIGHT CHANGE BUTTON
@@ -73,4 +73,4 @@ light.addEventListener('click', function(){
         bookHistory.style.color = 'white';
         logoutBtn.style.color = 'white';
     }
-});
+});*/

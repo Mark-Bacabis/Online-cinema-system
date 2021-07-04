@@ -95,19 +95,29 @@
 <header>
     <div class="nav-search-area">
         <div class="logo">
-            <a href="../index.php"> Logo </a>   
+            <a href="../index.php"> NXTFLIX <br>
+                <span class="subtitle">
+                    Online Ticket Reservation
+                </span>
+            </a>   
         </div>
+
         <div class="search">
-            <input type="search" placeholder="Search movie, genre, theatre and address">
-            <button> Search </button>
+            <input type="search" placeholder="Search movie">
+            <img src="../icon/search.png" clas="search-icon">
         </div>
-    <!-- IF USER DIDN'T LOGIN -->  
-        <div class="login" id="login">
-            <img src="../icon/login.png" alt="">
-        </div>
-    <!-- IF USER DIDN'T LOGIN -->  
-    
-    
+        
+
+        <div class="nav-bar-container">
+
+        <!-- IF USER DIDN'T LOGIN -->  
+            <div class="login" id="login">
+                <a href="#"> Register </a> 
+                <p> | </p> 
+                <a href="#"> Login </a>
+            </div>
+        <!-- IF USER DIDN'T LOGIN -->          
+        
         <!-- IF USER IS LOGIN -->        
             <div class="isLogin">
                 <?php
@@ -115,73 +125,86 @@
 
                     $user = $userQry->fetch_assoc();
                 ?>
-                <div class="fullname">
-                    <p> <?=$user['firstName']?> </p>
-                </div>
+             
 
                 <div class="profile"  id="isLogin">
+                    <p> <?=$user['firstName']?> <?=$user['lastName']?></p>
                     <img src="../user-profile/<?=$user['profile']?>" alt="">
-                </div>           
+
+                    <img src="../icon/down-filled-triangular-arrow.png" alt="" class="drop-down-icon">
+                </div>
+                
+                   
+                <div class="wishlist">
+                    <img src="../icon/playlist.png" alt="">
+                </div>
             </div>
         <!-- IF USER IS LOGIN -->
-       
-
-    <div class="light-and-dark" id="light-dark">
-        <div class="light-mode">
-            <p> Light </p>
-            <img src="../icon/light-icon.png" alt="" id="icon">
         </div>
-     </div>
+
+        <!-- 
+        <div class="light-and-dark" id="light-dark">
+            <div class="light-mode">
+                <p> Light </p>
+                <img src="./icon/light-icon.png" alt="" id="icon">
+            </div>
+        </div>
+        -->
 
     </div>
 
+    <!-- NAVIGATION LINK -->
     <div class="nav-bar">
         <ul>
             <li><a href="../index.php"> Home </a></li>
-            <li><a href="./allMovies.php?query=Allmovies"> Movies </a></li>
-            <li><a href="./contact.php"> Contact us</a></li>
-            <li><a href="./service.php"> Services </a></li>
+            <li style="border-bottom: 2px solid #bbbbbb;"><a href="../php/allMovies.php?query=Allmovies"> Movies </a></li>
+            <li><a href="../php/contact.php"> Contact us</a></li>
+            <li><a href="../php/service.php"> Services </a></li>
         </ul>
     </div>
 
-    <!-- LOGIN MODAL --> 
-    <div class="login-container">
-        <form action="../process/login.php" method="POST">
-            <table border="0">
-                <th> Login </th>
-                <tr>
-                    <td> <input type="email" name="email" placeholder="Email"></td>
-                </tr>
-                <tr>
-                    <td> <input type="password" name="password" placeholder="Password"></td>
-                </tr>
-                <tr>
-                    <td> <input type="submit" name="login-btn" placeholder="Password" value="Sign in"></td>
-                </tr>
+    <!-- LOGIN MODAL -->
+        <div class="login-container">
+            <form action="../process/login.php" method="POST">
+                <table border="0">
+                    <th> Login </th>
+                    <tr>
+                        <td> <input type="email" name="email" placeholder="Email"></td>
+                    </tr>
+                    <tr>
+                        <td> <input type="password" name="password" placeholder="Password"></td>
+                    </tr>
+                    <tr>
+                        <td> <input type="submit" name="login-btn" placeholder="Password" value="Sign in"></td>
+                    </tr>
 
-                <tr>
-                    <td> <a href="#"> Forgot password? </a></td>
-                </tr>
-            </table>
-        </form>
+                    <tr>
+                        <td> <a href="#"> Forgot password? </a></td>
+                    </tr>
+                </table>
+            </form>
 
-        <div class="other-account">
-            <p> or </p>
-            <button> <img src="../icon/google.png" alt=""> </button>
-            <button> <img src="../icon/facebook.png" alt=""> </button>
+            <div class="other-account">
+                <p> or </p>
+                <button> <img src="./icon/google.png" alt=""> </button>
+                <button> <img src="./icon/facebook.png" alt=""> </button>
+            </div>
+            <div class="reg"> 
+                <p> Don't have an account? </p> 
+                <a href="#"> Register now </a>
+            </div>
         </div>
-        <div class="reg"> 
-            <p> Don't have an account? </p> 
-            <a href="#"> Register now </a>
-        </div>
-    </div>
+    <!--   LOGIN MODAL 
+    --> 
 
-  <!-- USER MODAL -->
-    <div class="user-login-container">
+    
+    <!-- USER MODAL -->
+        <div class="user-login-container">
             <ul>
+                <li> <button class="chngePW"> My Account </button> </li>
+                <li> <button class="chngePW"> Change password </button> </li>
+                <li> <button class="bkHistory"> Booking history </button> </li>
                 <form action="../process/login.php" method="post">
-                    <li> <button class="chngePW"> Change password </button> </li>
-                    <li> <button class="bkHistory"> Booking history </button> </li>
                     <li> <button class="logout" type="submit" name="logout"> Logout  </button> </li>
                 </form>
             </ul>
@@ -271,7 +294,6 @@
 
 <!-- CUSTOM JS -->
     <script src="./scripts/main.js"> </script>
-    <script src="./scripts/light-dark-mode.js"></script>
 </body>
 
 <?php

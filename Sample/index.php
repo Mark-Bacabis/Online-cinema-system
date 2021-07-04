@@ -7,7 +7,7 @@
 
     $userID = $_SESSION['userID'];
 
-// SELECT MOVIES BY DATE TODAY
+// SELECT ALL MOVIES
     $select = "SELECT * FROM movie 
     ORDER BY movie.movieID DESC";
 
@@ -25,11 +25,11 @@
     $lastImage = $lastData-> fetch_assoc();
     $firstImage = $firstData-> fetch_assoc();
     $secondImage = $secondData-> fetch_assoc();
-// SELECT MOVIES BY DATE TODAY
+// SELECT ALL MOVIES
 
-// SELECT NEW MOVIE
-    $newRelease = mysqli_query($conn, "SELECT * FROM movie ORDER BY movieID DESC LIMIT 5");
-// SELECT NEW MOVIE
+// SELECT SHOWING THIS WEEK MOVIE
+    $showThisWeek = mysqli_query($conn, "SELECT * FROM movie ORDER BY movieID DESC LIMIT 5");
+// SELECT SHOWING THIS WEEK MOVIE
 
 // SELECT MOVIE THAT SHOWS NEXT WEEK
     $premiere = mysqli_query($conn, "SELECT * FROM movie WHERE isAvailable = 'True' ORDER BY movieID DESC LIMIT 5");
@@ -47,13 +47,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> NXTFLIX Philippines | An online ticket reservation </title>
+    <title> NXTFLIX | Online Ticket Reservation </title>
     <link rel="stylesheet" href="./styles/style.css">
 </head>
 
-<!-- IF USER LOG IN OR NOT -->
+<!-- IF USER LOGGED IN OR NOT -->
     <?php
-        if($userID != null){?>
+        if(!empty($userID)){?>
             <style>
                 .login{
                     display: none;
@@ -62,7 +62,7 @@
                     display: flex;
                 }
             </style>
-        <?php } elseif($userID == null) { ?>
+        <?php } elseif(empty($userID)) { ?>
             <style>
                 .login{
                     display: flex;
@@ -77,29 +77,31 @@
 
 <body>
 
-<div class="isOff">
-    <p id="dark-mode"> </p>
-</div>
-
-
-
 <header>
     <div class="nav-search-area">
         <div class="logo">
-            <a href="./index.php"> NXTFLIX </a>   
+            <a href="./index.php"> NXTFLIX <br>
+                <span class="subtitle">
+                    Online Ticket Reservation
+                </span>
+            </a>   
         </div>
 
         <div class="search">
-            <input type="search" placeholder="Search movie, genre, theatre and address">
-            <button> Search </button>
+            <input type="search" placeholder="Search movie">
+            <img src="./icon/search.png" clas="search-icon">
         </div>
+        
+
+        <div class="nav-bar-container">
 
         <!-- IF USER DIDN'T LOGIN -->  
             <div class="login" id="login">
-                <img src="./icon/login.png" alt="">
+                <a href="#"> Register </a> 
+                <p> | </p> 
+                <a href="#"> Login </a>
             </div>
-        <!-- IF USER DIDN'T LOGIN -->  
-        
+        <!-- IF USER DIDN'T LOGIN -->          
         
         <!-- IF USER IS LOGIN -->        
             <div class="isLogin">
@@ -108,37 +110,45 @@
 
                     $user = $userQry->fetch_assoc();
                 ?>
-                <div class="fullname">
-                    <p> <?=$user['firstName']?> </p>
-                </div>
+             
 
                 <div class="profile"  id="isLogin">
+                    <p> <?=$user['firstName']?> <?=$user['lastName']?></p>
                     <img src="./user-profile/<?=$user['profile']?>" alt="">
-                </div>           
+
+                    <img src="./icon/down-filled-triangular-arrow.png" alt="" class="drop-down-icon">
+                </div>
+                
+                   
+                <div class="wishlist">
+                    <img src="./icon/playlist.png" alt="">
+                </div>
             </div>
         <!-- IF USER IS LOGIN -->
-        
+        </div>
 
+        <!-- 
         <div class="light-and-dark" id="light-dark">
             <div class="light-mode">
                 <p> Light </p>
                 <img src="./icon/light-icon.png" alt="" id="icon">
             </div>
         </div>
+        -->
 
     </div>
 
-
+    <!-- NAVIGATION LINK -->
     <div class="nav-bar">
         <ul>
-            <li><a href="./index.php"> Home </a></li>
+            <li style="border-bottom: 2px solid #bbbbbb;"><a href="./index.php"> Home </a></li>
             <li><a href="./php/allMovies.php?query=Allmovies"> Movies </a></li>
             <li><a href="./php/contact.php"> Contact us</a></li>
             <li><a href="./php/service.php"> Services </a></li>
         </ul>
     </div>
 
-    <!-- LOGIN MODAL --> 
+    <!-- LOGIN MODAL -->
         <div class="login-container">
             <form action="./process/login.php" method="POST">
                 <table border="0">
@@ -169,16 +179,16 @@
                 <a href="#"> Register now </a>
             </div>
         </div>
-    <!-- LOGIN MODAL --> 
+    <!--   LOGIN MODAL 
+    --> 
 
     
     <!-- USER MODAL -->
         <div class="user-login-container">
             <ul>
-                
-                    <li> <button class="chngePW"> My Account </button> </li>
-                    <li> <button class="chngePW"> Change password </button> </li>
-                    <li> <button class="bkHistory"> Booking history </button> </li>
+                <li> <button class="chngePW"> My Account </button> </li>
+                <li> <button class="chngePW"> Change password </button> </li>
+                <li> <button class="bkHistory"> Booking history </button> </li>
                 <form action="./process/login.php" method="post">
                     <li> <button class="logout" type="submit" name="logout"> Logout  </button> </li>
                 </form>
@@ -189,15 +199,13 @@
 
 
 
-<!-- NOW SHOWING -->
+<!-- ALL MOVIES -->
     <div class="slider-container" id="slider-container">
             <ul class="slide-holder">
-
                 <li class="imgHolder" id="lastImage"> 
-                      
                         <div class="overlay">
                             <div class="movie-text">
-                                <a href="./php/movie.php?movie=<?=$lastImage['Title']?>" target="blank"> 
+                                <a href="./php/movie.php?movie=<?=$lastImage['Title']?>"> 
                                     <?=$lastImage['Title'] ?> (<?= $lastImage['Year']?>)
                                 </a>
                                 <p> <?= $lastImage['Duration']?> &bullet; <?=$lastImage['Genre']?> &bullet; <?= $lastImage['Rating']?></p>   
@@ -214,7 +222,7 @@
 
                         <div class="overlay">
                             <div class="movie-text">
-                                <a href="./php/movie.php?movie=<?=$row['Title']?>" target="blank">
+                                <a href="./php/movie.php?movie=<?=$row['Title']?>">
                                 
                                     <?=$row['Title'] ?> (<?= $row['Year']?>)
                                 </a>
@@ -231,7 +239,7 @@
                 <li class="imgHolder" > 
                         <div class="overlay">
                             <div class="movie-text">
-                                <a href="./php/movie.php?movie=<?=$firstImage['Title']?>" target="blank"> 
+                                <a href="./php/movie.php?movie=<?=$firstImage['Title']?>"> 
                                     <?=$firstImage['Title'] ?>  (<?= $firstImage['Year']?>)
                                 </a>
                                 <p> <?= $firstImage['Duration']?> &bullet; <?=$firstImage['Genre']?> &bullet; <?= $firstImage['Rating']?></p>   
@@ -245,7 +253,7 @@
                 <li class="imgHolder"> 
                         <div class="overlay">
                             <div class="movie-text">
-                                <a href="./php/movie.php?movie=<?=$secondImage['Title']?>" target="blank"> 
+                                <a href="./php/movie.php?movie=<?=$secondImage['Title']?>"> 
                                     <?=$secondImage['Title'] ?>  (<?= $secondImage['Year']?>)
                                 </a>
                                 <p> <?= $secondImage['Duration']?> &bullet; <?=$secondImage['Genre']?> &bullet; <?= $secondImage['Rating']?></p>   
@@ -265,76 +273,96 @@
         </button>
 
     </div>
-<!-- NOW SHOWING -->
-    
+<!-- ALL MOVIES -->
+
+
 <!-- SHOWING THIS WEEK -->
-    <div class="new-release-container">
-        <div class="title-container">
-            <h1>Showing this week </h1>
+    <div class="movie-container showing-week-container">
+        <div class="container-title">
+            <h1> SHOWING THIS WEEK </h1>
+            <a href="#" class="see-all">
+                See all
+            </a>
         </div>
-        <a href="#" class="see-all"> See all </a>
-        <div class="movie-poster">
-            <ul>
-                <?php
-                    while($newReleaseMovie = $newRelease-> fetch_assoc()){
-                ?>
-                <li>
-                    <img src="./img/<?= $newReleaseMovie['Poster']?>"> 
-                    <a href="next.php?movieID=1"> View Details </a> 
-                </li>  
-                <?php } ?>
-            </ul>
-        </div>
+        <ul>
+            <?php
+                while($weeklyShow = $showThisWeek-> fetch_assoc()){
+            ?>
+            <li>
+                <div class="movie-poster-box">
+                    <div class="movie-poster">
+                        <img src="./img/<?=$weeklyShow['Poster']?>" alt="">
+                    </div>
+                    <div class="movie-title">
+                        <a href="./php/movie.php?movie=<?=$weeklyShow['Title'];?>"> <?=$weeklyShow['Title']?> </a>
+                    </div>
+                </div>
+            </li>
+            <?php } ?>
+        </ul>
     </div>
 <!-- SHOWING THIS WEEK -->
 
-<!-- PREMIERE -->
-    <div class="premiere-container">
-        <div class="title-container">
-            <h1> Premiere </h1>
-            <p> Showing next week </p>
-        </div>
-        <a href="#" class="see-all"> See all </a>
-        <div class="movie-poster">
-            <ul>
-                <?php
-                    while($premiereMovie = $premiere-> fetch_assoc()){
-                ?>
-                <li>
-                    <img src="./img/<?=$premiereMovie['Poster']?>"> 
-                    <a href="next.php?movieID=1"> View Details </a> 
-                </li>  
-                <?php } ?>
-            </ul>
-        </div>
-    </div>
-<!-- PREMIERE -->
 
-<!-- UPCOMING -->
-    <div class="upcoming-container">
-        
-        <div class="upcoming-title">
+<!-- SHOWING NEXT WEEK -->
+    <div class="movie-container premiere-container">
+        <div class="container-title">
+            <h1> PREMIERE </h1>
+            <p> Showing Next Week </p>
+            <a href="#" class="see-all">
+                See all
+            </a>
+        </div>
+        <ul>
+            <?php
+                while($nextWeekShow = $premiere-> fetch_assoc()){
+            ?>
+            <li>
+                <div class="movie-poster-box">
+                    <div class="movie-poster">
+                        <img src="./img/<?=$nextWeekShow['Poster'];?>" alt="">
+                    </div>
+                    <div class="movie-title">
+                        <a href="./php/movie.php?movie=<?=$nextWeekShow['Title'];?>"> <?=$nextWeekShow['Title'];?> </a>
+                    </div>
+                </div>
+            </li>
+            <?php } ?>
+        </ul>
+    </div>
+<!-- SHOWING NEXT WEEK -->
+
+
+<!-- COMING SOON -->
+    <div class="movie-container coming-soon-container">
+        <div class="container-title">
             <h2> Coming Soon </h2>
         </div>
-        <a href="./php/allMovies.php?query=ComingSoon" class="see-all"> See all </a>
-        <div class="poster-container">
-
-        <?php
-            while($comingSoonMovie = $comingSoon-> fetch_assoc()){
-        ?>
-            <div class="upc-movie-poster"> 
-                <img src="./img/<?=$comingSoonMovie['Poster']?>">
-                <h2> <?=$comingSoonMovie['Title']?> (<?=$comingSoonMovie['Year']?>) </h2>
-            </div>
-        <?php } ?>
-        </div>  
+        <ul>
+            <li>
+                <div class="movie-poster-box">
+                    <div class="movie-poster">
+                        <img src="./img/raya-poster.jpg" alt="">
+                    </div>
+                    <div class="movie-title">
+                        <p>
+                            Movie Title (2020)
+                        </p>
+                    </div>
+                </div>
+            </li>
+        </ul>
     </div>
-<!-- UPCOMING -->
+<!-- COMING SOON -->
+
+
+
+
 
 <!-- FOOTER -->
     <footer class="footer-container">
         <div class="About">
-            <h3> <?=$dateToday?> </h3>
+            <h3> About </h3>
             <ul>
                 <li><a href="#"> About us</a></li>
                 <li><a href="#"> Terms and agreement </a></li>
@@ -379,6 +407,7 @@
         </div>
     </footer>
 <!-- FOOTER -->
+
 
 
 </body>
