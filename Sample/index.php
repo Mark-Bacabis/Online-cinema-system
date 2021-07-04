@@ -2,6 +2,7 @@
     session_start();
     error_reporting(0);
     include "./connection.php";
+    include "./process/url.php";
     
     $dateToday = DATE('Y-m-d');
 
@@ -97,9 +98,9 @@
 
         <!-- IF USER DIDN'T LOGIN -->  
             <div class="login" id="login">
-                <a href="#"> Register </a> 
+                <a href="./php/sign-up.php?next=<?=$url?>"> Register </a> 
                 <p> | </p> 
-                <a href="#"> Login </a>
+                <a href="./php/login.php?next=<?=$url?>"> Login </a>
             </div>
         <!-- IF USER DIDN'T LOGIN -->          
         
@@ -127,15 +128,6 @@
         <!-- IF USER IS LOGIN -->
         </div>
 
-        <!-- 
-        <div class="light-and-dark" id="light-dark">
-            <div class="light-mode">
-                <p> Light </p>
-                <img src="./icon/light-icon.png" alt="" id="icon">
-            </div>
-        </div>
-        -->
-
     </div>
 
     <!-- NAVIGATION LINK -->
@@ -147,41 +139,6 @@
             <li><a href="./php/service.php"> Services </a></li>
         </ul>
     </div>
-
-    <!-- LOGIN MODAL -->
-        <div class="login-container">
-            <form action="./process/login.php" method="POST">
-                <table border="0">
-                    <th> Login </th>
-                    <tr>
-                        <td> <input type="email" name="email" placeholder="Email"></td>
-                    </tr>
-                    <tr>
-                        <td> <input type="password" name="password" placeholder="Password"></td>
-                    </tr>
-                    <tr>
-                        <td> <input type="submit" name="login-btn" placeholder="Password" value="Sign in"></td>
-                    </tr>
-
-                    <tr>
-                        <td> <a href="#"> Forgot password? </a></td>
-                    </tr>
-                </table>
-            </form>
-
-            <div class="other-account">
-                <p> or </p>
-                <button> <img src="./icon/google.png" alt=""> </button>
-                <button> <img src="./icon/facebook.png" alt=""> </button>
-            </div>
-            <div class="reg"> 
-                <p> Don't have an account? </p> 
-                <a href="#"> Register now </a>
-            </div>
-        </div>
-    <!--   LOGIN MODAL 
-    --> 
-
     
     <!-- USER MODAL -->
         <div class="user-login-container">
@@ -189,7 +146,7 @@
                 <li> <button class="chngePW"> My Account </button> </li>
                 <li> <button class="chngePW"> Change password </button> </li>
                 <li> <button class="bkHistory"> Booking history </button> </li>
-                <form action="./process/login.php" method="post">
+                <form action="./process/account-process.php?next=http://localhost/online-cinema-system/sample/index.php" method="post">
                     <li> <button class="logout" type="submit" name="logout"> Logout  </button> </li>
                 </form>
             </ul>
@@ -275,9 +232,14 @@
     </div>
 <!-- ALL MOVIES -->
 
+<div class="bg-blur">
+    <div class="bottom-gradient">
+
+    </div>
+</div>
 
 <!-- SHOWING THIS WEEK -->
-    <div class="movie-container showing-week-container">
+    <div class="movie-container showing-week-container" id="movie-this-week">
         <div class="container-title">
             <h1> SHOWING THIS WEEK </h1>
             <a href="#" class="see-all">
@@ -373,8 +335,8 @@
         <div class="movies">
                 <h3> Movies </h3>
             <ul>
-                <li><a href="#"> Now showing </a></li>
-                <li><a href="#"> New release </a></li>
+                <li><a href="#slider-container"> All movies </a></li>
+                <li><a href="#movie-this-week"> Showing this week </a></li>
                 <li><a href="#"> Premiere </a></li>
                 <li><a href="#"> Upcoming movie </a></li>
             </ul>

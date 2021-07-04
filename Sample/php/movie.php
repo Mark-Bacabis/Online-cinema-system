@@ -3,9 +3,14 @@
     error_reporting(0);
     session_start();
     include "../connection.php";
+    include "../process/url.php";
     
     $movieTitle = $_GET['movie'];  
     $userID = $_SESSION['userID'];
+
+    $_SESSION['url'] = $url;
+
+
 
     $selectMovie = mysqli_query($conn, "SELECT * FROM `movie` WHERE Title = '$movieTitle'");
 
@@ -17,7 +22,6 @@
 
     $movieByGenre = mysqli_query($conn, "SELECT * FROM movie WHERE movieID != '$movieID' AND 
     isAvailable = 'True' AND Genre LIKE '%' || (SELECT LEFT(Genre, 6) as similarGenre FROM movie WHERE movieID = '$movieID') || '%' LIMIT 4");
-
     
         
 ?>
@@ -32,7 +36,7 @@
 
     <!-- aJax jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <title> <?=$movieSelected['Title']?> | Details </title>
+    <title> <?=$movieSelected['Title']?> | NXTFLIX - Online Ticket Reservation </title>
     
 </head>
     <!-- aJax Java Script -->
@@ -129,7 +133,6 @@
 
 <body>
 
-
 <header>
     <div class="nav-search-area">
         <div class="logo">
@@ -150,9 +153,9 @@
 
         <!-- IF USER DIDN'T LOGIN -->  
             <div class="login" id="login">
-                <a href="#"> Register </a> 
+                <a href="../php/sign-up.php?next=<?=$url?>"> Register </a> 
                 <p> | </p> 
-                <a href="#"> Login </a>
+                <a href="../php/login.php?next=<?=$url?>"> Login </a>
             </div>
         <!-- IF USER DIDN'T LOGIN -->          
         
@@ -180,15 +183,6 @@
         <!-- IF USER IS LOGIN -->
         </div>
 
-        <!-- 
-        <div class="light-and-dark" id="light-dark">
-            <div class="light-mode">
-                <p> Light </p>
-                <img src="./icon/light-icon.png" alt="" id="icon">
-            </div>
-        </div>
-        -->
-
     </div>
 
     <!-- NAVIGATION LINK -->
@@ -200,41 +194,6 @@
             <li><a href="../php/service.php"> Services </a></li>
         </ul>
     </div>
-
-    <!-- LOGIN MODAL -->
-        <div class="login-container">
-            <form action="../process/login.php" method="POST">
-                <table border="0">
-                    <th> Login </th>
-                    <tr>
-                        <td> <input type="email" name="email" placeholder="Email"></td>
-                    </tr>
-                    <tr>
-                        <td> <input type="password" name="password" placeholder="Password"></td>
-                    </tr>
-                    <tr>
-                        <td> <input type="submit" name="login-btn" placeholder="Password" value="Sign in"></td>
-                    </tr>
-
-                    <tr>
-                        <td> <a href="#"> Forgot password? </a></td>
-                    </tr>
-                </table>
-            </form>
-
-            <div class="other-account">
-                <p> or </p>
-                <button> <img src="../icon/google.png" alt=""> </button>
-                <button> <img src="../icon/facebook.png" alt=""> </button>
-            </div>
-            <div class="reg"> 
-                <p> Don't have an account? </p> 
-                <a href="#"> Register now </a>
-            </div>
-        </div>
-    <!--   LOGIN MODAL 
-    --> 
-
     
     <!-- USER MODAL -->
         <div class="user-login-container">
@@ -242,7 +201,7 @@
                 <li> <button class="chngePW"> My Account </button> </li>
                 <li> <button class="chngePW"> Change password </button> </li>
                 <li> <button class="bkHistory"> Booking history </button> </li>
-                <form action="./process/login.php" method="post">
+                <form action="../process/account-process.php?next=<?=$url?>" method="post">
                     <li> <button class="logout" type="submit" name="logout"> Logout  </button> </li>
                 </form>
             </ul>
@@ -312,7 +271,7 @@
                     <tr>
                         <td> <h3> Available Date </h3> </td>
                         <td>
-                            <select name="availableDate" id="available-date">
+                            <select name="availableDate" id="available-date" required>
                                     <option value=""> Select Available Date </option>
                                     <?php while($dateRows = $movieDates->fetch_assoc()){?>
                                         <option value="<?=$dateRows['availableDate']?>"> <?=$dateRows['availableDate']?> </option>
@@ -323,7 +282,7 @@
                     <tr>
                         <td>  <h3> Available Cinema </h3> </td>
                         <td>
-                            <select name="availableCinema" id="available-cinema">
+                            <select name="availableCinema" id="available-cinema" required>
                                 <option value=""> Select Available Cinema </option>
                             </select>
                         </td>
@@ -331,7 +290,7 @@
                     <tr>
                         <td> <h3>Available Shows </h3> </td>
                         <td>
-                            <select name="showTime" id="showTime">
+                            <select name="showTime" id="showTime" required>
                                 <option value=""> Select Available Show </option>
                             </select>
                         </td>

@@ -1,7 +1,7 @@
 <?php
    
     session_start();
-   include "../connection.php";
+    include "../connection.php";
 
     $movieID = $_SESSION['movieID'];
     $userID = $_SESSION['userID'];
@@ -12,6 +12,8 @@
 
 
     if(isset($_POST['submit'])){
+        $movieUrl = $_SESSION['url'];
+
         if(!empty($userID)){
             $date = $_POST['availableDate'];
             $cinema = $_POST['availableCinema'];
@@ -24,7 +26,7 @@
             $cinemaID = $cinemaResult['cinemaID'];
         }
         elseif(empty($userID)){
-            header("location:privacy.php");
+            header("location:login.php?next=".$movieUrl);
         }
     }
 

@@ -335,17 +335,18 @@ header .login-container{
 
 
 header .user-login-container{
-  right: 10%;
+  right: 12%;
   top: 70%;
   position: absolute;
   width: max-content;
   height: max-content;
-  background: rgb(17, 17, 26);
+  background: #141414;
   box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.548);
   border: 1px solid rgba(47, 47, 71, 0.623);
   border-top: none;
   display: none;
   cursor: pointer;
+  padding-bottom: 1%;
   
 }
 header .user-login-container ul{
@@ -386,6 +387,28 @@ header .user-login-container ul li:hover{
 
 
 
+.bg-blur{
+  position: absolute;
+  top: 15%;
+  right: 0%;
+  width: 100%;
+  height: 85vh;
+  background: url("../img/justice-league-banner.jpeg");
+  background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: -1;
+  filter: blur(6px) opacity(.3);
+}
+
+
+.bg-blur .bottom-gradient{
+  position: absolute;
+  bottom: 0%;
+  background: linear-gradient(180deg, #15151628, #15151691, #151516);
+  width: 100%;
+  height: 20%;
+}
 
 
 

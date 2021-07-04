@@ -3,6 +3,7 @@
     session_start();
     error_reporting(0);
     include "../connection.php";
+    include "../process/url.php";
 
     
     $movieTitle = $_GET['movie'];  
@@ -12,6 +13,7 @@
 
     echo $movieTitle;
 
+    $selectMovies = mysqli_query($conn, "SELECT * FROM movie");
 
 ?>
 <!DOCTYPE html>
@@ -22,22 +24,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/allMovies.css">
-    <?php
-        if($query == 'Allmovies'){
-            $selectMovies = mysqli_query($conn, "SELECT * FROM movie WHERE isAvailable = 'True'");
-            echo "<title> All movies </title>";
-            echo "                  
-                <script>
-                    document.getElementById('title').innerHTML = 'Coming soon';
-                </script>
-            ";
-        }
-        elseif($query == 'ComingSoon'){
-            $selectMovies = mysqli_query($conn, "SELECT * FROM movie WHERE isAvailable = 'False'");
-            echo "<title> Coming Soon </title>";
-        }
-    
-    ?>
+    <title> All Movies | NXTFLIX Online Ticket Reservation </title>
 </head>
 
 <!--if no movie selected -->
@@ -112,9 +99,9 @@
 
         <!-- IF USER DIDN'T LOGIN -->  
             <div class="login" id="login">
-                <a href="#"> Register </a> 
+                <a href="../php/sign-up.php?next=<?=$url?>"> Register </a> 
                 <p> | </p> 
-                <a href="#"> Login </a>
+                <a href="../php/login.php?next=<?=$url?>"> Login </a>
             </div>
         <!-- IF USER DIDN'T LOGIN -->          
         
@@ -142,61 +129,17 @@
         <!-- IF USER IS LOGIN -->
         </div>
 
-        <!-- 
-        <div class="light-and-dark" id="light-dark">
-            <div class="light-mode">
-                <p> Light </p>
-                <img src="./icon/light-icon.png" alt="" id="icon">
-            </div>
-        </div>
-        -->
-
     </div>
 
     <!-- NAVIGATION LINK -->
     <div class="nav-bar">
         <ul>
             <li><a href="../index.php"> Home </a></li>
-            <li style="border-bottom: 2px solid #bbbbbb;"><a href="../php/allMovies.php?query=Allmovies"> Movies </a></li>
+            <li><a href="../php/allMovies.php?query=Allmovies"> Movies </a></li>
             <li><a href="../php/contact.php"> Contact us</a></li>
             <li><a href="../php/service.php"> Services </a></li>
         </ul>
     </div>
-
-    <!-- LOGIN MODAL -->
-        <div class="login-container">
-            <form action="../process/login.php" method="POST">
-                <table border="0">
-                    <th> Login </th>
-                    <tr>
-                        <td> <input type="email" name="email" placeholder="Email"></td>
-                    </tr>
-                    <tr>
-                        <td> <input type="password" name="password" placeholder="Password"></td>
-                    </tr>
-                    <tr>
-                        <td> <input type="submit" name="login-btn" placeholder="Password" value="Sign in"></td>
-                    </tr>
-
-                    <tr>
-                        <td> <a href="#"> Forgot password? </a></td>
-                    </tr>
-                </table>
-            </form>
-
-            <div class="other-account">
-                <p> or </p>
-                <button> <img src="./icon/google.png" alt=""> </button>
-                <button> <img src="./icon/facebook.png" alt=""> </button>
-            </div>
-            <div class="reg"> 
-                <p> Don't have an account? </p> 
-                <a href="#"> Register now </a>
-            </div>
-        </div>
-    <!--   LOGIN MODAL 
-    --> 
-
     
     <!-- USER MODAL -->
         <div class="user-login-container">
@@ -204,14 +147,13 @@
                 <li> <button class="chngePW"> My Account </button> </li>
                 <li> <button class="chngePW"> Change password </button> </li>
                 <li> <button class="bkHistory"> Booking history </button> </li>
-                <form action="../process/login.php" method="post">
+                <form action="../process/account-process.php?next=<?=$url?>" method="post">
                     <li> <button class="logout" type="submit" name="logout"> Logout  </button> </li>
                 </form>
             </ul>
         </div>
     <!-- USER MODAL -->
 </header>
-
 
 
 
