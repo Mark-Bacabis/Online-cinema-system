@@ -65,7 +65,7 @@
                 <input type="gmail" name="email" placeholder="john.done@gmail.com"> 
                 <br>
                 <label> Password </label> <br>
-                <input type="password" name="password" placeholder="Min of 8 and max of 16 characters only" maxlength="16" minlength="8"> 
+                <input type="password" name="password" placeholder="8 - 16 characters only" maxlength="16" minlength="8"> 
                 <br>
                 <p class="wrong-pass">incorrect password/username </p>
                 <input type="submit" name="login-btn" value="LOGIN" class="login-btn">

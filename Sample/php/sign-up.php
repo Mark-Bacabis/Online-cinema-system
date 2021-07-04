@@ -87,7 +87,7 @@
             </div>
 
             <div class="log-reg">
-                <p> Have an account? <a href="./login.php?next=<?=$getLink?>"> Log In </a></p>
+                <p> Have an account? <a href="./login.php?next=<?=$getLink?>"> Log In now </a></p>
             </div>
         </form>
     </main>
