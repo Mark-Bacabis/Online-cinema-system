@@ -68,7 +68,7 @@ header .nav-search-area .search input{
   color: #bbbbbb;
   border-radius: 30px;
 }
-header .nav-search-area .search img{
+header .nav-search-area .search .search-icon{
   width: 20px;
   height: 20px;
   position: absolute;
@@ -76,6 +76,52 @@ header .nav-search-area .search img{
   cursor: pointer;
   filter: brightness(0) invert(1) opacity(.5);
 }
+
+header .nav-search-area .search .search-suggestion{
+  width: 90%;
+  height: max-content;
+  background: #686868;
+  position: absolute;
+  left: 50%;
+  top: 105%;
+  transform: translateX(-50%);
+  z-index: 1;
+  padding: 0 10px;
+}
+
+header .nav-search-area .search .search-suggestion a{
+  width: 100%;
+  height: max-content;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  margin: 5px 0;
+  line-height: 20px;
+}
+header .nav-search-area .search .search-suggestion a:hover{
+  background:  #555555;
+  transition: ease-in-out .3s;
+}
+header .nav-search-area .search .search-suggestion a .img-poster{
+  width: 70px;
+  height: 80px;
+  margin-right: 15px;
+  overflow: hidden;
+
+}
+header .nav-search-area .search .search-suggestion a .img-poster .poster{
+  width: 100%;
+  height: 100%;
+}
+header .nav-search-area .search .search-suggestion a .title h3{
+  font-size: 15px;
+}
+header .nav-search-area .search .search-suggestion a .title p{
+  color: rgb(219, 219, 219);
+  font-size: 14px;
+}
+
 
 
 /* Login | Register */

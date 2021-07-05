@@ -24,8 +24,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/allMovies.css">
+    <!-- aJax jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <title> All Movies | NXTFLIX Online Ticket Reservation </title>
 </head>
+
+<!-- AJAX FOR SEARCH -->
+<script>
+   $(document).ready(function(){
+        $("#search").keyup(function(){
+            var search = $("#search").val();
+            $.post("./search.php",{
+                suggest: search
+
+            }, function(data, status){
+                $("#search-box").html(data);
+            });
+        });
+    });
+</script>
+
 
 <!--if no movie selected -->
     <?php if(empty($movieID)){ ?>
@@ -89,10 +107,17 @@
             </a>   
         </div>
 
-        <div class="search">
-            <input type="search" placeholder="Search movie">
-            <img src="../icon/search.png" clas="search-icon">
-        </div>
+        <!-- SEARCH BAR -->
+            <div class="search">
+                <input type="search" id="search" placeholder="Search movie">
+                <img src="../icon/search.png" class="search-icon">
+                
+                <div class="search-suggestion" id="search-box">
+
+                </div>
+            </div>
+        <!-- SEARCH BAR -->
+        
         
 
         <div class="nav-bar-container">

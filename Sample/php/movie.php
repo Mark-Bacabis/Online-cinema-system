@@ -82,6 +82,22 @@
     });
 </script>
 
+
+    <!-- AJAX FOR SEARCH -->
+<script>
+   $(document).ready(function(){
+        $("#search").keyup(function(){
+            var search = $("#search").val();
+            $.post("./search.php",{
+                suggest: search
+
+            }, function(data, status){
+                $("#search-box").html(data);
+            });
+        });
+    });
+</script>
+
 <!--if no movie selected -->
     <?php if(empty($movieID)){ ?>
         <style>
@@ -143,10 +159,16 @@
             </a>   
         </div>
 
-        <div class="search">
-            <input type="search" placeholder="Search movie">
-            <img src="../icon/search.png" clas="search-icon">
-        </div>
+         <!-- SEARCH BAR -->
+            <div class="search">
+                <input type="search" id="search" placeholder="Search movie">
+                <img src="../icon/search.png" class="search-icon">
+                
+                <div class="search-suggestion" id="search-box">
+
+                </div>
+            </div>
+        <!-- SEARCH BAR -->
         
 
         <div class="nav-bar-container">

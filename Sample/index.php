@@ -51,7 +51,7 @@
     <title> NXTFLIX | Online Ticket Reservation </title>
     <link rel="stylesheet" href="./styles/style.css">
      <!-- aJax jQuery -->
-     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 <!-- IF USER LOGGED IN OR NOT -->
     <?php
@@ -78,10 +78,15 @@
 <!-- IF USER LOG IN OR NOT -->
 
 <script>
-    $(document).ready(function(){
+   $(document).ready(function(){
         $("#search").keyup(function(){
             var search = $("#search").val();
-            $.post("",);
+            $.post("./process/search.php",{
+                suggest: search
+
+            }, function(data, status){
+                $("#search-box").html(data);
+            });
         });
     });
 </script>
@@ -97,10 +102,17 @@
             </a>   
         </div>
 
+    <!-- SEARCH BAR -->
         <div class="search">
-            <input type="search" placeholder="Search movie" id="search">
-            <img src="./icon/search.png" clas="search-icon">
+            <input type="search" id="search" placeholder="Search movie">
+            <img src="./icon/search.png" class="search-icon">
+            
+            <div class="search-suggestion" id="search-box">
+
+            </div>
         </div>
+    <!-- SEARCH BAR -->
+        
         
 
         <div class="nav-bar-container">
