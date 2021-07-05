@@ -160,7 +160,7 @@
     <div class="nav-bar">
         <ul>
             <li><a href="../index.php"> Home </a></li>
-            <li><a href="../php/allMovies.php?query=Allmovies"> Movies </a></li>
+            <li  style="border-bottom: 2px solid #bbbbbb;"><a href="../php/allMovies.php?query=Allmovies"> Movies </a></li>
             <li><a href="../php/contact.php"> Contact us</a></li>
             <li><a href="../php/service.php"> Services </a></li>
         </ul>

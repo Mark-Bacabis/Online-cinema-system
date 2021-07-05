@@ -208,6 +208,9 @@ header .nav-bar{
   align-items: center;
   padding: 0 10%;
 } 
+header .nav-bar ul{
+  height: 90%;
+}
 header .nav-bar ul li{
   position: relative;
   display: inline-block;
