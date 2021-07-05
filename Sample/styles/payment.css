@@ -99,8 +99,8 @@ header .user-account .profile-pic img{
     height: 100%;
     margin-right: 20px;
     padding: 0 20px;
-    border: 1px solid white;
-    color: white;
+    border: 1px solid #bbb;
+    color: #bbb;
 }
 .payment-container .details-container.movie .movie-info table{
     height: 90%;
@@ -129,7 +129,7 @@ header .user-account .profile-pic img{
     border:none;
     background: none;
     font-weight: bold;
-    color: white;
+    color: #bbb;
 }
 .payment-container .details-container.movie .movie-info table tr td.total-price{
     position: relative;
@@ -162,8 +162,8 @@ header .user-account .profile-pic img{
     width: 400px;
     height: 80%;
     padding: 25px;
-    border: 2px solid white;
-    color: white;
+    border: 2px solid #bbb;
+    color: #bbb;
 }
 .payment-container .details-container.movie .payment-info-container table tr td{
     position: relative;
@@ -176,8 +176,8 @@ header .user-account .profile-pic img{
 
 .payment-container .details-container.movie .payment-info-container table tr td input{
     position: relative;
-    width: 100%;
-    padding: 7px 0;
+    width: 95%;
+    padding: 7px 2px;
     font-size: 16px;
     border: none;
     outline: none;
