@@ -96,6 +96,15 @@
         <div class="title">
             <h1> Payment </h1>
         </div>
+
+        <div class="user-account">
+                <div class="user-name">
+                    <p> <?=$userResult['firstName']?> <?=$userResult['lastName']?></p>
+                </div>
+                <div class="profile-pic">
+                    <img src="./user-profile/<?=$userResult['profile']?>" alt="">
+                </div>
+        </div>
     </header>
 
 
@@ -153,7 +162,9 @@
 
             <div class="payment-info-container">
                <table border="0">
-                  
+                    <tr>
+                        <td> <h1> Payment </h1></td>
+                    </tr>
                    <tr>
                        <td colspan="2"> 
                             <p> Name on card </p> 
@@ -224,7 +235,6 @@
             
             style: {
                 layout: 'horizontal',
-                label: 'pay',
                 color: 'gold',
                 shape: 'pill'
             },

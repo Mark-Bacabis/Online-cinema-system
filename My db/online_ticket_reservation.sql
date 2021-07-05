@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 29, 2021 at 03:12 AM
+-- Generation Time: Jul 05, 2021 at 09:16 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.3.28
 
@@ -59,7 +59,8 @@ CREATE TABLE `booking_tbl` (
 --
 
 INSERT INTO `booking_tbl` (`bookID`, `dateBooked`, `userID`, `userEmail`, `movieID`, `dateToday`, `cinemaID`, `showID`, `ticketPrice`, `numberOfSeats`, `seatNumber`, `totalPrice`) VALUES
-(12, '2021-06-22', 'user-001', 'mark.melvin.bacabis@gmail.com', 'movie-02', '2021-06-29', 'c3', 'show-03', 440.00, 2, 'C3,C4', 880.00);
+(10, '2021-06-22', 'user-001', 'mark.melvin.bacabis@gmail.com', 'movie-02', '2021-07-02', 'c2', 'show-01', 450.00, 3, 'B3,B4,B5', 1350.00),
+(11, '2021-06-24', 'user-001', 'mark.melvin.bacabis@gmail.com', 'movie-01', '2021-07-02', 'c5', 'show-02', 480.00, 5, 'B2,B3,B4,B5,B6', 2400.00);
 
 -- --------------------------------------------------------
 
@@ -110,8 +111,7 @@ CREATE TABLE `movie` (
 
 INSERT INTO `movie` (`movieID`, `Title`, `Genre`, `Year`, `Duration`, `Rating`, `Description`, `Poster`, `Banner`, `Trailer`, `Price`, `isAvailable`) VALUES
 ('movie-01', 'Raya and the Last Dragon', 'Action, Adventure, Animation', 2021, '1h 57m', 'PG', 'Raya and the Last Dragon is a movie about Raya and Sisu, the last dragon of Kumandra, and their quest of finding all the pieces of a magical gem to restore the land to its previous, peaceful form.', 'raya-poster.jpg', 'raya-banner.jpeg', 'https://www.youtube.com/embed/1VIZ89FEjYI', '450.00', 'True'),
-('movie-02', 'Outside the Wire', 'Sci-Fi, Action', 2021, '1h 55m', 'R', '2021 American science fiction action film directed by Mikael Håfström. It stars Anthony Mackie (who also produced) as an android officer who works with a drone pilot (Damson Idris) to stop a global catastrophe. Emily Beecham, Michael Kelly, and Pilou Asba', 'outside-the-war-poster.jpg', 'outside-the-war-banner.jpg', 'https://www.youtube.com/embed/u8ZsUivELbs', '400.00', 'True'),
-('movie-03', 'Justice League', 'Adventure, Action', 2021, '4h 2m', 'R', 'In Zack Snyders Justice League, determined to ensure Supermans ultimate sacrifice was not in vain, Bruce Wayne aligns forces with Diana Prince with plans to recruit a team of metahumans to protect the world from an approaching threat of catastrophic propo', 'justice-league-poster.jpg', 'justice-league-banner.jpeg', 'https://www.youtube.com/embed/vM-Bja2Gy04', '500.00', 'False');
+('movie-02', 'Outside the Wire', 'Sci-Fi, Action', 2021, '1h 55m', 'R', '2021 American science fiction action film directed by Mikael Håfström. It stars Anthony Mackie (who also produced) as an android officer who works with a drone pilot (Damson Idris) to stop a global catastrophe. Emily Beecham, Michael Kelly, and Pilou Asba', 'outside-the-war-poster.jpg', 'outside-the-war-banner.jpg', 'https://www.youtube.com/embed/u8ZsUivELbs', '400.00', 'True');
 
 -- --------------------------------------------------------
 
@@ -157,8 +157,14 @@ CREATE TABLE `seat_tbl` (
 --
 
 INSERT INTO `seat_tbl` (`userID`, `movieID`, `date`, `cinemaID`, `showID`, `seatNumber`) VALUES
-('user-001', 'movie-02', '2021-06-22', 'c3', 'show-03', 'C3'),
-('user-001', 'movie-02', '2021-06-22', 'c3', 'show-03', 'C4');
+('user-001', 'movie-02', '2021-06-22', 'c2', 'show-01', 'B3'),
+('user-001', 'movie-02', '2021-06-22', 'c2', 'show-01', 'B4'),
+('user-001', 'movie-02', '2021-06-22', 'c2', 'show-01', 'B5'),
+('user-001', 'movie-01', '2021-06-24', 'c5', 'show-02', 'B2'),
+('user-001', 'movie-01', '2021-06-24', 'c5', 'show-02', 'B3'),
+('user-001', 'movie-01', '2021-06-24', 'c5', 'show-02', 'B4'),
+('user-001', 'movie-01', '2021-06-24', 'c5', 'show-02', 'B5'),
+('user-001', 'movie-01', '2021-06-24', 'c5', 'show-02', 'B6');
 
 -- --------------------------------------------------------
 
@@ -195,15 +201,18 @@ CREATE TABLE `user` (
   `lastName` varchar(55) NOT NULL,
   `contactNumber` varchar(11) NOT NULL,
   `email` varchar(55) NOT NULL,
-  `password` varchar(16) NOT NULL
+  `password` varchar(16) NOT NULL,
+  `profile` varchar(55) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`userID`, `firstName`, `lastName`, `contactNumber`, `email`, `password`) VALUES
-('user-001', 'Mark Melvin', 'Bacabis', '09123456789', 'mark.melvin.bacabis@gmail.com', 'markmelvin');
+INSERT INTO `user` (`userID`, `firstName`, `lastName`, `contactNumber`, `email`, `password`, `profile`) VALUES
+('user-001', 'Mark Melvin', 'Bacabis', '09123456789', 'mark.melvin.bacabis@gmail.com', 'markmelvin', 'Bacabis.jpg'),
+('user-002', 'Jessica', 'Bulleque', '09987654321', 'jessica.ombao.bulleque@gmail.com', 'iscabacs', 'default.jpg'),
+('user-003', 'Hillary', 'Estrada', '09123123123', 'laryang.estrada@gmail.com', 'laryangpanget', 'default.jpg');
 
 --
 -- Indexes for dumped tables
@@ -259,7 +268,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `booking_tbl`
 --
 ALTER TABLE `booking_tbl`
-  MODIFY `bookID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `bookID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
