@@ -106,105 +106,121 @@
                 </div>
         </div>
     </header>
-
-
-
     <div class="payment-container">
-        <div class="details-container movie">
-            
-            <div class="movie-info">
+        <div class="button-container">
+            <form action="" method="POST">
+                <h1> Credit Card Information </h1>
                 <table border="0">
                     <tr>
-                        <td> <h2 id="title"> <?=$movieResult['Title']?> </h2> </td>
-                        <td rowspan="2" class="numberOfseat"> <span class="seatNo">  <?=$numberOfSeats?> </span> <br> seats </td>
-                    </tr>
-                    <tr>
-                        <td> <h2> Fairview Terraces, <?=$cinema?> </h2></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td> <h3> <?=$date?> </h3></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td> <h3> <?=$showTime?> </h3></td>
-                        <td></td>
+                        <td>
+                            <label> Card on Name </label> <br>
+                            <input type="text" name="" id="">
+                        </td>
+                        <td>
+                            <label> Expiration </label> <br>
+                            <input type="text" name="" id="">
+                            <input type="text" name="" id="">
+                        </td>
                     </tr>
                     <tr>
                         <td>
-                            <h3> 
-                                <?php foreach($seats as $seatNumber){ 
-                                    echo $seatNumber.", ";
-                                }?>
-                            </h3>
+                            <label> Card Number </label> <br>
+                            <input type="text" name="" id="">
                         </td>
-                        <td></td>
+                        <td>
+                            <label> CV Code </label> <br>
+                            <input type="text" name="" id="">
+                        </td>
                     </tr>
+                </table>
+                <div class="buttons">
+                    <input type="submit" name="cancel" value="Cancel" class="cancel">
+                    <input type="submit" name="pay" value="PAY" class="pay">
+                </div>
+                
+            </form>
+            <p> OR </p>
+            <div id="paypal-button-container"></div>
+
+            <div class="user-details">
+                <table border="0">
+                    <th colspan="2"> USER CONTACT </th>
                     <tr>
-                        <td colspan="2"> <hr> </td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td> <p> Subtotal </p> </td>
-                        <td> <?=$totalPrice?></td>
-                    </tr>
-                    <tr>
-                       
-                        <td> <h3> Payable Amount </h3> </td>
-                        <td class="total-price">  
-                            <div class="overflow">
-                                
-                            </div> 
-                        <input type="text" name="totalPrice" id="totalPrice" value="<?=$totalPrice?>"></td>
+                        <td>
+                            Email <br>
+                            <input type="email" name="user-email" value="<?=$userResult['email']?>">
+                        </td>
+                        <td>
+                            Contact
+                            <input type="email" name="user-number" value="<?=$userResult['contactNumber']?>">
+                        </td>
                     </tr>
                 </table>
             </div>
-
-            <div class="payment-info-container">
-               <table border="0">
-                    <tr>
-                        <td> <h1> Payment </h1></td>
-                    </tr>
-                   <tr>
-                       <td colspan="2"> 
-                            <p> Name on card </p> 
-                            <input type="text">
-                       </td>
-                   </tr>
-                   <tr>
-                       <td colspan="2"> 
-                            <p> Card number </p> 
-                            <input type="text">
-                       </td>
-                   </tr>
-                   <tr>
-                       <td> 
-                            <p> Expiration Date </p> 
-                            <input type="text" placeholder="MM/YYYY">
-                       </td>
-                       <td> 
-                            <p> CV Code </p> 
-                            <input type="text">
-                       </td>
-                   </tr>
-                   <tr>
-                       <td colspan="2"> 
-                           <input type="submit" value="Pay">
-                       </td>
-                   </tr>
-                   <tr>
-                       <td colspan="2"> 
-                           <p class="divider"> Or select other payment method </p>
-                       </td>
-                   </tr>
-                   <tr>
-                        <td colspan="2"> 
-                            <div id="paypal-button-container"></div>
-                        </td>
-                   </tr>
-               </table>
-            </div>
         </div>
+        
+        <table class="table" border="0">
+            <tr>
+                <td colspan="2"> <h1 id="title"> <?=$movieResult['Title']?> </h2></td>
+                
+            </tr>
+            <tr>
+                <td colspan="2"> 
+                    <h4> Fairview Terraces,  <?=$cinemaResult['cinemaName']?> </h4>
+                </td> 
+            </tr>
+            <tr>
+                <td colspan="2"> 
+                    <h2> <?=$date?> </h2>
+                </td> 
+            </tr>
+            <tr>
+                <td colspan="2"> 
+                    <h3> 
+                        <?php
+                            foreach($seats as $seatNum){
+                                echo $seatNum." ";
+                            }
+                        ?>
+                    </h3>
+                </td> 
+            </tr>
+            <tr>
+                <td colspan="2"> 
+                    <h3> <?=$showResult['showName']?> Time: <?=$showResult['showStart']?> - <?=$showResult['showEnd']?></h3>
+                </td> 
+            </tr>
+            <tr>
+               <td colspan="2"> <hr> </td>
+            </tr>
+            <tr>
+               <td> <p> Ticket price </p> </td>
+               <td class="rigth"> <?=$priceTicket?> </td>
+            </tr>
+            
+            <tr>
+               <td> <p> Number of tickets </p> </td>
+               <td class="rigth"> <?=$numberOfSeats?> </td>
+            </tr>
+            <tr>
+               <td> <p> Subtotal </p> </td>
+               <td class="rigth"> <?=$totalPrice?> </td>
+            </tr>
+            <tr>
+               <td> <p> Tax Rate(14%) </p> </td>
+               <td class="rigth"> 14.00 </td>
+            </tr>
+            <tr class="payable-amount">
+               <td> <h3> Payable Amount </h3> </td>
+               <td class="rigth">
+                    <input type="text" name="totalPrice" id="totalPrice" value="<?=$totalPrice + 14.00?>.00">
+                    <div class="overlay">
+
+                    </div>
+                </td>
+            </tr>
+        </table>
+
     </div>
 
 
@@ -227,7 +243,7 @@
 
 <!-- SCRIPT FOR PAYPAL -->
 
-<script src="https://www.paypal.com/sdk/js?client-id=Adzt_0adAQxrjsrP4e4lhWQpAUEMT3S1H04fhsHXK-WONYLtw2ZrCkFDKEmx3_Gsi6WQNN4SEUCe-rhn&currency=USD"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=Adzt_0adAQxrjsrP4e4lhWQpAUEMT3S1H04fhsHXK-WONYLtw2ZrCkFDKEmx3_Gsi6WQNN4SEUCe-rhn&currency=PHP"></script>
     
 <script>
         // Render the PayPal button into #paypal-button-container
@@ -236,16 +252,17 @@
             style: {
                 layout: 'horizontal',
                 color: 'gold',
-                shape: 'pill'
+                shape: 'pill',
+                label: 'pay',
             },
             
             // Set up the transaction
             createOrder: function(data, actions) {
-                const price = document.getElementById('totalPrice').value;
-                const title = document.getElementById('title').innerHTML;
+                const price = document.querySelector('#totalPrice').value;
+                const title = document.querySelector('#title').innerHTML;
                 return actions.order.create({
                     purchase_units: [{
-                        description: title,
+                        description:title,
                         amount: {
                             value:price
                         },
@@ -259,8 +276,7 @@
             // Finalize the transaction
             onApprove: function(data, actions) {
                 return actions.order.capture().then(function(details) {
-                    // Show a success message to the buyer
-                    alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                   window.location = "http://localhost/online-cinema-system/sample/process/payment-process.php";
                 });
             }
         }).render('#paypal-button-container');

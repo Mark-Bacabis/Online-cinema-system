@@ -1,8 +1,11 @@
 <?php
         session_start();
         include "../connection.php";
+        include "./random.php";
+        $transactID = generateRandomString()."NXT";
+        $_SESSION['transactID'] = $transactID;
 
-            //SESSION
+        //SESSION
         $movieID = $_SESSION['movieID'];
         $userID = $_SESSION['userID'];
         $seats = $_SESSION['seats'];
@@ -42,9 +45,9 @@
         
 
         $insertIntoBook = "INSERT INTO `booking_tbl`
-        (`dateBooked`, `userID`, `userEmail`, `movieID`, `dateToday`, `cinemaID`, `showID`, `ticketPrice`, `numberOfSeats`, `seatNumber`, `totalPrice`) 
+        (`bookID`,`dateBooked`, `userID`, `userEmail`, `movieID`, `dateToday`, `cinemaID`, `showID`, `ticketPrice`, `numberOfSeats`, `seatNumber`, `totalPrice`) 
         VALUES 
-        ('$date','$userID','$userEmail','$movieID',CURRENT_DATE(),'$cinemaID','$showID', $priceTicket,$numberOfSeats,'$seatNumbers', $totalPrice)";
+        ('$transactID','$date','$userID','$userEmail','$movieID',CURRENT_DATE(),'$cinemaID','$showID', $priceTicket,$numberOfSeats,'$seatNumbers', $totalPrice)";
 
         $bookQuery = mysqli_query($conn, $insertIntoBook);
 
@@ -54,4 +57,5 @@
         else{
             header("location:../process/thankyou.php");
         }
+
 ?>

@@ -1,0 +1,100 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: poppins;
+}
+.container{
+    position: relative;
+    width: 100%;
+    height: 95vh;
+    background: #16171d;
+}
+.thankyou-box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(45deg,  rgba(220, 20, 60, 0.432), #161616);
+    text-align: center;
+    width: 700px;
+    padding: 1% 5%;
+    line-height: 35px;
+    border-radius: 50px;
+    color: rgb(202, 202, 202);
+    box-shadow: 0 10px 10px 0 rgba(0,0,0,.3);
+}
+
+.thankyou-box span{
+    color: crimson;
+    font-weight: bold;
+}
+.thankyou-box img{
+    width: 100px;
+    height: 100px;
+}
+.thankyou-box hr{
+    border: 1px solid;
+}
+.thankyou-box h1, h2, h3{
+    color: white;
+}
+.thankyou-box h1{
+    font-size: 48px;
+}
+
+.back-to-home{
+    position: absolute;
+    bottom: 1%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.back-to-home a{
+    text-decoration: none;
+    color: rgba(201, 16, 53, 0.829);
+    
+}
+.back-to-home a:hover{
+    color: rgb(220, 20, 60);
+    text-decoration: underline;
+    transition: color ease-in-out .6s;
+}
+
+
+
+
+
+
+
+
+
+
+
+footer{
+    font-size: 14px;
+    color: #757575;
+    height: 5vh;
+    background:#141414;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+}
+footer .copyright{
+    font-size: 16px;
+}
+footer .nav-links{
+    position: absolute;
+    right: 10%;
+}
+
+footer .nav-links ul li{
+    display: inline-block;
+    margin: 0 7px;
+}
+footer .nav-links ul li a{
+    text-decoration: none;
+    color: #7a7a7a;
+}
+footer .nav-links ul li a:hover{
+    color: #9c9c9c;
+}
