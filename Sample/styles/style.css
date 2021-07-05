@@ -49,47 +49,6 @@ header .nav-search-area .logo .subtitle{
   width: max-content;
 }
 
-/*
-header .nav-search-area .light-and-dark{
-  position: absolute;
-  right: 3%;
-  top: 50%;
-  transform: translateY(-50%);
-}
-header .nav-search-area .light-and-dark .light-mode{
-  position: relative;
-  border-radius: 20px;
-  padding: 0 10px;
-  height: 25px;
-  width: 40px;
-  border: 1px solid white;
-  cursor: pointer;
-}
-
-header .nav-search-area .light-and-dark .light-mode p{
-  position: absolute;
-  left: 35%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 10px;
-  color: white;
-  transition: ease-in-out .2s;
-}
-header .nav-search-area .light-and-dark  .light-mode img{
-  position: absolute;
-  right: 3%;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 35%;
-  height: 85%;
-  background: rgb(252, 252, 252);
-  border-radius: 50%;
-  transition: ease-in-out .3s;
-}
-
-*/
-
-
 header .nav-search-area .search{
   margin-left: 20px;
   position: relative;
