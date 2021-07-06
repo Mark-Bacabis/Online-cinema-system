@@ -157,7 +157,8 @@
             <li style="border-bottom: 2px solid #bbbbbb;"><a href="./index.php"> Home </a></li>
             <li><a href="./php/allMovies.php?query=Allmovies"> Movies </a></li>
             <li><a href="./php/contact.php"> Contact us</a></li>
-            <li><a href="./php/service.php"> Services </a></li>
+            <li><a href="./php/service.php"> About </a></li>
+            <li><a href="./php/privacy.php"> Privacy Policy </a></li>
         </ul>
     </div>
     
@@ -348,8 +349,8 @@
             <h3> About </h3>
             <ul>
                 <li><a href="#"> About us</a></li>
-                <li><a href="#"> Terms and agreement </a></li>
-                <li><a href="#"> Privacy Policy </a></li>
+                <li><a href="./php/terms-and-condition.php"> Terms and agreement </a></li>
+                <li><a href="./php/privacy.php"> Privacy Policy </a></li>
                 <li><a href="#"> Services </a></li>
             </ul>
         </div>

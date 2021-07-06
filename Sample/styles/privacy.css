@@ -1,0 +1,70 @@
+.privacy-container{
+    color: rgb(190, 190, 190);
+    padding: 2% 10%;
+    line-height: 32px;
+}
+.privacy-container h1, h2, h3, h4{
+    color: #eee;
+    margin-top: 10px;
+}
+
+.privacy-container a{
+    text-decoration: none;
+    color: crimson;
+}
+.privacy-container ul li{
+    list-style: none;
+}
+.privacy-container ul li p strong{
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
+.terms-condition-container{
+    color: rgb(190, 190, 190);
+    padding: 2% 10%;
+    line-height: 32px;
+}
+.terms-condition-container h1, h2, h3, h4{
+    color: #eee;
+    margin-top: 10px;
+}
+
+.terms-condition-container a{
+    text-decoration: none;
+    color: crimson;
+}
+.terms-condition-container ul li{
+    list-style: none;
+}
+.terms-condition-container ul li p strong{
+    color: white;
+}
+
+
+
+
+
+.about{
+    color: rgb(190, 190, 190);
+    padding: 2% 10%;
+    line-height: 32px;
+    text-align: center;
+}
+.about h1, h2, h3, h4{
+    color: #eee;
+    margin-top: 10px;
+}
+
+.about ul li p{
+    color: white;
+    margin: 20px 0;
+}

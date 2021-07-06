@@ -207,13 +207,14 @@
 
     </div>
 
-    <!-- NAVIGATION LINK -->
-    <div class="nav-bar">
+     <!-- NAVIGATION LINK -->
+     <div class="nav-bar">
         <ul>
-            <li><a href="../index.php"> Home </a></li>
+            <li ><a href="../index.php"> Home </a></li>
             <li><a href="../php/allMovies.php?query=Allmovies"> Movies </a></li>
             <li><a href="../php/contact.php"> Contact us</a></li>
-            <li><a href="../php/service.php"> Services </a></li>
+            <li><a href="../php/About.php"> About </a></li>
+            <li><a href="../php/privacy.php"> Privacy Policy </a></li>
         </ul>
     </div>
     
@@ -346,15 +347,16 @@
 <!-- IF NO MOVIE --> 
 
 
+
 <!-- FOOTER -->
     <footer class="footer-container">
         <div class="About">
             <h3> About </h3>
             <ul>
-                <li><a href="#"> About us</a></li>
-                <li><a href="#"> Terms and agreement </a></li>
-                <li><a href="#"> Privacy Policy </a></li>
-                <li><a href="#"> Services </a></li>
+                <li><a href="./about.php"> About us</a></li>
+                <li><a href="./terms-and-condition.php"> Terms and agreement </a></li>
+                <li><a href="./privacy.php"> Privacy Policy </a></li>
+                <li><a href="./service.php"> Services </a></li>
             </ul>
         </div>
         <div class="movies">
@@ -369,10 +371,10 @@
         <div class="links">
                  <h3> Links </h3>
             <ul>
-                <li><a href="#"> Home </a></li>
-                <li><a href="#"> Movies</a></li>
-                <li><a href="#"> Contact Us </a></li>
-                <li><a href="#"> Services </a></li>
+                <li><a href="../index.php"> Home </a></li>
+                <li><a href="./allMovies.php"> Movies</a></li>
+                <li><a href="./contact.php"> Contact Us </a></li>
+                <li><a href="./service.php"> Services </a></li>
             </ul>
         </div>
         <div class="contactUs">
@@ -394,8 +396,6 @@
         </div>
     </footer>
 <!-- FOOTER -->
-
-
 <!-- CUSTOM JS -->
     <script src="./scripts/main.js"> </script>
 </body>
