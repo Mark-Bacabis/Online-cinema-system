@@ -126,10 +126,7 @@
                     <img src="../icon/down-filled-triangular-arrow.png" alt="" class="drop-down-icon">
                 </div>
                 
-                   
-                <div class="wishlist">
-                    <img src="../icon/playlist.png" alt="">
-                </div>
+              
             </div>
         <!-- IF USER IS LOGIN -->
         </div>
