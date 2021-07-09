@@ -1,6 +1,6 @@
 
 <?php
-    error_reporting(0);
+   error_reporting(0);
     session_start();
     include "../connection.php";
     include "../process/url.php";
@@ -20,8 +20,7 @@
     $_SESSION['movieID'] = $movieID;
 
 
-    $movieByGenre = mysqli_query($conn, "SELECT * FROM movie WHERE movieID != '$movieID' AND 
-    isAvailable = 'True' AND Genre LIKE '%' || (SELECT LEFT(Genre, 6) as similarGenre FROM movie WHERE movieID = '$movieID') || '%' LIMIT 4");
+    $movieByGenre = mysqli_query($conn, "SELECT * FROM movie WHERE movieID != '$movieID'  AND Genre LIKE '%' || (SELECT LEFT(Genre, 6) as similarGenre FROM movie WHERE movieID = '$movieID') || '%' LIMIT 4");
     
         
 ?>
@@ -33,10 +32,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/movies.css">
-
+    <title> <?=$movieSelected['Title']?> | NXTFLIX - Online Ticket Reservation </title>
     <!-- aJax jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <title> <?=$movieSelected['Title']?> | NXTFLIX - Online Ticket Reservation </title>
+    
     
 </head>
     <!-- aJax Java Script -->
@@ -258,6 +257,18 @@
                             <p> <?=$movieSelected['Description']?></p> 
                         </td>
                     </tr>
+                    <tr>
+                        <td> 
+                            <h3> Director </h3>
+                            <p> <?=$movieSelected['Director']?> </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> 
+                            <h3> Cast </h3>
+                            <p> <?=$movieSelected['Cast']?> </p>
+                        </td>
+                    </tr>
                 </table>
         </div>
 
@@ -266,8 +277,8 @@
             <div class="movie-holder">
 
             <?php while($row = $movieByGenre->fetch_assoc()){?>
-                <a href="movie.php?movie=<?=$row['Title']?>"> <img src="../img/<?=$row['Poster']?>" alt=""> </a>
-            <?php }?>
+                <a href="movie.php?movie=<?=$row['Title']?>"><img src="../img/<?=$row['Poster']?>"></a>
+            <?php } ?>
             </div>
         </div>
     </div>

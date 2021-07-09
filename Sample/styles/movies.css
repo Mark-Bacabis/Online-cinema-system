@@ -55,6 +55,13 @@
     border-bottom: 1px solid rgb(82, 82, 82);
     text-align: justify;
 }
+.movie-details .movie-info table td a{
+    text-decoration: none;
+    color: rgb(220, 20, 60);
+}
+.movie-details .movie-info table td a:hover{
+    color: rgb(255, 27, 72);
+}
 .movie-details .movie-info table td .btn-watch-trailer{
     padding: 5px 10px;
     background: none;

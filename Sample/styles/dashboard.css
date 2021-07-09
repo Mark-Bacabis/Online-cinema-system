@@ -1,0 +1,467 @@
+*{
+    margin: 0; 
+    padding: 0;
+    font-family: poppins;
+}
+
+.admin-container{
+    width: 100%;
+    height: 100vh;
+    background: coral;
+    display: flex;
+}
+
+
+
+/* FOR ADMIN PANEL */
+.admin-container .admin-panel{
+    position: relative;
+    width: 25%;
+    height: 100%;
+    background: linear-gradient(60deg, rgb(18, 18, 24), rgb(29, 32, 39), rgb(31, 34, 41));
+    display: flexbox;
+    display: -ms-flexbox;
+    display: -ms-inline-flexbox;
+    color:rgb(50, 54, 70);
+}
+
+.admin-container .admin-panel .admin-header{
+    color: crimson;
+    padding: 15% 10%;
+    line-height: 12px;
+}
+.admin-container .admin-panel ul li{
+    list-style: none;
+}
+.admin-container .admin-panel ul li a{
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+.admin-container .admin-panel .admin, .settings{
+    padding: 0 10%;
+    line-height: 38px;
+    margin: 10px 0;
+}
+
+
+.admin-container .admin-panel .admin-footer{
+    position: absolute;
+    bottom: 0;
+    height: max-content;
+    text-align: center;
+    padding: 5px 10%;
+    font-size: 14px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* CONTENT */
+.admin-container .content-container{
+    background: rgb(228, 228, 228);
+    width: 100%;
+
+}
+
+
+/* HEADER */
+.admin-container .content-container .admin-header{
+    position: relative;
+    height: 12vh;
+    top: 0%;
+    left: 0%;
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+
+}
+
+.admin-container .content-container .admin-header .search-box{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.admin-container .content-container .admin-header .search-box input{
+    width: 450px;
+    padding: 5px 8px;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    background: whitesmoke;
+    font-size: 16px;
+}
+.admin-container .content-container .admin-header .search-box button{
+    padding: 5px 8px;
+    border: none;
+    font-size: 16px;
+    background: whitesmoke;
+    color: #141414;
+    cursor: pointer;
+}
+
+.admin-container .content-container .admin-header .admin-logo{
+    position: absolute;
+    right: 5%;
+    display: flex;
+    align-items: center;
+}
+
+.admin-container .content-container .admin-header .admin-logo .admin-profile{
+    width: 40px;
+    aspect-ratio: 1/1;
+    background: red;
+    margin-left: 10px;
+    border-radius: 50%;
+}
+
+
+/* DASHBOARD */
+.admin-container .content-container .admin-content{
+    padding: 2% 5%;
+    height: 81.4%;
+    overflow-y: scroll;
+    display: block;
+}
+
+.admin-container .content-container .admin-content .content-summary{
+    height: 200px;
+    display: flex;
+    align-items: center;
+}
+
+.admin-container .content-container .admin-content .content-summary .summary-box{
+    width: 100%;
+    height: 90%;
+    background: whitesmoke;
+    margin: 0 7px;
+    border-radius: 7px;
+    box-shadow: 0 7px 10px 0 rgba(0,0,0,.2);
+    overflow: hidden;
+}
+.admin-container .content-container .admin-content .content-summary .summary-box .count-box{
+    display: flex;
+    height: 70%;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+}
+.admin-container .content-container .admin-content .content-summary .summary-box .label{
+    height: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 2px solid black;
+}
+
+.admin-container .content-container .admin-content .content-sales{
+    height: 280px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+.admin-container .content-container .admin-content .content-sales .sales{
+    width: 100%;
+    height: 100%;
+    border-radius: 7px;
+    background: whitesmoke;
+    margin: 0 7px;
+    box-shadow: 0 7px 10px 0 rgba(0,0,0,.2);
+    padding: 1% 2%;
+}
+
+.admin-container .content-container .admin-content .content-sales .user-feedbacks{
+    width: 40%;
+}
+
+
+
+
+/* MOVIES */
+.admin-container .content-container .movie-container{
+    padding: 2% 5%;
+    height: 81.4%;
+    overflow-y: scroll;
+    display: none;
+    position: relative;
+}
+
+
+.admin-container .content-container .movie-container .title{
+    display: flex;
+    float: left;
+}
+.admin-container .content-container .movie-container table{
+    width: 100%;
+
+    border-radius: 10px;
+    box-shadow: 0 7px 10px 0 rgba(0,0,0,.2);
+    overflow: hidden;
+    background: whitesmoke;
+}
+.admin-container .content-container .movie-container table tr td, th{
+    padding: 5px 10px;
+}
+
+.admin-container .content-container .movie-container table tr th{
+    background: #222129;
+    color: white;
+}
+.admin-container .content-container .movie-container table tr td.click{
+    padding: 0;
+    text-align: center;
+}
+.admin-container .content-container .movie-container table tr td a{
+    text-decoration: none;
+    color: white;
+    background: rgb(221, 47, 82);
+    padding: 3px 10px;
+    border-radius: 4px;
+}
+
+.admin-container .content-container .movie-container .add-movie-container{
+    display: flex;
+    float: right;
+}
+.admin-container .content-container .movie-container .add-movie-container button{
+    padding: 5px 10px;
+    font-size: 16px;
+    border: none;
+    background: rgb(20, 189, 14);
+    cursor: pointer;
+    box-shadow: 0 3px 7px 0 rgba(0,0,0,.1);
+    color: white;
+    border-radius: 7px;
+    margin-bottom: 5px;
+    
+}
+.admin-container .content-container .movie-container .add-movie-container button:hover{
+    transition: ease-in-out .4s;
+    background: rgb(17, 163, 12);
+}
+
+
+
+
+
+
+/* CUSTOMER */
+.admin-container .content-container .customer-container{
+    padding: 2% 5%;
+    height: 81.4%;
+    overflow-y: scroll;
+    display: none;
+    position: relative;
+}
+
+.admin-container .content-container .customer-container table{
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 7px 10px 0 rgba(0,0,0,.2);
+    overflow: hidden;
+    background: whitesmoke;
+}
+
+.admin-container .content-container .customer-container table tr td, th{
+    padding: 5px 10px;
+}
+
+.admin-container .content-container .customer-container table tr th{
+    background: #222129;
+    color: white;
+}
+
+
+
+
+
+/* BOOKINGS */
+.admin-container .content-container .booking-container{
+    padding: 2%;
+    height: 81.4%;
+    overflow-y: scroll;
+    display: none;
+    position: relative;
+}
+
+.admin-container .content-container .booking-container table{
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 7px 10px 0 rgba(0,0,0,.2);
+    overflow: hidden;
+    background: whitesmoke;
+}
+
+.admin-container .content-container .booking-container table tr td, th{
+    padding: 5px 10px;
+    font-size: 13px;
+}
+
+.admin-container .content-container .booking-container table tr th{
+    background: #222129;
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ADDING MOVIE */
+
+.adding-movie-container{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0%;
+    background: #141414b0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.adding-movie-container .movie-box{
+    position: relative;
+    width: max-content;
+    height: max-content;
+    background: whitesmoke;
+    padding: 2%;
+    padding-top: 3%;
+    border-radius: 7px;
+    box-shadow: 0 7px 10px 0 rgba(0,0,0,.2);
+}
+.adding-movie-container .movie-box .close{
+    position: absolute;
+    right: 2%;
+    top: 2%;
+    font-size: 22px;
+    color: red;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+.adding-movie-container .movie-box .movie-info{
+    width: max-content;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.adding-movie-container .movie-box .movie-info tr td input{
+    outline: none;
+    padding: 3px 8px;
+    width: 225px;
+    font-size: 14px;
+}
+.adding-movie-container .movie-box .movie-info tr td{
+    padding: 2px 7px;
+}
+
+.adding-movie-container .movie-box .movie-info tr td .add-movie{
+    width: 100%;
+    font-size: 16px;
+    outline: none;
+    padding: 3px 8px;
+    background: rgb(0, 172, 0);
+    color: white;
+    border: none;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+
+.adding-movie-container .movie-box .table-date{
+    width: 100%;
+}
+.adding-movie-container .movie-box .table-date tr .cinema-holder{
+    display: flex;
+    align-items: center;
+
+}
+.adding-movie-container .movie-box .table-date .cinema-holder .cinema{
+    margin: 0 5px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.adding-movie-container .movie-box .table-date .cinema-holder .cinema p{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+}
+.adding-movie-container .movie-box .table-date .cinema-holder .cinema input[type="checkbox"]{
+    appearance: none;
+    width: 40px;
+    height: 25px;
+    border: 1px solid black;
+    cursor: pointer;
+    background: none;
+    z-index: 1;
+}
+.adding-movie-container .movie-box .table-date .cinema-holder .cinema input[type="checkbox"]:checked{
+    border: 1px solid crimson;
+    background: rgba(220, 20, 60, 0.288);
+}
+
+.adding-movie-container .movie-box .table-date .add{
+    width: 100px;
+    font-size: 15px;
+    background: green;
+    color: white;
+    border: none;
+    padding: 2px 10px;
+    cursor: pointer;
+}
+.adding-movie-container .movie-box .table-date .add:hover{
+    background: rgb(0, 107, 0);
+}
+
+.adding-movie-container .movie-box .table-date .remove{
+    width: 100px;
+    font-size: 15px;
+    background: rgb(156, 0, 0);
+    color: white;
+    border: none;
+    padding: 2px 10px;
+    cursor: pointer;
+}
+
+.adding-movie-container .movie-box .table-date .remove:hover{
+    background: rgb(136, 0, 0);
+}
+
+
+
+
+.adding-movie-container .movie-box input[type="submit"]{
+    background: rgb(0, 167, 0);
+    border: none;
+    font-size: 18px;
+    width: 100%;
+    color: white;
+    margin-top: 10px;
+    padding: 4px 0;
+    cursor: pointer;
+}
+
+.adding-movie-container .movie-box input[type="submit"]:hover{
+    background: rgb(0, 146, 0);
+    transition: ease-in-out .2s;
+}

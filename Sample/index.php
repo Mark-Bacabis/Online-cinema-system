@@ -33,12 +33,8 @@
 // SELECT SHOWING THIS WEEK MOVIE
 
 // SELECT MOVIE THAT SHOWS NEXT WEEK
-    $premiere = mysqli_query($conn, "SELECT * FROM movie WHERE isAvailable = 'True' ORDER BY movieID DESC LIMIT 5");
+    $premiere = mysqli_query($conn, "SELECT * FROM movie");
 // SELECT MOVIE THAT SHOWS NEXT WEEK
-
-// SELECT MOVIE THAT IS NOT AVAILABLE
-    $comingSoon = mysqli_query($conn, "SELECT * FROM movie WHERE isAvailable = 'False' ORDER BY movieID DESC LIMIT 5");
-// SELECT MOVIE THAT IS NOT AVAILABLE
 
 ?>
 
@@ -53,6 +49,7 @@
      <!-- aJax jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
+
 <!-- IF USER LOGGED IN OR NOT -->
     <?php
         if(!empty($userID)){?>
@@ -90,6 +87,7 @@
         });
     });
 </script>
+
 <body>
 
 <header>
@@ -152,9 +150,8 @@
         <ul>
             <li style="border-bottom: 2px solid #bbbbbb;"><a href="./index.php"> Home </a></li>
             <li><a href="./php/allMovies.php?query=Allmovies"> Movies </a></li>
-            <li><a href="./php/contact.php"> Contact us</a></li>
-            <li><a href="./php/service.php"> About </a></li>
-            <li><a href="./php/privacy.php"> Privacy Policy </a></li>
+            <li><a href="./php/contact.php"> Contact </a></li>
+            <li><a href="./php/service.php"> About us </a></li>
         </ul>
     </div>
     
@@ -295,7 +292,7 @@
         </div>
         <ul>
             <?php
-                while($nextWeekShow = $premiere-> fetch_assoc()){
+                while($nextWeekShow = mysqli_fetch_assoc($premiere)){
             ?>
             <li>
                 <div class="movie-poster-box">
