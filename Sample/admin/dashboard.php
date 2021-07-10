@@ -150,7 +150,7 @@
                     <div class="sales user-feedbacks">
                         <h3> New customer </h3>
                         <?php
-                            $newCustomerQuery = mysqli_query($conn, "SELECT * FROM user ORDER BY userID DESC"); 
+                            $newCustomerQuery = mysqli_query($conn, "SELECT * FROM user ORDER BY userID DESC LIMIT 4"); 
                             while($newCustomer = mysqli_fetch_assoc($newCustomerQuery)) {
                         ?>
                         <div class="new-customer">
