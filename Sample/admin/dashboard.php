@@ -9,6 +9,13 @@
     // ALL CUSTOMERS
     $userQuery = mysqli_query($conn, "SELECT * FROM user");
 
+    // SUM OF TOTAL BOOKING
+    $bookingQry = mysqli_query($conn, "SELECT SUM(totalPrice) AS total FROM booking_tbl");
+
+    $bookResult = mysqli_fetch_assoc($bookingQry);
+
+    $bookTotal = $bookResult['total'];
+
     
    
 ?>
@@ -22,8 +29,7 @@
     <title> NXTFLIX DASHBOARD </title>
     <!-- PIE CHART -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <!-- aJax jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    
     
 </head>
 
@@ -133,12 +139,13 @@
                             <h3> Movies </h3>
                         </div>
                     </div>
-                    <div class="summary-box">
+                    <div class="summary-box total-income">
                         <div class="count-box">
-                            <h1> 7 </h1>
+                            <h1> &#8369; <?=$bookTotal?> </h1>
                         </div>
                         <div class="label">
-                            <h3> Tickets </h3>
+                            <img src="../icon/coin-stack.png">
+                            <h3> Total Income </h3>
                         </div>
                     </div>
                 </div>
@@ -171,6 +178,11 @@
                     </div>
 
                 </div> 
+
+                
+                <div class="sales-report">
+                        
+                </div>
             </div>
 
 
@@ -277,38 +289,48 @@
             <!-- CINEMA -->
             <div class="cinema-container">
                  <h1 class="title"> Cinema </h1>
-                <?php
-                    // ALL BOOKINGS
-                    //$bookQuery = mysqli_query($conn, "s");                  
-                ?>
-                <table border="0">
+
+                 <table class="add-cinema-tbl" id="add-cinema-tbl" border="0">
+                     <tr>
+                         <th colspan="2"> Add Cinema </th>
+                     </tr>
                     <tr>
-                        <th> Transaction ID </th>
-                        <th> Movie Title </th>
-                        <th> Customer Name </th>
-                        <th> Date of booking </th>
-                        <th> Cinema No</th>
-                        <th> Show </th>
-                        <th> No. of seat/s </th>
-                        <th> Total Price </th>
+                        <td> Cinema name </td>
+                        <td> <input type="text" name="cinemaName" id="cinemaName"> </td>
                     </tr>
-                    <?php while($book = mysqli_fetch_assoc($bookQuery)) {?>
+                    <tr>
+                        <td> Capacity </td>
+                        <td> <input type="text" name="capacity" id="capacity"> </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"> <button type="button" class="add-cinema" id="add-cinema"> Add Cinema </button></td>
+                    </tr>
+                </table>
+
+                <?php
+                    
+                    $cinemaQry = mysqli_query($conn, "SELECT * FROM cinema");                  
+                ?>
+
+                <table border="0" id="cinema-result">
+                    <tr>
+                        <th> ID </th>
+                        <th> Cinema name </th>
+                        <th> Capacity </th>
+                    </tr>
+                    <?php while($cinemaRslt = mysqli_fetch_assoc($cinemaQry)){?>
                         <tr>
-                            <td> <?=$book['bookID']?> </td>
-                            <td> <?=$book['Title']?> </td>
-                            <td> <?=$book['firstName']?> <?=$book['lastName']?> </td>
-                            <td> <?=$book['dateToday']?> </td>
-                            <td> <?=$book['cinemaID']?> </td>
-                            <td> <?=$book['showID']?> </td>
-                            <td> <?=$book['numberOfSeats']?> </td>
-                            <td> <?=$book['totalPrice']?> </td>
+                            <td> <?=$cinemaRslt['cinemaID']?> </td>
+                            <td> <?=$cinemaRslt['cinemaName']?> </td>
+                            <td> <?=$cinemaRslt['Capacity']?> </td>
                         </tr>
                     <?php } ?>
                 </table>
             </div>
         </div>
     </div>
-
+                    
+    <!-- ADDING MOVIE CONTAINER -->
     <div class="adding-movie-container">
         <div class="movie-box">
             <div class="close">
@@ -389,31 +411,11 @@
         </div>
     </div>
 
+
+<!-- SCRIPT -->
+    
 <script src="../javascript/dashboard.js"></script>
-<script>
-     $(document).ready(function(){
-        var html = '<tr><td> Choose Date: </td><td> <input type="date" name="date"></td><td> Cinema: </td><td class="cinema-holder"><?php $cinemaQuery = mysqli_query ($conn, "SELECT * FROM cinema");
-                        while($cinema = mysqli_fetch_assoc($cinemaQuery)){
-                    ?><div class="cinema"><p> <?=$cinema["cinemaID"]?> </p><input type="checkbox" name="cinema[]" value="<?=$cinema["cinemaID"]?>"></div> <?php } ?> </td> <td> <button type="button" class="remove" id="remove-movie"> Remove </button></td> </tr>';
 
-        let x = 1;
-        let max = 4;
-
-        $("#add-movie").click(function(){
-            if(x <= max){
-                $("#table-date").append(html);
-                x++;
-            }
-        });
-
-        $("#table-date").on('click', '#remove-movie', function(){
-            $(this).closest('tr').remove();
-            x--;
-        });
-        
-    });
-
-</script>
 
 <!-- PIE CHART -->
 <script type="text/javascript">
