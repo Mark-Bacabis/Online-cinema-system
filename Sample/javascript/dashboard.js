@@ -3,12 +3,18 @@ const dashboardLink = document.querySelector(".dashboard");
 const movieLink = document.querySelector(".movie");
 const customerLink = document.querySelector(".customer");
 const bookingLink = document.querySelector(".booking");
+const addMovieBtn = document.querySelector("#add-movie-btn");
+
+// CLOSE BUTTON/S
+const closeButton = document.querySelector(".close");
 
 // FORM CONTAINER
 const movieContainer = document.querySelector(".movie-container");
 const dashboardContainer = document.querySelector(".admin-content")
 const customerContainer = document.querySelector(".customer-container");
 const bookingContainer = document.querySelector(".booking-container");
+
+const addMovieContainer = document.querySelector(".adding-movie-container");
 
 
 
@@ -22,7 +28,7 @@ dashboardLink.addEventListener('click', function(){
     dashboardLink.style.color = 'crimson';
     movieLink.style.color = 'white';
     customerLink.style.color = 'white';
-    ookingLink.style.color = 'white';
+    bookingLink.style.color = 'white';
 });
 
 movieLink.addEventListener('click', function(){
@@ -34,7 +40,7 @@ movieLink.addEventListener('click', function(){
     movieLink.style.color = 'crimson';
     dashboardLink.style.color = 'white';
     customerLink.style.color = 'white';
-    ookingLink.style.color = 'white';
+    bookingLink.style.color = 'white';
 });
 
 customerLink.addEventListener('click', function(){
@@ -49,6 +55,7 @@ customerLink.addEventListener('click', function(){
     bookingLink.style.color = 'white';
 });
 
+// BOOKING
 bookingLink.addEventListener('click', function(){
     bookingContainer.style.display = 'block';
     customerContainer.style.display = 'none';
@@ -59,4 +66,15 @@ bookingLink.addEventListener('click', function(){
     customerLink.style.color = 'white';
     dashboardLink.style.color = 'white';
     movieLink.style.color = 'white';
+});
+
+
+// DISPLAYING ADD MOVIE CONTAINER
+
+addMovieBtn.addEventListener('click', () => {
+    addMovieContainer.style.display = 'flex';
+}, 5000);
+// FUNCTION FOR CLOSING ADD MOVIE CONTAINER
+closeButton.addEventListener('click', (e) => {
+    addMovieContainer.style.display = 'none';
 });

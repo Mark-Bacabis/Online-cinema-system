@@ -35,6 +35,11 @@
                 <h1> NXTFLIX </h1><br>
                 <p> Dashboard </p>
             </div>
+            
+            <div class="admin-profile-info">
+                <h3> Mark Melvin Bacabis </h3>
+            </div>
+           
            <div class="admin">
                 <h3> ADMIN </h3>
                 <ul>
@@ -43,7 +48,7 @@
                     <li><a class="customer"> Customers </a></li>
                     <li><a class="booking"> Bookings </a></li>
                     <li><a class="ticket"> Tickets </a></li>
-                    <li><a class="feedback"> Feedback </a></li>
+                   
                 </ul>
            </div>
            <div class="settings">
@@ -54,7 +59,7 @@
                 </ul>
            </div>
 
-
+           
            <div class="admin-footer">
                <p> &copysr; NXTFLIX &bullet; 2021 </p>
            </div>
@@ -74,15 +79,19 @@
                 <div class="admin-logo">
                     <p> Welcome Admin! </p>
                     <div class="admin-profile">
-                    
+                        <img src="./admin-profile/default.jpg" alt="">
                     </div>
                 </div>
             </div>
 
+
+
+
             <!-- FOR SUMMARY DASHBOARD -->
             <div class="admin-content">
+                <h1> DASHBOARD </h1>
                 <div class="content-summary">
-                    <div class="summary-box">
+                    <div class="summary-box booking">
                         <?php
                             $bookQuery = mysqli_query($conn, "SELECT COUNT(*) as Count FROM booking_tbl");
 
@@ -92,10 +101,11 @@
                         <h1> <?=$bookCnt['Count']?> </h1>
                         </div>
                         <div class="label">
+                            <img src="../icon/booking.png">
                             <h3> Bookings </h3>
                         </div>
                     </div>
-                    <div class="summary-box">
+                    <div class="summary-box customer">
                         <?php
                             $customerQuery = mysqli_query($conn, "SELECT COUNT(*) as Count FROM user");
 
@@ -105,10 +115,11 @@
                         <h1> <?=$customerCount['Count']?> </h1>
                         </div>
                         <div class="label">
+                            <img src="../icon/customer.png">
                             <h3> Customers </h3>
                         </div>
                     </div>
-                    <div class="summary-box">
+                    <div class="summary-box movie">
                         <?php
                             $movieCntQuery = mysqli_query($conn, "SELECT COUNT(*) as Count FROM movie");
 
@@ -118,6 +129,7 @@
                             <h1> <?=$movieCount['Count']?> </h1>
                         </div>
                         <div class="label">
+                            <img src="../icon/video-camera.png">
                             <h3> Movies </h3>
                         </div>
                     </div>
@@ -130,16 +142,30 @@
                         </div>
                     </div>
                 </div>
-                <!--
+                
                 <div class="content-sales">
                     <div class="sales">
-
+                        <h3> Sales report </h3>
                     </div>
                     <div class="sales user-feedbacks">
-                        <h2> Users </h2>
+                        <h3> New customer </h3>
+                        <?php
+                            $newCustomerQuery = mysqli_query($conn, "SELECT * FROM user ORDER BY userID DESC"); 
+                            while($newCustomer = mysqli_fetch_assoc($newCustomerQuery)) {
+                        ?>
+                        <div class="new-customer">
+                            <div class="user-profile">
+                                <img src="../user-profile/<?=$newCustomer['profile']?>" alt="">
+                            </div>
+                            <div class="user-name">
+                                <h5> <?=$newCustomer['firstName']?> <?=$newCustomer['lastName']?> </h5>
+                                <h6> <?=$newCustomer['email']?> </h6>
+                            </div>
+                        </div>
+                        <?php } ?>
                     </div>
 
-                </div> --> 
+                </div> 
             </div>
 
 
@@ -147,7 +173,7 @@
             <div class="movie-container">
                 
                 <div class="add-movie-container">
-                    <button> Add new movie </button>
+                    <button id="add-movie-btn"> Add new movie </button>
                 </div>
 
                 <h1 class="title"> All Movies </h1>
@@ -155,10 +181,8 @@
                     <tr>
                         <th> ID </th>
                         <th> Title </th>
-                        <th> Year </th>
-                        <th> Duration </th>
                         <th> Director </th>
-                        <th> Cast </th>
+
                         <th> Price </th>
                         <th> Action </td>
                     </tr>
@@ -166,10 +190,9 @@
                         <tr>
                             <td> <?=$movie['movieID']?> </td>
                             <td> <?=$movie['Title']?>  </td>
-                            <td> <?=$movie['Year']?></td>
-                            <td> <?=$movie['Duration']?>  </td>
+                           
                             <td> <?=$movie['Director']?></td>
-                            <td> <?=$movie['Cast']?>  </td>
+
                             <td> <?=$movie['Price']?>  </td>
                             
                             <td class="click edit"> <a href="?mid=<?=$movie['movieID']?>"> Edit </a> </td>
@@ -183,6 +206,7 @@
                  <h1 class="title"> Customer </h1>
                 <table border="0">
                     <tr>
+                        <th> ID </th>
                         <th> Fullname </th>
                         <th> Email </th>
                         <th> Contact </th>
@@ -191,6 +215,7 @@
                     </tr>
                     <?php while($user = mysqli_fetch_assoc($userQuery)) {?>
                         <tr>
+                            <td> <?=$user['userID']?></td>
                             <td> <?=$user['firstName']?> <?=$user['lastName']?> </td>
                             <td> <?=$user['email']?>  </td>
                             <td> <?=$user['contactNumber']?> </td>
@@ -221,7 +246,7 @@
                     <tr>
                         <th> Transaction ID </th>
                         <th> Movie Title </th>
-                        <th> Email </th>
+                        <th> Customer Name </th>
                         <th> Date </th>
                         <th> Cinema No</th>
                         <th> Show </th>
@@ -232,7 +257,7 @@
                         <tr>
                             <td> <?=$book['bookID']?> </td>
                             <td> <?=$book['Title']?> </td>
-                            <td> <?=$book['email']?> </td>
+                            <td> <?=$book['firstName']?> <?=$book['lastName']?> </td>
                             <td> <?=$book['dateBooked']?> </td>
                             <td> <?=$book['cinemaID']?> </td>
                             <td> <?=$book['showID']?> </td>
@@ -257,44 +282,41 @@
             <table border="0" class="movie-info">
                 <tr>
                     <td> Movie Title </td>
-                    <td> <input type="text" name="title" id="title"></td>
+                    <td> <input type="text" name="title" id="title" required></td>
                     <td> Director </td>
-                    <td> <input type="text" name="director" id="director"></td>
+                    <td> <input type="text" name="director" id="director" required></td>
                 </tr>
                 <tr>
                     <td> Year </td>
-                    <td> <input type="text" name="year" id="year"></td>
+                    <td> <input type="text" name="year" id="year" required></td>
                     <td> Cast </td>
-                    <td> <input type="text" name="cast" id="cast"></td>
+                    <td> <input type="text" name="cast" id="cast" required></td>
                 </tr>
                 <tr>
                     <td> Genre </td>
-                    <td> <input type="text" name="genre" id="genre"></td>
+                    <td> <input type="text" name="genre" id="genre" required></td>
                     <td> Price </td>
-                    <td> <input type="text" name="price" id="price"></td>
+                    <td> <input type="text" name="price" id="price" required></td>
                 </tr>
                 <tr>
                     <td> Duration </td>
-                    <td> <input type="text" name="duration" id="duration"></td>
+                    <td> <input type="text" name="duration" id="duration" required></td>
                     <td> Trailer Link </td>
-                    <td> <input type="text" name="trailer" id=""> </td>
+                    <td> <input type="text" name="trailer" id="trailer" required> </td>
                 </tr>
                 <tr>
                     <td> Rating </td>
-                    <td> <input type="text" name="rating" id=""></td>
+                    <td> <input type="text" name="rating" id="rating" required></td>
                     <td> Poster </td>
-                    <td> <input type="file" name="poster" id=""> </td>
+                    <td> <input type="file" name="poster" id="poster" required> </td>
                 </tr>
                 <tr>
                     <td> Description </td>
-                    <td> <input type="text" name="desc" id=""></td>
+                    <td> <textarea name="desc" class="description" maxlength="255" id="desc" required></textarea> </td>
                     <td> Banner </td>
                     <td> <input type="file" name="banner" id=""></td>
                 </tr>
-                <!--
-                <tr>
-                    <td colspan="2"> <button type="submit" name="add-movie" class="add-movie"> Add movie </button></td>
-                </tr>-->
+               
             </table>
             
             <br>
@@ -303,7 +325,7 @@
             <table border="0" class="table-date" id="table-date">
                 <tr>
                     <td> Choose Date: </td>
-                    <td> <input type="date" name="date"></td>
+                    <td> <input type="date" name="date" required></td>
                     <td> Cinema: </td>
                     <td class="cinema-holder">
                     

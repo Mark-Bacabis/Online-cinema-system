@@ -52,6 +52,7 @@
     text-align: center;
     padding: 5px 10%;
     font-size: 14px;
+
 }
 
 
@@ -119,52 +120,96 @@
 .admin-container .content-container .admin-header .admin-logo .admin-profile{
     width: 40px;
     aspect-ratio: 1/1;
-    background: red;
+
     margin-left: 10px;
     border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
+.admin-container .content-container .admin-header .admin-logo .admin-profile img{
+    width: 100%;
+    height: 100%;
+}
+
+
+
 
 
 /* DASHBOARD */
 .admin-container .content-container .admin-content{
     padding: 2% 5%;
+    padding-top: 0;
     height: 81.4%;
     overflow-y: scroll;
     display: block;
+    
 }
 
 .admin-container .content-container .admin-content .content-summary{
     height: 200px;
     display: flex;
     align-items: center;
+
 }
 
 .admin-container .content-container .admin-content .content-summary .summary-box{
     width: 100%;
-    height: 90%;
+    height: 80%;
     background: whitesmoke;
     margin: 0 7px;
-    border-radius: 7px;
-    box-shadow: 0 7px 10px 0 rgba(0,0,0,.2);
+    border-radius: 10px;
+    box-shadow: 0 7px 10px 0 rgba(0,0,0,.3);
     overflow: hidden;
+    color: white;
+
+    
 }
+
+.admin-container .content-container .admin-content .content-summary .booking{
+    background: linear-gradient(45deg, rgb(111, 101, 255), rgb(24, 19, 121));
+    
+}
+.admin-container .content-container .admin-content .content-summary .booking img, .customer img, .movie img{
+    filter: invert(1);
+ 
+}
+
+.admin-container .content-container .admin-content .content-summary .customer{
+    background: linear-gradient(45deg, rgb(247, 124, 148), rgb(158, 6, 36));
+
+}
+
+
+.admin-container .content-container .admin-content .content-summary .movie{
+    background: linear-gradient(45deg, rgb(234, 0, 255), rgb(109, 3, 104));
+}
+
 .admin-container .content-container .admin-content .content-summary .summary-box .count-box{
     display: flex;
-    height: 70%;
+    height: 65%;
     align-items: center;
     justify-content: center;
     font-size: 26px;
 }
+
 .admin-container .content-container .admin-content .content-summary .summary-box .label{
-    height: 30%;
+    height: 35%;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-top: 2px solid black;
+    border-top: 3px solid rgb(236, 131, 131);
+    
+}
+.admin-container .content-container .admin-content .content-summary .summary-box .label img{
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
 }
 
 .admin-container .content-container .admin-content .content-sales{
-    height: 280px;
+    height: 250px;
     margin-top: 20px;
     display: flex;
     align-items: center;
@@ -180,9 +225,44 @@
 }
 
 .admin-container .content-container .admin-content .content-sales .user-feedbacks{
-    width: 40%;
+    width: 45%;
+    background: rgb(248, 252, 255);
+    overflow-y: scroll;
+}
+.admin-container .content-container .admin-content .content-sales .user-feedbacks h3{
+    margin-bottom: 10px;
 }
 
+.admin-container .content-container .admin-content .content-sales .user-feedbacks .new-customer{
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+    padding: 5px 0;
+    border-bottom: 1px solid gray;
+    
+}
+
+.admin-container .content-container .admin-content .content-sales .user-feedbacks .new-customer .user-name h5{
+    color: rgb(44, 44, 44);
+   
+}
+.admin-container .content-container .admin-content .content-sales .user-feedbacks .new-customer .user-name h6{
+    color: rgb(56, 56, 56);
+    font-weight: normal;
+}
+
+
+.admin-container .content-container .admin-content .content-sales .user-feedbacks .new-customer .user-profile{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 10px;
+}
+.admin-container .content-container .admin-content .content-sales .user-feedbacks .new-customer .user-profile img{
+    width: 100%;
+    height: 100%;
+}
 
 
 
@@ -202,14 +282,18 @@
 }
 .admin-container .content-container .movie-container table{
     width: 100%;
-
     border-radius: 10px;
     box-shadow: 0 7px 10px 0 rgba(0,0,0,.2);
     overflow: hidden;
+   
+}
+.admin-container .content-container .movie-container table tr td{
+    width: max-content;
     background: whitesmoke;
 }
 .admin-container .content-container .movie-container table tr td, th{
     padding: 5px 10px;
+
 }
 
 .admin-container .content-container .movie-container table tr th{
@@ -331,7 +415,7 @@
     position: fixed;
     top: 0%;
     background: #141414b0;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
 }
@@ -349,7 +433,7 @@
 .adding-movie-container .movie-box .close{
     position: absolute;
     right: 2%;
-    top: 2%;
+    top: 0%;
     font-size: 22px;
     color: red;
     transform: rotate(45deg);
@@ -366,6 +450,14 @@
     padding: 3px 8px;
     width: 225px;
     font-size: 14px;
+}
+
+.adding-movie-container .movie-box .movie-info tr td .description{
+    outline: none;
+    padding: 3px 8px;
+    width: 227px;
+    font-size: 14px;
+    resize: none;
 }
 .adding-movie-container .movie-box .movie-info tr td{
     padding: 2px 7px;
