@@ -20,7 +20,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/dashboard.css">
     <title> NXTFLIX DASHBOARD </title>
-
+    <!-- PIE CHART -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <!-- aJax jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     
@@ -36,9 +37,7 @@
                 <p> Dashboard </p>
             </div>
             
-            <div class="admin-profile-info">
-                <h3> Mark Melvin Bacabis </h3>
-            </div>
+           
            
            <div class="admin">
                 <h3> ADMIN </h3>
@@ -47,6 +46,7 @@
                     <li><a class="movie"> Movies </a></li>
                     <li><a class="customer"> Customers </a></li>
                     <li><a class="booking"> Bookings </a></li>
+                    <li><a class="cinema"> Cinema </a></li>
                     <li><a class="ticket"> Tickets </a></li>
                    
                 </ul>
@@ -79,7 +79,7 @@
                 <div class="admin-logo">
                     <p> Welcome Admin! </p>
                     <div class="admin-profile">
-                        <img src="./admin-profile/default.jpg" alt="">
+                        <img src="./admin-profile/admin.png" alt="">
                     </div>
                 </div>
             </div>
@@ -143,10 +143,15 @@
                     </div>
                 </div>
                 
+                
                 <div class="content-sales">
-                    <div class="sales">
-                        <h3> Sales report </h3>
+                    <!-- CHARTS -->
+                    <div class="sales charts">
+                        <div id="piechart" style="width: 100%; height: 100%;"></div>
+
                     </div>
+
+
                     <div class="sales user-feedbacks">
                         <h3> New customer </h3>
                         <?php
@@ -181,18 +186,19 @@
                     <tr>
                         <th> ID </th>
                         <th> Title </th>
+                        <th> Year </th>
+                        <th> Duration </th>
                         <th> Director </th>
-
                         <th> Price </th>
                         <th> Action </td>
                     </tr>
                     <?php while($movie = mysqli_fetch_assoc($movieQuery)){?>
                         <tr>
                             <td> <?=$movie['movieID']?> </td>
-                            <td> <?=$movie['Title']?>  </td>
-                           
+                            <td> <?=$movie['Title']?>  </td>   
+                            <td> <?=$movie['Year']?></td>
+                            <td> <?=$movie['Duration']?></td>
                             <td> <?=$movie['Director']?></td>
-
                             <td> <?=$movie['Price']?>  </td>
                             
                             <td class="click edit"> <a href="?mid=<?=$movie['movieID']?>"> Edit </a> </td>
@@ -247,7 +253,7 @@
                         <th> Transaction ID </th>
                         <th> Movie Title </th>
                         <th> Customer Name </th>
-                        <th> Date </th>
+                        <th> Date of booking </th>
                         <th> Cinema No</th>
                         <th> Show </th>
                         <th> No. of seat/s </th>
@@ -258,7 +264,7 @@
                             <td> <?=$book['bookID']?> </td>
                             <td> <?=$book['Title']?> </td>
                             <td> <?=$book['firstName']?> <?=$book['lastName']?> </td>
-                            <td> <?=$book['dateBooked']?> </td>
+                            <td> <?=$book['dateToday']?> </td>
                             <td> <?=$book['cinemaID']?> </td>
                             <td> <?=$book['showID']?> </td>
                             <td> <?=$book['numberOfSeats']?> </td>
@@ -268,6 +274,38 @@
                 </table>
             </div>
 
+            <!-- CINEMA -->
+            <div class="cinema-container">
+                 <h1 class="title"> Cinema </h1>
+                <?php
+                    // ALL BOOKINGS
+                    //$bookQuery = mysqli_query($conn, "s");                  
+                ?>
+                <table border="0">
+                    <tr>
+                        <th> Transaction ID </th>
+                        <th> Movie Title </th>
+                        <th> Customer Name </th>
+                        <th> Date of booking </th>
+                        <th> Cinema No</th>
+                        <th> Show </th>
+                        <th> No. of seat/s </th>
+                        <th> Total Price </th>
+                    </tr>
+                    <?php while($book = mysqli_fetch_assoc($bookQuery)) {?>
+                        <tr>
+                            <td> <?=$book['bookID']?> </td>
+                            <td> <?=$book['Title']?> </td>
+                            <td> <?=$book['firstName']?> <?=$book['lastName']?> </td>
+                            <td> <?=$book['dateToday']?> </td>
+                            <td> <?=$book['cinemaID']?> </td>
+                            <td> <?=$book['showID']?> </td>
+                            <td> <?=$book['numberOfSeats']?> </td>
+                            <td> <?=$book['totalPrice']?> </td>
+                        </tr>
+                    <?php } ?>
+                </table>
+            </div>
         </div>
     </div>
 
@@ -376,5 +414,31 @@
     });
 
 </script>
+
+<!-- PIE CHART -->
+<script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Transaction', 'Counts'],
+          ['Movies',     <?=$movieCount['Count']?>],
+          ['Bookings',    <?=$bookCnt['Count']?>],
+          ['Customers',  <?=$customerCount['Count']?>],
+         
+        ]);
+
+        var options = {
+          title: 'OVERALL SUMMARY'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+</script>
+
 </body>
 </html>
