@@ -221,7 +221,12 @@
     background: whitesmoke;
     margin: 0 7px;
     box-shadow: 0 7px 10px 0 rgba(0,0,0,.2);
-    padding: 1% 2%;
+    padding: 2%;
+}
+
+.admin-container .content-container .admin-content .content-sales .charts{
+    display: flex;
+    align-items: center;
 }
 
 .admin-container .content-container .admin-content .content-sales .user-feedbacks{
@@ -398,6 +403,36 @@
 
 
 
+/* BOOKINGS */
+.admin-container .content-container .booking-container{
+    padding: 2%;
+    height: 81.4%;
+    overflow-y: scroll;
+    display: none;
+    position: relative;
+}
+
+.admin-container .content-container .booking-container table{
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 7px 10px 0 rgba(0,0,0,.2);
+    overflow: hidden;
+    background: whitesmoke;
+}
+
+.admin-container .content-container .booking-container table tr td, th{
+    padding: 5px 10px;
+    font-size: 13px;
+}
+
+.admin-container .content-container .booking-container table tr th{
+    background: #222129;
+    color: white;
+}
+
+
+
+
 
 
 
@@ -408,7 +443,6 @@
 
 
 /* ADDING MOVIE */
-
 .adding-movie-container{
     width: 100vw;
     height: 100vh;
