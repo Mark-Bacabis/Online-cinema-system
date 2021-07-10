@@ -1,7 +1,7 @@
 <?php
     
     include "../connection.php";
-    //$movieID = $_GET['mid'];
+    //$movieID = $_GET['mid']; // Hello
 
     // ALL MOVIES
     $movieQuery = mysqli_query($conn, "SELECT * FROM movie");
