@@ -2,6 +2,8 @@
     session_start();
     include "./connection.php";
 
+    $prevUrl = $_SESSION['url'];
+
     $movieID = $_SESSION['movieID'];
     $userID = $_SESSION['userID'];
     $seats = $_POST['seat'];
@@ -12,6 +14,10 @@
     $numberOfSeats = $_POST['nthOfSeats'];
     $seatNumbers = $_POST['seatNo'];
     $totalPrice = $_POST['totalPrice'];
+
+    if(empty($movieID) && empty($userID)){
+        header("location: ./index.php");
+    }
 
 
     //SESSION
@@ -48,6 +54,13 @@
     $cinemaID = $cinemaResult['cinemaID'];
 
 
+    
+    if(isset($_POST['cancel'])){
+        header("location:".$prevUrl);
+    }
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -57,7 +70,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/payment.css">
-    <title>Document</title>
+    <title> Pay here! | NXTFLIX Online ticket reservation </title>
 </head>
 
 <!-- IF USER LOG IN OR NOT -->
@@ -87,7 +100,7 @@
    
     <header>
         <div class="logo">
-            <a href="../index.php"> NXTFLIX <br>
+            <a href="#"> NXTFLIX <br>
                 <span class="subtitle">
                     Online Ticket Reservation
                 </span>

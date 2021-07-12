@@ -14,6 +14,7 @@
     $seatNumbers = $_SESSION['seatNumbers'];
     $totalPrice = $_SESSION['totalPrice'];
 
+   
     //FOR TRANSACTION 
     $bookQuery = mysqli_query($conn, "SELECT * FROM `booking_tbl` b
     JOIN movie m
@@ -68,9 +69,9 @@
                         line-height: 30px;">
                             <p style="margin:0; padding: 0;"> Transaction ID: '.$transactID.'</p>
                             <h1 style="margin: 0; color: black;">'.$bookResult['Title'].' ('.$bookResult['Year'].')</h1>
-                            <h2 style="margin: 0;">'.$bookResult['dateBooked'].', '.$dateName['Result'].'</h2>
-                            <h4 style="margin: 0;"> Fairview Terraces, '.$bookResult['cinemaName'].'</h4>
-                            <h4 style="margin: 0;">'.$bookResult['showName'].','.$bookResult['showStart'].' - '.$bookResult['showEnd'].' </h4>
+                            <h2 style="margin: 0; color: black;">'.$bookResult['dateBooked'].', '.$dateName['Result'].'</h2>
+                            <h4 style="margin: 0; color: black;"> Fairview Terraces, '.$bookResult['cinemaName'].'</h4>
+                            <h4 style="margin: 0; color: black;">'.$bookResult['showName'].','.$bookResult['showStart'].' - '.$bookResult['showEnd'].' </h4>
                             
                             <p style="font-size: 14px; margin: 0; padding: 0;"> 2021-07-12, 5:05PM </p>
                         </div>
@@ -100,11 +101,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <?php if(empty($transactID) && empty($movieID) && empty($userID)){
+        header("Location:../index.php");
+    } else { ?>
+    <meta http-equiv="refresh" content="5; url=http://localhost/online-cinema-system/sample/index.php">
+    <?php } ?>
+
     <link rel="stylesheet" href="../styles/thankyou.css">
     <title>Document</title>
 </head>
+<style>
+    .message{
+        position: absolute;
+        bottom: 1%;
+        left: 1%;
+    }
+</style>
 <body>
     <div class="container">
+        <p class="message"> This page will be redirected in 5secs... </p>
         <div class="thankyou-box">
             <img src="../icon/checked-crimson.png" alt="">
             <h1> THANK YOU!! </h1>

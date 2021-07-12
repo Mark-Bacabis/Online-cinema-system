@@ -10,6 +10,10 @@
 
     $result = mysqli_fetch_assoc($movieSelected);
 
+    
+    if(empty($movieID) && empty($userID)){
+        header("location: ../index.php");
+    }
 
     if(isset($_POST['submit'])){
         $movieUrl = $_SESSION['url'];
@@ -361,23 +365,21 @@
 
 
 
-
 <!-- FOOTER -->
-    <footer class="footer-container">
+<footer class="footer-container">
         <div class="About">
             <h3> About </h3>
             <ul>
-                <li><a href="#"> About us</a></li>
-                <li><a href="#"> Terms and agreement </a></li>
-                <li><a href="#"> Privacy Policy </a></li>
-                <li><a href="#"> Services </a></li>
+                <li><a href="./php/about.php"> About us</a></li>
+                <li><a href="./php/terms-and-condition.php"> Terms and agreement </a></li>
+                <li><a href="./php/privacy.php"> Privacy Policy </a></li>
             </ul>
         </div>
         <div class="movies">
                 <h3> Movies </h3>
             <ul>
-                <li><a href="#"> Now showing </a></li>
-                <li><a href="#"> New release </a></li>
+                <li><a href="#slider-container"> All movies </a></li>
+                <li><a href="#movie-this-week"> Showing this week </a></li>
                 <li><a href="#"> Premiere </a></li>
                 <li><a href="#"> Upcoming movie </a></li>
             </ul>
@@ -385,10 +387,10 @@
         <div class="links">
                  <h3> Links </h3>
             <ul>
-                <li><a href="#"> Home </a></li>
-                <li><a href="#"> Movies</a></li>
-                <li><a href="#"> Contact Us </a></li>
-                <li><a href="#"> Services </a></li>
+                <li><a href="./index.php"> Home </a></li>
+                <li><a href="./php/allMovies.php"> Movies</a></li>
+                <li><a href="./php/about.php"> About us</a></li>
+                <li><a href="./php/contact.php"> Contact Us </a></li>
             </ul>
         </div>
         <div class="contactUs">
@@ -400,9 +402,9 @@
         <div class="followUs">
             <h3> Follow us </h3>
             <ul>
-                <li><a href="#"><img src="../icon/facebook.png" alt=""></a></li>
-                <li><a href="#"><img src="../icon/twitter.png" alt=""></a></li>
-                <li><a href="#"><img src="../icon/instagram.png" alt=""></a></li>
+                <li><a href="#"><img src="./icon/facebook.png" alt=""></a></li>
+                <li><a href="#"><img src="./icon/twitter.png" alt=""></a></li>
+                <li><a href="#"><img src="./icon/instagram.png" alt=""></a></li>
             </ul>
         </div>
         <div class="copyright">

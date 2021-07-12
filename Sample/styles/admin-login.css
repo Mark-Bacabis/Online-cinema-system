@@ -1,0 +1,95 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+}
+header{
+    position: relative;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+}
+header .logo {
+    line-height: 16px;
+    cursor: default;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    
+}
+header .logo h1{
+    font-size: 2em;
+    color: crimson;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0;
+    height: max-content;
+}
+header .logo .subtitle{
+    font-size: .44em;
+    margin-top: 3px;
+    position: absolute;
+    width: max-content;
+    font-stretch: wider;
+}
+  
+
+
+.login-container{
+    background: rgb(206, 224, 224);
+    width: 100%;
+    height: 90vh;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-container .logo{
+    display: flex;
+    align-self: baseline;
+}
+
+.login-container form{
+    position: relative;
+    background: whitesmoke;
+    width: 370px;
+    height: max-content;
+    padding: 20px;
+    padding-top: 50px;
+    border-radius: 4px;
+    box-shadow: 0 7px 10px rgba(0,0,0,.3);
+}
+.login-container form .logo{
+    width: 80px;
+    position: absolute;
+    top: -15%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 9px solid whitesmoke;
+    border-radius: 50%;
+}
+.login-container form input{
+    width: 100%;
+    padding: 3px 7px;
+    font-size: 16px;
+    margin: 10px 0;
+    border:none;
+    border-bottom: 2px solid black;
+    background: none;
+    outline: none;
+}
+
+.login-container form input[type="submit"]{
+    background: seagreen;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+.login-container .copyright{
+    margin-top: 40px;
+    color: rgba(220, 20, 60, 0.788);
+}

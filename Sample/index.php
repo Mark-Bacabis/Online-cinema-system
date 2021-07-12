@@ -350,11 +350,59 @@
             <li>
                 <div class="movie-poster-box">
                     <div class="movie-poster">
-                        <img src="./img/raya-poster.jpg" alt="">
+                        <img src="./img/Coming movies/eternals.ar_240x360_crop_center.progressive.jpg" alt="">
                     </div>
                     <div class="movie-title">
                         <p>
-                            Movie Title (2020)
+                           Eternals (2021)
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="movie-poster-box">
+                    <div class="movie-poster">
+                        <img src="./img/Coming movies/candyman_ver2_240x360_crop_center.progressive.jpg" alt="">
+                    </div>
+                    <div class="movie-title">
+                        <p>
+                           Candyman (2021)
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="movie-poster-box">
+                    <div class="movie-poster">
+                        <img src="./img/Coming movies/halloween_kills_240x360_crop_center.progressive.jpg" alt="">
+                    </div>
+                    <div class="movie-title">
+                        <p>
+                           Holloween Kills (2021)
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="movie-poster-box">
+                    <div class="movie-poster">
+                        <img src="./img/Coming movies/rons-gone-wrong_xh1kjpu4_240x360_crop_center.progressive.jpg" alt="">
+                    </div>
+                    <div class="movie-title">
+                        <p>
+                           Rons gone wrong (2021)
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="movie-poster-box">
+                    <div class="movie-poster">
+                        <img src="./img/Coming movies/jurassic-world-dominion_imy7xudl_240x360_crop_center.progressive.jpg" alt="">
+                    </div>
+                    <div class="movie-title">
+                        <p>
+                           Jurassic World Dominion (2021)
                         </p>
                     </div>
                 </div>

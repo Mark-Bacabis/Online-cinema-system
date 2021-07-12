@@ -2,6 +2,7 @@
   padding: 0;
   margin: 0;
   font-family: poppins;
+  box-sizing: border-box;
 }
 body{
   background: #151516;
@@ -641,6 +642,7 @@ header .user-login-container ul li:hover{
 .premiere-container{
   background: #16171d;
   height: max-content;
+  width: 100%;
   padding: 2% 10%;
 } 
 .premiere-container .container-title{
@@ -734,7 +736,7 @@ header .user-login-container ul li:hover{
 .coming-soon-container ul li{
   position: relative;
   width: 202.1px;
-  height: 280px;
+  height: 300px;
   list-style: none;
   display: inline-block;
   overflow: hidden;
@@ -806,7 +808,7 @@ header .user-login-container ul li:hover{
   background: #16171d;
   padding: 0 10%;
   display: flex;
-  padding-top: 5%;
+  padding-top: 3%;
 }
 .footer-container div{
   width: 80%;

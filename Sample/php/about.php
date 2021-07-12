@@ -162,23 +162,21 @@
     </div>
 
 
-
 <!-- FOOTER -->
-    <footer class="footer-container">
+<footer class="footer-container">
         <div class="About">
             <h3> About </h3>
             <ul>
-                <li><a href="./about.php"> About us</a></li>
-                <li><a href="./terms-and-condition.php"> Terms and agreement </a></li>
-                <li><a href="./privacy.php"> Privacy Policy </a></li>
-                <li><a href="./service.php"> Services </a></li>
+                <li><a href="./php/about.php"> About us</a></li>
+                <li><a href="./php/terms-and-condition.php"> Terms and agreement </a></li>
+                <li><a href="./php/privacy.php"> Privacy Policy </a></li>
             </ul>
         </div>
         <div class="movies">
                 <h3> Movies </h3>
             <ul>
-                <li><a href="#"> Now showing </a></li>
-                <li><a href="#"> New release </a></li>
+                <li><a href="#slider-container"> All movies </a></li>
+                <li><a href="#movie-this-week"> Showing this week </a></li>
                 <li><a href="#"> Premiere </a></li>
                 <li><a href="#"> Upcoming movie </a></li>
             </ul>
@@ -186,10 +184,10 @@
         <div class="links">
                  <h3> Links </h3>
             <ul>
-                <li><a href="../index.php"> Home </a></li>
-                <li><a href="./allMovies.php"> Movies</a></li>
-                <li><a href="./contact.php"> Contact Us </a></li>
-                <li><a href="./service.php"> Services </a></li>
+                <li><a href="./index.php"> Home </a></li>
+                <li><a href="./php/allMovies.php"> Movies</a></li>
+                <li><a href="./php/about.php"> About us</a></li>
+                <li><a href="./php/contact.php"> Contact Us </a></li>
             </ul>
         </div>
         <div class="contactUs">
@@ -201,9 +199,9 @@
         <div class="followUs">
             <h3> Follow us </h3>
             <ul>
-                <li><a href="#"><img src="../icon/facebook.png" alt=""></a></li>
-                <li><a href="#"><img src="../icon/twitter.png" alt=""></a></li>
-                <li><a href="#"><img src="../icon/instagram.png" alt=""></a></li>
+                <li><a href="#"><img src="./icon/facebook.png" alt=""></a></li>
+                <li><a href="#"><img src="./icon/twitter.png" alt=""></a></li>
+                <li><a href="#"><img src="./icon/instagram.png" alt=""></a></li>
             </ul>
         </div>
         <div class="copyright">

@@ -1,7 +1,25 @@
 <?php
-    
+    session_start();
     include "../connection.php";
     //$movieID = $_GET['mid']; // Hello
+
+    $adminID = $_SESSION['ID'];
+    
+
+
+    if(isset($_POST['logout'])){
+        session_destroy();
+        session_destroy();
+        header("location:../admin.php");
+    }
+    
+    if(empty($adminID)){
+        header("location:../admin.php");
+    }
+
+    // ADMIN 
+    $adminQuery = mysqli_query($conn, "SELECT * FROM admin WHERE adminID = $adminID");
+    $admin = mysqli_fetch_assoc($adminQuery);
 
     // ALL MOVIES
     $movieQuery = mysqli_query($conn, "SELECT * FROM movie");
@@ -11,7 +29,6 @@
 
     // SUM OF TOTAL BOOKING
     $bookingQry = mysqli_query($conn, "SELECT SUM(totalPrice) AS total FROM booking_tbl");
-
     $bookResult = mysqli_fetch_assoc($bookingQry);
 
     $bookTotal = $bookResult['total'];
@@ -60,8 +77,10 @@
            <div class="settings">
                 <h3> Settings </h3>
                 <ul>
-                    <li><a href="#"> Settings </a></li>
                     <li><a href="#"> My Account </a></li>
+                    <form action="dashboard.php" method="POST">
+                    <li><button name="logout" class="logout"> Logout </button></li>
+                    </form>
                 </ul>
            </div>
 
@@ -83,7 +102,7 @@
                 
 
                 <div class="admin-logo">
-                    <p> Welcome Admin! </p>
+                    <p> Welcome Admin <?=$admin['fullname']?>! </p>
                     <div class="admin-profile">
                         <img src="./admin-profile/admin.png" alt="">
                     </div>
