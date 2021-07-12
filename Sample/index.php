@@ -12,7 +12,7 @@
     $select = "SELECT DISTINCT a.availableDate, b.movieID, b.Title, b.banner, b.Year, b.Genre, b.Duration, b.Rating FROM `movie_available_date` a
     JOIN movie b
     ON a.movieID = b.movieID
-    WHERE a.availableDate >= '2021-07-12' 
+    WHERE a.availableDate >= '$dateToday' 
     ORDER BY a.movieID DESC";
 
     $query = mysqli_query($conn, $select);
@@ -20,19 +20,19 @@
     $firstData  = mysqli_query($conn, "SELECT DISTINCT a.availableDate, b.movieID, b.Title, b.banner, b.Year, b.Genre, b.Duration, b.Rating FROM `movie_available_date` a
     JOIN movie b
     ON a.movieID = b.movieID
-    WHERE a.availableDate >= '2021-07-12' 
+    WHERE a.availableDate >= '$dateToday' 
     ORDER BY a.movieID DESC LIMIT 1");
 
     $secondData  = mysqli_query($conn, "SELECT DISTINCT a.availableDate, b.movieID, b.Title, b.banner, b.Year, b.Genre, b.Duration, b.Rating FROM `movie_available_date` a
     JOIN movie b
     ON a.movieID = b.movieID
-    WHERE a.availableDate >= '2021-07-12' 
+    WHERE a.availableDate >= '$dateToday' 
     ORDER BY a.movieID DESC LIMIT 1,1");
 
     $lastData  = mysqli_query($conn, "SELECT DISTINCT a.availableDate, b.movieID, b.Title, b.banner, b.Year, b.Genre, b.Duration, b.Rating FROM `movie_available_date` a
     JOIN movie b
     ON a.movieID = b.movieID
-    WHERE a.availableDate >= '2021-07-12' 
+    WHERE a.availableDate >= '$dateToday' 
     ORDER BY a.movieID ASC LIMIT 1");
 
     $lastImage = $lastData-> fetch_assoc();

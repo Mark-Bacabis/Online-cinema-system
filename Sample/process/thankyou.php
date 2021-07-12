@@ -29,11 +29,14 @@
 
     $dateBooked = $bookResult['dateBooked'];
 
+    $cinemaID = $bookResult['cinemaID'];
+    $showID =  $bookResult['showID'];
+
     // GET DATE NAME
     $dateQuery = mysqli_query($conn, "SELECT DAYNAME('$dateBooked') AS Result");
     $dateName = mysqli_fetch_assoc($dateQuery);
     // FOR SEATS 
-    $seatQuery = mysqli_query($conn, "SELECT * FROM `seat_tbl` WHERE userID = 'user-001' AND movieID = 'movie-06' AND date = '2021-07-21' AND cinemaID = 'c2' AND showID = 'show-03'");
+    $seatQuery = mysqli_query($conn, "SELECT * FROM `seat_tbl` WHERE userID = '$userID' AND movieID = '$movieID' AND date = '$date' AND cinemaID = '$cinemaID' AND showID = '$showID'");
 
 
 
@@ -64,7 +67,7 @@
                         color: black;
                         line-height: 30px;">
                             <p style="margin:0; padding: 0;"> Transaction ID: '.$transactID.'</p>
-                            <h1 style="margin: 0;">'.$bookResult['Title'].' ('.$bookResult['Year'].')</h1>
+                            <h1 style="margin: 0; color: black;">'.$bookResult['Title'].' ('.$bookResult['Year'].')</h1>
                             <h2 style="margin: 0;">'.$bookResult['dateBooked'].', '.$dateName['Result'].'</h2>
                             <h4 style="margin: 0;"> Fairview Terraces, '.$bookResult['cinemaName'].'</h4>
                             <h4 style="margin: 0;">'.$bookResult['showName'].','.$bookResult['showStart'].' - '.$bookResult['showEnd'].' </h4>
