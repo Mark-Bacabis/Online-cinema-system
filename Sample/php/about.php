@@ -32,7 +32,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/privacy.css">
-    <title>Document</title>
+    <title> About Us | NXTFLIX Online Ticket Reservation </title>
 </head>
 
 <!-- IF USER LOGGED IN OR NOT -->
@@ -128,14 +128,13 @@
         </div>
 
     </div>
-        <!-- NAVIGATION LINK -->
+    <!-- NAVIGATION LINK -->
     <div class="nav-bar">
         <ul>
-            <li ><a href="../index.php"> Home </a></li>
+            <li><a href="../index.php"> Home </a></li>
             <li><a href="../php/allMovies.php?query=Allmovies"> Movies </a></li>
-            <li><a href="../php/contact.php"> Contact us</a></li>
-            <li style="border-bottom: 2px solid #bbbbbb;"><a href="../php/About.php"> About </a></li>
-            <li><a href="../php/privacy.php"> Privacy Policy </a></li>
+            <li><a href="../php/contact.php"> Contact </a></li>
+            <li style="border-bottom: 2px solid #bbbbbb;"><a href="../php/about.php"> About us </a></li>
         </ul>
     </div>
     

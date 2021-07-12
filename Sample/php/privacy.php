@@ -133,14 +133,13 @@
 
     </div>
 
-     <!-- NAVIGATION LINK -->
-    <div class="nav-bar">
+      <!-- NAVIGATION LINK -->
+      <div class="nav-bar">
         <ul>
-            <li ><a href="../index.php"> Home </a></li>
-            <li><a href="../php/allMovies.php?query=Allmovies"> Movies </a></li>
-            <li><a href="../php/contact.php"> Contact us</a></li>
-            <li><a href="../php/About.php"> About </a></li>
-            <li style="border-bottom: 2px solid #bbbbbb;"><a href="../php/privacy.php"> Privacy Policy </a></li>
+            <li><a href="../index.php"> Home </a></li>
+            <li><a href="../php/allMovies.php"> Movies </a></li>
+            <li><a href="../php/contact.php"> Contact </a></li>
+            <li><a href="../php/service.php"> About us </a></li>
         </ul>
     </div>
     

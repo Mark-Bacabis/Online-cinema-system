@@ -7,21 +7,21 @@
     position: relative;
     width: 100%;
     height: 95vh;
-    background: #16171d;
+    background: #dddee6;
 }
 .thankyou-box{
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: linear-gradient(45deg,  rgba(220, 20, 60, 0.432), #161616);
+    background: #f9faff;
     text-align: center;
     width: 700px;
     padding: 1% 5%;
     line-height: 35px;
-    border-radius: 50px;
-    color: rgb(202, 202, 202);
-    box-shadow: 0 10px 10px 0 rgba(0,0,0,.3);
+    border-radius: 4px;
+    color: black;
+  
 }
 
 .thankyou-box span{
@@ -36,7 +36,7 @@
     border: 1px solid;
 }
 .thankyou-box h1, h2, h3{
-    color: white;
+    color: black;
 }
 .thankyou-box h1{
     font-size: 48px;
@@ -44,14 +44,14 @@
 
 .back-to-home{
     position: absolute;
-    bottom: 1%;
+    bottom: 4%;
     left: 50%;
     transform: translateX(-50%);
 }
 
 .back-to-home a{
     text-decoration: none;
-    color: rgba(201, 16, 53, 0.829);
+    color: crimson;
     
 }
 .back-to-home a:hover{
@@ -72,9 +72,9 @@
 
 footer{
     font-size: 14px;
-    color: #757575;
+    color: #a5a5a5;
     height: 5vh;
-    background:#141414;
+    background:#1e1e24;
     display: flex;
     align-items: center;
     padding: 0 10%;

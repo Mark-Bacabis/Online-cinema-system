@@ -179,10 +179,10 @@
 
                 </div> 
 
-                
+                <!--
                 <div class="sales-report">
                         
-                </div>
+                </div>-->
             </div>
 
 
@@ -287,7 +287,7 @@
             </div>
 
             <!-- CINEMA -->
-            <div class="cinema-container">
+            <div class="cinema-container" id="cinema-container">
                  <h1 class="title"> Cinema </h1>
 
                  <table class="add-cinema-tbl" id="add-cinema-tbl" border="0">
@@ -413,7 +413,6 @@
 
 
 <!-- SCRIPT -->
-    
 <script src="../javascript/dashboard.js"></script>
 
 

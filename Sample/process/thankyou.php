@@ -2,37 +2,90 @@
     session_start();
     include "../connection.php";
     //SESSION
-     $transactID = $_SESSION['transactID'];
-     $movieID = $_SESSION['movieID'];
-     $userID = $_SESSION['userID'];
-     $seats = $_SESSION['seats'];
-     $date = $_SESSION['date'];
-     $cinema = $_SESSION['cinema'];
-     $showTime = $_SESSION['showTime'];
-     $priceTicket = $_SESSION['priceTicket'];
-     $numberOfSeats = $_SESSION['numberOfseats'];
-     $seatNumbers = $_SESSION['seatNumbers'];
-     $totalPrice = $_SESSION['totalPrice'];
-
-    // FOR USER
-    $userQuery = mysqli_query($conn, "SELECT * FROM user WHERE userID = '$userID'");
-    $userResult = mysqli_fetch_assoc($userQuery);
-
-    // FOR MOVIE
-    $movieQuery = mysqli_query($conn, "SELECT * FROM movie WHERE movieID = '$movieID'");
-    $movieResult = mysqli_fetch_assoc($movieQuery);
+    $transactID = $_SESSION['transactID'];
+    $movieID = $_SESSION['movieID'];
+    $userID = $_SESSION['userID'];
+    $seats = $_SESSION['seats'];
+    $date = $_SESSION['date'];
+    $cinema = $_SESSION['cinema'];
+    $showTime = $_SESSION['showTime'];
+    $priceTicket = $_SESSION['priceTicket'];
+    $numberOfSeats = $_SESSION['numberOfseats'];
+    $seatNumbers = $_SESSION['seatNumbers'];
+    $totalPrice = $_SESSION['totalPrice'];
 
     //FOR TRANSACTION 
-    $bookQuery = mysqli_query($conn, "SELECT * FROM `booking_tbl` WHERE bookID = '$transactID '
-    ");
-    $bookID = mysqli_fetch_assoc($bookQuery);
+    $bookQuery = mysqli_query($conn, "SELECT * FROM `booking_tbl` b
+    JOIN movie m
+    ON b.movieID = m.movieID
+    JOIN cinema c
+    ON b.cinemaID = c.cinemaID
+    JOIN show_time s
+    ON b.showID = s.showID
+    JOIN user u
+    ON b.userID = u.userID
+    WHERE b.bookID = '$transactID'");
+    $bookResult = mysqli_fetch_assoc($bookQuery);
+
+    $dateBooked = $bookResult['dateBooked'];
+
+    // GET DATE NAME
+    $dateQuery = mysqli_query($conn, "SELECT DAYNAME('$dateBooked') AS Result");
+    $dateName = mysqli_fetch_assoc($dateQuery);
+    // FOR SEATS 
+    $seatQuery = mysqli_query($conn, "SELECT * FROM `seat_tbl` WHERE userID = 'user-001' AND movieID = 'movie-06' AND date = '2021-07-21' AND cinemaID = 'c2' AND showID = 'show-03'");
 
 
 
-    $email_to = $userResult['email'];
+    $email_to = $bookResult['email'];
     $subject = "NXTFLIX";
-    $message = "THANK YOU FOR CHOOSING US. This is your transaction ID ".$transactID;
-    $header = "From: nxtflix.online.system.demo@gmail.com";
+    
+    $header = "MIME-Version: nxtflix.online.system.demo@gmail.com\r\n";
+    $header .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+     
+    $message = "<h2 style='color: black;'>Hello! ".$bookResult['firstName']." ".$bookResult['lastName'].", the image attached below is/are your ticket for movie reservation </h2>";
+
+    $message .= '<html> <body style="display: block;">';
+    while ($selSeats = mysqli_fetch_assoc($seatQuery)){
+    $message .='  <div class="tickets" style="margin: 5px 0;">
+                    <div class="ticket-container" style="
+                        font-family: poppins;
+                        width: 600px;
+                        height: 200px;
+                        background: rgb(37, 37, 37);
+                        display: flex;
+                        overflow: hidden;
+                        margin: 0;">
+
+                        <div class="info" style=" background: whitesmoke;
+                        margin: 0;
+                        padding: 2% 5%;
+                        width: 80%;
+                        color: black;
+                        line-height: 30px;">
+                            <p style="margin:0; padding: 0;"> Transaction ID: '.$transactID.'</p>
+                            <h1 style="margin: 0;">'.$bookResult['Title'].' ('.$bookResult['Year'].')</h1>
+                            <h2 style="margin: 0;">'.$bookResult['dateBooked'].', '.$dateName['Result'].'</h2>
+                            <h4 style="margin: 0;"> Fairview Terraces, '.$bookResult['cinemaName'].'</h4>
+                            <h4 style="margin: 0;">'.$bookResult['showName'].','.$bookResult['showStart'].' - '.$bookResult['showEnd'].' </h4>
+                            
+                            <p style="font-size: 14px; margin: 0; padding: 0;"> 2021-07-12, 5:05PM </p>
+                        </div>
+                        <div class="seat-number" style="
+                            position: relative; 
+                            width: 10%;
+                            padding: 4% 9%;">
+                            
+                            <h1 style="font-size: 60px; 
+                            color: white;"> 
+                            '.$selSeats['seatNumber'].'
+                            </h1>
+
+                        </div>
+                    </div>
+        </div>';
+        }
+        $message .= '</body> </html> ';
 
     mail($email_to, $subject, $message, $header);
 
@@ -55,14 +108,14 @@
             <p> For choosing <span> NXTFLIX </span></p>
             <hr>
             <p> Your booking for </p>
-            <h2>  <?=$movieResult['Title']?> (<?=$movieResult['Year']?>) </h2>
+            <h2>  <?=$bookResult['Title']?> (<?=$bookResult['Year']?>) </h2>
             <p> on </p>
             <h3> <?=$date?> (<?=$showTime?>)</h3>
             <p> at </p>
             <h3> Fairview Terraces, <?=$cinema?></h3>
             <p> are confirm! </p>
-            <p> Your transaction ID is <font color="white"><b> <?=$bookID['bookID']?> </font> </b></p>
-            <p>  We also send your transaction details to this email <font color="crimson"> <?=$userResult['email']?> </font></p>
+            <p> Your transaction ID is <font color="crimson"><b> <?=$transactID?> </font> </b></p>
+            <p>  We also send your transaction details to this email <font color="crimson"> <?=$bookResult['email']?> </font></p>
         </div>
 
         <div class="back-to-home">

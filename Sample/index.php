@@ -9,19 +9,31 @@
     $userID = $_SESSION['userID'];
 
 // SELECT ALL MOVIES
-    $select = "SELECT * FROM movie 
-    ORDER BY movie.movieID DESC";
+    $select = "SELECT DISTINCT a.availableDate, b.movieID, b.Title, b.banner, b.Year, b.Genre, b.Duration, b.Rating FROM `movie_available_date` a
+    JOIN movie b
+    ON a.movieID = b.movieID
+    WHERE a.availableDate >= '2021-07-12' 
+    ORDER BY a.movieID DESC";
 
     $query = mysqli_query($conn, $select);
 
-    $firstData  = mysqli_query($conn, "SELECT * FROM movie 
-    ORDER BY movie.movieID DESC LIMIT 1");
+    $firstData  = mysqli_query($conn, "SELECT DISTINCT a.availableDate, b.movieID, b.Title, b.banner, b.Year, b.Genre, b.Duration, b.Rating FROM `movie_available_date` a
+    JOIN movie b
+    ON a.movieID = b.movieID
+    WHERE a.availableDate >= '2021-07-12' 
+    ORDER BY a.movieID DESC LIMIT 1");
 
-    $secondData  = mysqli_query($conn, "SELECT * FROM movie 
-    ORDER BY movie.movieID DESC LIMIT 1,1");
+    $secondData  = mysqli_query($conn, "SELECT DISTINCT a.availableDate, b.movieID, b.Title, b.banner, b.Year, b.Genre, b.Duration, b.Rating FROM `movie_available_date` a
+    JOIN movie b
+    ON a.movieID = b.movieID
+    WHERE a.availableDate >= '2021-07-12' 
+    ORDER BY a.movieID DESC LIMIT 1,1");
 
-    $lastData  = mysqli_query($conn, "SELECT * FROM movie 
-    ORDER BY movie.movieID ASC LIMIT 1");
+    $lastData  = mysqli_query($conn, "SELECT DISTINCT a.availableDate, b.movieID, b.Title, b.banner, b.Year, b.Genre, b.Duration, b.Rating FROM `movie_available_date` a
+    JOIN movie b
+    ON a.movieID = b.movieID
+    WHERE a.availableDate >= '2021-07-12' 
+    ORDER BY a.movieID ASC LIMIT 1");
 
     $lastImage = $lastData-> fetch_assoc();
     $firstImage = $firstData-> fetch_assoc();
@@ -29,11 +41,30 @@
 // SELECT ALL MOVIES
 
 // SELECT SHOWING THIS WEEK MOVIE
-    $showThisWeek = mysqli_query($conn, "SELECT * FROM movie ORDER BY movieID DESC LIMIT 5");
+    $monday = strtotime("last monday");
+    $monday = date('w', $monday)==date('w') ? $monday+7*86400 : $monday;
+
+    $sunday = strtotime(date("Y-m-d",$monday)." +6 days");
+
+    $this_week_start = date("Y-m-d",$monday);
+    $this_week_end = date("Y-m-d",$sunday);
+    $showThisWeek = mysqli_query($conn, "SELECT DISTINCT a.availableDate, b.movieID, b.Title, b.Poster FROM `movie_available_date` a
+    JOIN movie b
+    ON a.movieID = b.movieID
+    WHERE availableDate
+    BETWEEN '$this_week_start' AND '$this_week_end' ORDER BY a.availableDate DESC LIMIT 5");
 // SELECT SHOWING THIS WEEK MOVIE
 
+
 // SELECT MOVIE THAT SHOWS NEXT WEEK
-    $premiere = mysqli_query($conn, "SELECT * FROM movie");
+    $next_week = strtotime('next week');
+    $date_monday = date("Y-m-d", strtotime('monday', $next_week));
+    $date_sunday = date("Y-m-d", strtotime('sunday', $next_week));              
+    $premiere = mysqli_query($conn, "SELECT DISTINCT a.availableDate, b.movieID, b.Title, b.Poster FROM `movie_available_date` a
+    JOIN movie b
+    ON a.movieID = b.movieID
+    WHERE availableDate
+    BETWEEN '$date_monday' AND '$date_sunday' ORDER BY a.availableDate DESC LIMIT 5");
 // SELECT MOVIE THAT SHOWS NEXT WEEK
 
 ?>
@@ -151,7 +182,7 @@
             <li style="border-bottom: 2px solid #bbbbbb;"><a href="./index.php"> Home </a></li>
             <li><a href="./php/allMovies.php?query=Allmovies"> Movies </a></li>
             <li><a href="./php/contact.php"> Contact </a></li>
-            <li><a href="./php/service.php"> About us </a></li>
+            <li><a href="./php/about.php"> About us </a></li>
         </ul>
     </div>
     
@@ -184,7 +215,7 @@
                             </div>
                         </div>
 
-                        <img src="./img/<?=$lastImage['Banner']?>" alt="">
+                        <img src="./img/<?=$lastImage['banner']?>" alt="">
                 </li>
                 
             <?php   
@@ -203,7 +234,7 @@
                         </div>
                     
                        
-                        <img src="./img/<?= $row['Banner']?>" alt="">
+                        <img src="./img/<?= $row['banner']?>" alt="">
                     </li>  
             <?php
                 }
@@ -219,7 +250,7 @@
                         </div>
                     
                        
-                        <img src="./img/<?= $firstImage['Banner']?>" alt="">
+                        <img src="./img/<?= $firstImage['banner']?>" alt="">
                 </li>
 
                 <li class="imgHolder"> 
@@ -233,7 +264,7 @@
                         </div>
                     
                        
-                        <img src="./img/<?=$secondImage['Banner']?>" alt="">
+                        <img src="./img/<?=$secondImage['banner']?>" alt="">
                 </li>
 
             </ul>
@@ -341,10 +372,9 @@
         <div class="About">
             <h3> About </h3>
             <ul>
-                <li><a href="#"> About us</a></li>
+                <li><a href="./php/about.php"> About us</a></li>
                 <li><a href="./php/terms-and-condition.php"> Terms and agreement </a></li>
                 <li><a href="./php/privacy.php"> Privacy Policy </a></li>
-                <li><a href="#"> Services </a></li>
             </ul>
         </div>
         <div class="movies">
@@ -359,10 +389,10 @@
         <div class="links">
                  <h3> Links </h3>
             <ul>
-                <li><a href="#"> Home </a></li>
-                <li><a href="#"> Movies</a></li>
-                <li><a href="#"> Contact Us </a></li>
-                <li><a href="#"> Services </a></li>
+                <li><a href="./index.php"> Home </a></li>
+                <li><a href="./php/allMovies.php"> Movies</a></li>
+                <li><a href="./php/about.php"> About us</a></li>
+                <li><a href="./php/contact.php"> Contact Us </a></li>
             </ul>
         </div>
         <div class="contactUs">

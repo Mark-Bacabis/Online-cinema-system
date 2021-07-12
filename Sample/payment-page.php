@@ -110,26 +110,26 @@
         <div class="button-container">
             <form action="" method="POST">
                 <h1> Credit Card Information </h1>
-                <table border="0">
+                <table border="0" style="margin-bottom: 10px;">
                     <tr>
                         <td>
-                            <label> Card on Name </label> <br>
+                            <label> Name on card </label> <br>
                             <input type="text" name="" id="">
                         </td>
                         <td>
                             <label> Expiration </label> <br>
-                            <input type="text" name="" id="">
-                            <input type="text" name="" id="">
+                            <input type="text" name="" id="" placeholder="YYYY">
+                            <input type="text" name="" id="" placeholder="MM">
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <label> Card Number </label> <br>
-                            <input type="text" name="" id="">
+                            <input type="text" name="" id="" >
                         </td>
                         <td>
                             <label> CV Code </label> <br>
-                            <input type="text" name="" id="">
+                            <input type="text" name="" placeholder="****">
                         </td>
                     </tr>
                 </table>
@@ -141,22 +141,6 @@
             </form>
             <p> OR </p>
             <div id="paypal-button-container"></div>
-
-            <div class="user-details">
-                <table border="0">
-                    <th colspan="2"> USER CONTACT </th>
-                    <tr>
-                        <td>
-                            Email <br>
-                            <input type="email" name="user-email" value="<?=$userResult['email']?>">
-                        </td>
-                        <td>
-                            Contact
-                            <input type="email" name="user-number" value="<?=$userResult['contactNumber']?>">
-                        </td>
-                    </tr>
-                </table>
-            </div>
         </div>
         
         <table class="table" border="0">
@@ -206,14 +190,11 @@
                <td> <p> Subtotal </p> </td>
                <td class="rigth"> <?=$totalPrice?> </td>
             </tr>
-            <tr>
-               <td> <p> Tax Rate(14%) </p> </td>
-               <td class="rigth"> 14.00 </td>
-            </tr>
+           
             <tr class="payable-amount">
                <td> <h3> Payable Amount </h3> </td>
                <td class="rigth">
-                    <input type="text" name="totalPrice" id="totalPrice" value="<?=$totalPrice + 14.00?>.00">
+                    <input type="text" name="totalPrice" id="totalPrice" value="<?=$totalPrice?>">
                     <div class="overlay">
 
                     </div>
@@ -233,10 +214,9 @@
 
         <div class="nav-links">
             <ul>
-                <li> <a href="#"> Home </a> </li>
-                <li> <a href="#"> Terms and agreements </a> </li>
-                <li> <a href="#"> Services </a> </li>
-                <li> <a href="#"> Privacy policy</a> </li>
+                <li> <a href="./index.php"> Home </a> </li>
+                <li> <a href="./php/terms-and-condition.php"> Terms and agreements </a> </li>
+                <li> <a href="./php/privacy.php"> Privacy policy</a> </li>
             </ul>
         </div>
     </footer>

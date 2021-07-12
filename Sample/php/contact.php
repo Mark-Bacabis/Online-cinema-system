@@ -31,7 +31,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/privacy.css">
-    <title> Privacy Policy | NXTFLIX Online Ticket Reservation </title>
+    <title> Contact Us | NXTFLIX Online Ticket Reservation </title>
       <!-- aJax jQuery -->
       <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
@@ -133,16 +133,17 @@
 
     </div>
 
-     <!-- NAVIGATION LINK -->
+   
+    <!-- NAVIGATION LINK -->
     <div class="nav-bar">
         <ul>
             <li><a href="../index.php"> Home </a></li>
             <li><a href="../php/allMovies.php?query=Allmovies"> Movies </a></li>
-            <li style="border-bottom: 2px solid #bbbbbb;"><a href="../php/contact.php"> Contact us</a></li>
-            <li><a href="../php/About.php"> About </a></li>
-            <li><a href="../php/privacy.php"> Privacy Policy </a></li>
+            <li style="border-bottom: 2px solid #bbbbbb;"><a href="../php/contact.php"> Contact </a></li>
+            <li><a href="../php/about.php"> About us </a></li>
         </ul>
     </div>
+    
     
     <!-- USER MODAL -->
         <div class="user-login-container">
