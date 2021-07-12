@@ -1,0 +1,73 @@
+*{
+    box-sizing: border-box;
+}
+.booking-history-container{
+
+    height: max-content;
+    padding: 2% 10%;
+}
+.booking-history-container .title-history{
+    background: rgb(26, 28, 31);
+    padding: 0 2%;
+}
+.booking-history-container .title-history h1{
+    font-size: 38px;
+}
+
+.booking-history-container .booking-box{
+    width: 100%;
+    height: 170px;
+    background: rgb(40, 43, 48);
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+    padding: 1% 1.1%;
+}
+
+.booking-history-container .booking-box .movie-poster-history{
+    background: chocolate;
+    height: 100%;
+    width: 75%;
+}
+.booking-history-container .booking-box .movie-poster-history img{
+    width: 100%;
+    height: 100%;
+}
+
+.booking-history-container .booking-box .movie-info-history{
+    height: 100%;
+    width: 90%;
+    padding: 7px 10px;
+    color: rgb(148, 148, 148);
+    line-height: 31px;
+}
+.booking-history-container .booking-box .movie-info-history h2{
+    color: rgb(189, 189, 189);
+}
+.booking-history-container .booking-box .movie-info-history .desc-transact{
+    line-height: 24px;
+    margin-top: 5px;
+    font-size: 14px;
+    overflow: hidden;
+    height: 76px;
+    scroll-behavior: smooth;
+}
+
+
+
+.booking-history-container .booking-box .transact-info{
+    width: 80%;
+    height: 100%;
+    line-height: 28px;
+    padding: 7px 0;
+    color: rgb(163, 163, 163);
+}
+
+.booking-history-container .booking-box .price{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    height: 100%;
+    padding-right: 10px;
+}

@@ -143,18 +143,17 @@
         </ul>
     </div>
     
-    <!-- USER MODAL -->
-        <div class="user-login-container">
-            <ul>
-                <li> <button class="chngePW"> My Account </button> </li>
-                <li> <button class="chngePW"> Change password </button> </li>
-                <li> <button class="bkHistory"> Booking history </button> </li>
-                <form action="../process/account-process.php?next=<?=$url?>" method="post">
+        <!-- USER MODAL -->
+            <div class="user-login-container">
+                <ul>
+                    <form action="../process/account-process.php" method="post">
+                    <li> <button class="chngePW" name="my-account"> My Account </button> </li>
+                    <li> <button class="bkHistory" name="booking-history"> Booking history </button> </li>
                     <li> <button class="logout" type="submit" name="logout"> Logout  </button> </li>
-                </form>
-            </ul>
-        </div>
-    <!-- USER MODAL -->
+                    </form>
+                </ul>
+            </div>
+        <!-- USER MODAL -->
 </header>
 
 

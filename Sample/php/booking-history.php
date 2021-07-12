@@ -6,8 +6,23 @@
 
     $userID = $_SESSION['userID'];
 
-    $userQuery = mysqli_query($conn, "SELECT * FROM user");
-    $user = mysqli_fetch_assoc($userQuery);
+    if(empty($userID)){
+        header("location:../index.php");
+    }
+
+    $selectAll = mysqli_query($conn, "SELECT * FROM `booking_tbl` a
+    JOIN movie b
+    ON a.movieID = b.movieID
+    JOIN user u
+    ON a.userID = u.userID
+    JOIN show_time s
+    ON a.showID = s.showID
+    JOIN cinema c
+    ON a.cinemaID = c.cinemaID
+    WHERE a.userID = '$userID'
+    ORDER BY a.dateBooked DESC");
+
+
     
 ?>
 <!DOCTYPE html>
@@ -17,8 +32,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/style.css">
-    <link rel="stylesheet" href="../styles/my-account.css">
-    <title> My Account | NXTFLIX Online cinema reservation </title>
+    <link rel="stylesheet" href="../styles/booking-history.css">
+    <title> My Booking History | NXTFLIX Online cinema reservation </title>
      <!-- aJax jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
@@ -129,8 +144,8 @@
             </ul>
         </div>
         
-         <!-- USER MODAL -->
-         <div class="user-login-container">
+        <!-- USER MODAL -->
+            <div class="user-login-container">
                 <ul>
                     <form action="../process/account-process.php" method="post">
                     <li> <button class="chngePW" name="my-account"> My Account </button> </li>
@@ -141,66 +156,37 @@
             </div>
         <!-- USER MODAL -->
     </header>   
-   
 
-    <div class="my-account-container">
-       
-        <div class="account-profile">
-            <img src="../user-profile/<?=$user['profile']?>" alt="My Profile">
-        <form action="../process/account-profile-process.php" method="POST">
-            <input type="file" name="image" id="image">
-            <button type="submit" class="change-profile"> Change Profile </button>
-        </form>
-        </div>
-        
-        <div class="my-account-info">
-            <table border="0" class="info">
-                <tr>
-                    <td> Fullname </td>
-                    <td> <?=$user['firstName']?> <?=$user['lastName']?> </td>
-                </tr>
-                <tr>
-                    <td> Gender </td>
-                    <td> <?=$user['Gender']?> </td>
-                </tr>
-                <tr>
-                    <td> Birthday </td>
-                    <td> <?=$user['Birthday']?> </td>
-                </tr>
-                <tr>
-                    <td> Contact number </td>
-                    <td> <?=$user['contactNumber']?> </td>
-                </tr>
-                <tr>
-                    <td> Email </td>
-                    <td> <?=$user['email']?> </td>
-                </tr>
-            </table>
-
-            <table border="0" class="change-pass">
-            <form action="../process/account-profile-process.php" method="POST">
-                <tr>
-                    <td> Old Password </td>
-                    <td> <input type="password"></td>
-                </tr>
-                <tr>
-                    <td> New Password </td>
-                    <td> <input type="password"></td>
-                </tr>
-                <tr>
-                    <td> Re-type Password </td>
-                    <td> <input type="password"></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td> <input type="submit" value="Change Password"></td>
-                </tr>
-            </form>
-            </table>
-        
+    
+    <div class="booking-history-container">
+        <div class="title-history">
+            <h1> Booking History </h1>
         </div>
 
+        <?php while($transaction = mysqli_fetch_assoc($selectAll)){ ?>
+        <div class="booking-box">
+            <div class="movie-poster-history">
+                <img src="../img/<?=$transaction['Banner']?>" alt="">
+            </div>
 
+            <div class="movie-info-history">
+                <h2> <?=$transaction['Title']?> (<?=$transaction['Year']?>)</h2>
+                <p> <?=$transaction['Duration']?> &bullet; <?=$transaction['Genre']?> &bullet; <?=$transaction['Rating']?></p>
+                <p class="desc-transact"> <?=$transaction['Description']?> </p>
+            </div>
+            
+            <div class="transact-info">
+                <p>  ID <?=$transaction['bookID']?> </p>
+                <h3> <?=$transaction['dateBooked']?>, Monday </h3>
+                <h4> Fairview Terraces, <?=$transaction['cinemaName']?> </h4>
+                <h4> <?=$transaction['showName']?>: <?=$transaction['showStart']?> - <?=$transaction['showEnd']?> </h4>
+                <h3> <?=$transaction['seatNumber']?> </h3>
+            </div>
+            <div class="price">
+                <h1> <?=$transaction['totalPrice']?></h1>
+            </div>
+        </div>
+        <?php } ?>
     </div>
 
 
@@ -254,9 +240,6 @@
         </div>
     </footer>
 <!-- FOOTER -->
-
-
-
 
 
 <!-- SCRIPTS --> 

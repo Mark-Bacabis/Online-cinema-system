@@ -68,4 +68,14 @@
         header("Location:".$nextLink);
     }
 
+    // WHEN MY ACCOUNT BUTTON IS CLICKED
+    if(isset($_POST['my-account'])){
+        header("location:../php/my-account.php");
+    }
+
+    // WHEN HISTORY BOOKING BUTTON IS CLICKED
+    if(isset($_POST['booking-history'])){
+        header("location:../php/booking-history.php");
+    }
+
 ?>

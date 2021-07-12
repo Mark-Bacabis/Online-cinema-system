@@ -105,7 +105,7 @@
     <?php if(empty($transactID) && empty($movieID) && empty($userID)){
         header("Location:../index.php");
     } else { ?>
-    <meta http-equiv="refresh" content="5; url=http://localhost/online-cinema-system/sample/index.php">
+    <meta http-equiv="refresh" content="5; url=http://localhost/online-cinema-system/sample/php/booking-history.php">
     <?php } ?>
 
     <link rel="stylesheet" href="../styles/thankyou.css">

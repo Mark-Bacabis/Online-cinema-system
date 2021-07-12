@@ -1,6 +1,8 @@
 
 
-
+*{
+    box-sizing: border-box;
+}
 .movie-info-container{
     position: relative;
     width: 100%;
