@@ -67,7 +67,7 @@
                     echo mysqli_error($conn);
                 }
                 else{
-                    echo "Inserted Successfuly";
+                    header("location:dashboard.php?query=Inserted");
                 }
             }
             else{

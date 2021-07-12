@@ -8,6 +8,46 @@
 
     $userQuery = mysqli_query($conn, "SELECT * FROM user");
     $user = mysqli_fetch_assoc($userQuery);
+
+    if(empty($userID)){
+        header("location:../index.php");
+    }
+
+
+    // UPDATE PASSWORD
+    if(isset($_POST['change-pass-btn'])){
+        $oldPass = $_POST['old-password'];
+        $newPass = $_POST['new-password'];
+        $retypePass = $_POST['retype-password'];
+
+        if(empty($oldPass) || empty($newPass) || empty($retypePass)){
+            header("location:my-account.php?Input some data");
+        }
+        else{
+            $selUser = mysqli_query($conn, "SELECT * FROM user WHERE userID = '$userID'");
+            $user = mysqli_fetch_assoc($selUser);
+            if($oldPass === $user['password']){
+
+                // UPDATE PASSWORD
+                $passUpdateQuery = "UPDATE `user` SET `password` = '$newPass' WHERE userID = '$userID' ";
+
+                if($newPass === $retypePass){
+                    $UpdatePass = mysqli_query($conn,$passUpdateQuery);
+                    header("location:my-account.php?Password Changed");
+
+                }
+                else{
+                    header("location:my-account.php?Your new password and retype password not match!");
+                }
+            }
+            else{
+                header("location:my-account.php?It's not your password");
+            }
+        }
+       
+    }
+
+
     
 ?>
 <!DOCTYPE html>
@@ -122,17 +162,17 @@
         <!-- NAVIGATION LINK -->
         <div class="nav-bar">
             <ul>
-                <li style="border-bottom: 2px solid #bbbbbb;"><a href="../index.php"> Home </a></li>
+                <li><a href="../index.php"> Home </a></li>
                 <li><a href="../php/allMovies.php?query=Allmovies"> Movies </a></li>
                 <li><a href="../php/contact.php"> Contact </a></li>
                 <li><a href="../php/about.php"> About us </a></li>
             </ul>
         </div>
         
-         <!-- USER MODAL -->
-         <div class="user-login-container">
+          <!-- USER MODAL -->
+          <div class="user-login-container">
                 <ul>
-                    <form action="../process/account-process.php" method="post">
+                    <form action="../process/account-process.php?next=<?=$url?>" method="post">
                     <li> <button class="chngePW" name="my-account"> My Account </button> </li>
                     <li> <button class="bkHistory" name="booking-history"> Booking history </button> </li>
                     <li> <button class="logout" type="submit" name="logout"> Logout  </button> </li>
@@ -146,54 +186,77 @@
     <div class="my-account-container">
        
         <div class="account-profile">
-            <img src="../user-profile/<?=$user['profile']?>" alt="My Profile">
-        <form action="../process/account-profile-process.php" method="POST">
+            <div class="profile">
+                <img src="../user-profile/<?=$user['profile']?>" alt="My Profile">
+            </div>
+            
+        <form action="../process/account-profile-process.php" method="POST" enctype="multipart/form-data">
             <input type="file" name="image" id="image">
-            <button type="submit" class="change-profile"> Change Profile </button>
+            <button type="submit" name="profile-btn" class="change-profile"> Change Profile </button>
         </form>
         </div>
         
         <div class="my-account-info">
+        
             <table border="0" class="info">
+            <form action="../process/account-profile-process.php" method="POST">
                 <tr>
                     <td> Fullname </td>
-                    <td> <?=$user['firstName']?> <?=$user['lastName']?> </td>
+                    <td class="fullname">
+                        <input type="text" name="fname" value="<?=$user['firstName']?>"> 
+                        <input type="text" name="lname" value="<?=$user['lastName']?>">
+                    </td>
                 </tr>
                 <tr>
                     <td> Gender </td>
-                    <td> <?=$user['Gender']?> </td>
+                    <td> 
+                        <input type="text" name="gender" value="<?=$user['Gender']?>">
+                    </td>
                 </tr>
                 <tr>
                     <td> Birthday </td>
-                    <td> <?=$user['Birthday']?> </td>
+                    <td> 
+                        <input type="date" name="bday" value="<?=$user['Birthday']?>">
+                    </td>
                 </tr>
                 <tr>
                     <td> Contact number </td>
-                    <td> <?=$user['contactNumber']?> </td>
+                    <td> 
+                        <input type="text" name="cnum" value="<?=$user['contactNumber']?>"> 
+                    </td>
                 </tr>
                 <tr>
                     <td> Email </td>
-                    <td> <?=$user['email']?> </td>
+                    <td>  
+                        <input type="email" name="email" value="<?=$user['email']?>"> 
+                    </td>
                 </tr>
+                <tr>
+                    <td colspan="2" class="button" style="border-bottom:none;"> 
+                        <button type="submit" id="change" name="update"> Update</button>
+                    </td>
+                </tr>
+                </form>
             </table>
+        
 
             <table border="0" class="change-pass">
-            <form action="../process/account-profile-process.php" method="POST">
+            <form action="my-account.php" method="POST">
                 <tr>
                     <td> Old Password </td>
-                    <td> <input type="password"></td>
+                    <td> <input type="password" name="old-password"></td>
                 </tr>
                 <tr>
                     <td> New Password </td>
-                    <td> <input type="password"></td>
+                    <td> <input type="password" name="new-password"></td>
                 </tr>
                 <tr>
                     <td> Re-type Password </td>
-                    <td> <input type="password"></td>
+                    <td> <input type="password" name="retype-password"> </td>
                 </tr>
                 <tr>
                     <td></td>
-                    <td> <input type="submit" value="Change Password"></td>
+                    <td> <input type="submit" name="change-pass-btn" value="Change Password"></td>
                 </tr>
             </form>
             </table>
@@ -261,6 +324,7 @@
 
 <!-- SCRIPTS --> 
 <script src="./scripts/main.js"> </script>
+<script src="./scripts/my-account.js"></script>
 <!-- SCRIPTS --> 
 </body>
 </html>

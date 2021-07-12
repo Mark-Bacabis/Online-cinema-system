@@ -10,7 +10,7 @@
         header("location:../index.php");
     }
 
-    $selectAll = mysqli_query($conn, "SELECT * FROM `booking_tbl` a
+    $selectAll = mysqli_query($conn, "SELECT *, DAYNAME(a.dateBooked) AS dateName FROM `booking_tbl` a
     JOIN movie b
     ON a.movieID = b.movieID
     JOIN user u
@@ -20,7 +20,9 @@
     JOIN cinema c
     ON a.cinemaID = c.cinemaID
     WHERE a.userID = '$userID'
-    ORDER BY a.dateBooked DESC");
+    ORDER BY a.dateBooked ASC");
+
+   
 
 
     
@@ -137,17 +139,17 @@
         <!-- NAVIGATION LINK -->
         <div class="nav-bar">
             <ul>
-                <li style="border-bottom: 2px solid #bbbbbb;"><a href="../index.php"> Home </a></li>
+                <li><a href="../index.php"> Home </a></li>
                 <li><a href="../php/allMovies.php?query=Allmovies"> Movies </a></li>
                 <li><a href="../php/contact.php"> Contact </a></li>
                 <li><a href="../php/about.php"> About us </a></li>
             </ul>
         </div>
         
-        <!-- USER MODAL -->
-            <div class="user-login-container">
+     <!-- USER MODAL -->
+     <div class="user-login-container">
                 <ul>
-                    <form action="../process/account-process.php" method="post">
+                    <form action="../process/account-process.php?next=<?=$url?>" method="post">
                     <li> <button class="chngePW" name="my-account"> My Account </button> </li>
                     <li> <button class="bkHistory" name="booking-history"> Booking history </button> </li>
                     <li> <button class="logout" type="submit" name="logout"> Logout  </button> </li>
@@ -163,7 +165,7 @@
             <h1> Booking History </h1>
         </div>
 
-        <?php while($transaction = mysqli_fetch_assoc($selectAll)){ ?>
+        <?php while($transaction = mysqli_fetch_assoc($selectAll)) { ?>
         <div class="booking-box">
             <div class="movie-poster-history">
                 <img src="../img/<?=$transaction['Banner']?>" alt="">
@@ -177,13 +179,13 @@
             
             <div class="transact-info">
                 <p>  ID <?=$transaction['bookID']?> </p>
-                <h3> <?=$transaction['dateBooked']?>, Monday </h3>
+                <h3 style="color: crimson;"> <?=$transaction['dateBooked']?>, <?=$transaction['dateName']?> </h3>
                 <h4> Fairview Terraces, <?=$transaction['cinemaName']?> </h4>
                 <h4> <?=$transaction['showName']?>: <?=$transaction['showStart']?> - <?=$transaction['showEnd']?> </h4>
                 <h3> <?=$transaction['seatNumber']?> </h3>
             </div>
             <div class="price">
-                <h1> <?=$transaction['totalPrice']?></h1>
+               &#8369; <?=$transaction['totalPrice']?> 
             </div>
         </div>
         <?php } ?>

@@ -7,7 +7,7 @@
     
 
 
-    if(isset($_POST['logout'])){
+    if(isset($_POST['logout-btn'])){
         session_destroy();
         session_destroy();
         header("location:../admin.php");
@@ -79,7 +79,7 @@
                 <ul>
                     <li><a href="#"> My Account </a></li>
                     <form action="dashboard.php" method="POST">
-                    <li><button name="logout" class="logout"> Logout </button></li>
+                    <li><button name="logout-btn" class="logout"> Logout </button></li>
                     </form>
                 </ul>
            </div>

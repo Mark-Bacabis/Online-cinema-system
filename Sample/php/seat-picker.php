@@ -182,11 +182,10 @@
             <li><a href="../php/service.php"> About us </a></li>
         </ul>
     </div>
-    
-      <!-- USER MODAL -->
-            <div class="user-login-container">
+  <!-- USER MODAL -->
+  <div class="user-login-container">
                 <ul>
-                    <form action="../process/account-process.php" method="post">
+                    <form action="../process/account-process.php?next=<?=$url?>" method="post">
                     <li> <button class="chngePW" name="my-account"> My Account </button> </li>
                     <li> <button class="bkHistory" name="booking-history"> Booking history </button> </li>
                     <li> <button class="logout" type="submit" name="logout"> Logout  </button> </li>
