@@ -50,7 +50,6 @@
     
 </head>
 
-
 <body>
 
     <div class="admin-container">
@@ -70,7 +69,7 @@
                     <li><a class="customer"> Customers </a></li>
                     <li><a class="booking"> Bookings </a></li>
                     <li><a class="cinema"> Cinema </a></li>
-                    <li><a class="ticket"> Tickets </a></li>
+                 
                    
                 </ul>
            </div>
@@ -232,7 +231,7 @@
                             <td> <?=$movie['Director']?></td>
                             <td> <?=$movie['Price']?>  </td>
                             
-                            <td class="click edit"> <a href="?mid=<?=$movie['movieID']?>"> Edit </a> </td>
+                            <td class="click edit"> <a href="./edit-movie.php?mid=<?=$movie['movieID']?>"> Edit </a> </td>
                         </tr>
                     <?php } ?>
                 </table>

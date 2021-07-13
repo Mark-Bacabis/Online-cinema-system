@@ -40,6 +40,7 @@
     padding: 7px 10px;
     color: rgb(148, 148, 148);
     line-height: 31px;
+    overflow: hidden;
 }
 .booking-history-container .booking-box .movie-info-history h2{
     color: rgb(189, 189, 189);

@@ -1,0 +1,79 @@
+*{
+    padding:0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+}
+
+.movie-edit-container{
+    width: 100%;
+    height: 100vh;
+    padding: 5% 10%;
+}
+
+.movie-edit-container .title{
+    width: 100%;
+    height: max-content;
+    background: rgb(154, 161, 161);
+    text-align: center;
+} 
+
+.movie-edit-container .movie-container{
+    display: flex;
+    height: 100%;
+    margin-top: 20px;
+    padding: 2%;
+}
+
+.movie-edit-container .movie-container .poster{
+    width: 40%;
+    height: 100%;
+    padding: 0 2%;
+}
+.movie-edit-container .movie-container .poster img{
+    width: 100%;
+
+}
+
+.movie-edit-container .movie-container .info{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.movie-edit-container .movie-container .info table{
+    padding: 10px;
+    font-size: 16px;
+    color: black;
+    margin-bottom: 10px;
+    line-height: 29px;
+}
+
+.movie-edit-container .movie-container .info .movie-info{
+    border-bottom: 2px solid black;
+}
+
+.movie-edit-container .movie-container .info .movie-info tr td:first-child{
+    width: 20%;
+}
+
+
+.movie-edit-container .movie-container .info .movie-update tr td:first-child{
+    width: 20%;
+}
+
+.movie-edit-container .movie-container .info .movie-update tr td input{
+    width: 80%;
+    outline: none;
+    font-size: 16px;
+    padding: 5px 10px;
+}
+.movie-edit-container .movie-container .info .movie-update tr td button{
+    width: 100%;
+    background: seagreen;
+    color: white;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    font-size: 16px;
+    padding: 5px 10px;
+}
