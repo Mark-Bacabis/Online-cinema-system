@@ -68,7 +68,7 @@
                     <li><a class="movie"> Movies </a></li>
                     <li><a class="customer"> Customers </a></li>
                     <li><a class="booking"> Bookings </a></li>
-                    <li><a class="cinema"> Cinema </a></li>
+                    <!-- <li><a class="cinema"> Cinema </a></li> -->
                  
                    
                 </ul>
@@ -76,7 +76,7 @@
            <div class="settings">
                 <h3> Settings </h3>
                 <ul>
-                    <li><a href="#"> My Account </a></li>
+                    <!--<li><a href="#"> My Account </a></li>-->
                     <form action="dashboard.php" method="POST">
                     <li><button name="logout-btn" class="logout"> Logout </button></li>
                     </form>
