@@ -20,7 +20,7 @@
     JOIN cinema c
     ON a.cinemaID = c.cinemaID
     WHERE a.userID = '$userID'
-    ORDER BY a.dateBooked ASC");
+    ORDER BY a.dateBooked DESC");
 
    
 

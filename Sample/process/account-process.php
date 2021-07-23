@@ -14,27 +14,41 @@
         $userID = "user-00".($cnt + 1);
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
+        $bday = $_POST['bdate'];
+        $gender = $_POST['gender'];
         $contact = $_POST['contact-number'];
         $email = $_POST['email'];
         $password = $_POST['password'];
         $repass = $_POST['re-password'];
         $picture = "default.jpg";
 
-        if($password != $repass){
-            header("Location:".$url."&match=false");
-        }else{
-            $insertQry = mysqli_query($conn, "INSERT INTO `user`
-            (`userID`, `firstName`, `lastName`, `contactNumber`, `email`, `password`, `profile`) 
-            VALUES 
-            ('$userID','$firstname','$lastname','$contact','$email','$password','$picture')");
+        $sel = mysqli_query($conn, "SELECT * FROM user");
 
-            if(!$insertQry){
-                echo error_log($insertQry);
-            }else{
-                $_SESSION['userID'] = $userID;
-                header("Location:".$nextLink);
+        while($user = mysqli_fetch_assoc($sel)){
+            if($email == $user['email']){
+                echo "<script> alert('This $email is already taken') </script>";
+                header('Location: ../php/sign-up.php');
+            }
+            else{
+                if($password != $repass){
+                    header("Location:".$url."&match=false");
+                }else{
+                    $insertQry = mysqli_query($conn, "INSERT INTO `user`
+                    (`userID`, `firstName`, `lastName`,`Gender`,`Birthday`, `contactNumber`, `email`, `password`, `profile`) 
+                    VALUES 
+                    ('$userID','$firstname','$lastname','$gender','$bday','$contact','$email','$password','$picture')");
+        
+                    if(!$insertQry){
+                        echo error_log($insertQry);
+                    }else{
+                        $_SESSION['userID'] = $userID;
+                        header("Location:".$nextLink);
+                    }
+                }
             }
         }
+
+        
 
     }
 

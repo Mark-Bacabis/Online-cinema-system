@@ -52,7 +52,7 @@
     JOIN movie b
     ON a.movieID = b.movieID
     WHERE availableDate
-    BETWEEN '$this_week_start' AND '$this_week_end' ORDER BY a.availableDate DESC LIMIT 5");
+    BETWEEN '$this_week_start' AND '$this_week_end' AND availableDate >= '$dateToday' ORDER BY a.availableDate DESC LIMIT 5");
 // SELECT SHOWING THIS WEEK MOVIE
 
 
@@ -287,7 +287,7 @@
     <div class="movie-container showing-week-container" id="movie-this-week">
         <div class="container-title">
             <h1> SHOWING THIS WEEK </h1>
-            <a href="#" class="see-all">
+            <a href="./php/allMovies.php?query=thisWeek" class="see-all">
                 See all
             </a>
         </div>
@@ -316,7 +316,7 @@
         <div class="container-title">
             <h1> PREMIERE </h1>
             <p> Showing Next Week </p>
-            <a href="#" class="see-all">
+            <a href="./php/allMovies.php?query=nextWeek" class="see-all">
                 See all
             </a>
         </div>

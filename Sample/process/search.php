@@ -1,10 +1,16 @@
 <?php
     include "../connection.php";
+    
 
     if(isset($_POST['suggest'])){
+        $dateToday = DATE('Y-m-d');
+
         $name = $_POST['suggest'];
 
-        $searchQuery = mysqli_query($conn, "SELECT * FROM movie WHERE Title LIKE '%$name%' OR Genre LIKE '%$name%' LIMIT 5");
+        $searchQuery = mysqli_query($conn, "SELECT DISTINCT a.movieID, a.Title, a.Year, a.Poster, a.Genre, a.Rating, b.availableDate FROM movie a
+        JOIN movie_available_date b
+        ON a.movieID = b.movieID 
+        WHERE Title LIKE '%$name%' AND b.availableDate >= '$dateToday' LIMIT 5");
        
 
         if(!empty($name)){
@@ -22,6 +28,6 @@
                 </a>';
             }
         }
-        
     }
+
 ?>

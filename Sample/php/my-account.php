@@ -5,7 +5,7 @@
     include "../process/url.php";
 
     $userID = $_SESSION['userID'];
-
+   
     $userQuery = mysqli_query($conn, "SELECT * FROM user");
     $user = mysqli_fetch_assoc($userQuery);
 
@@ -21,30 +21,27 @@
         $retypePass = $_POST['retype-password'];
 
         if(empty($oldPass) || empty($newPass) || empty($retypePass)){
-            header("location:my-account.php?Input some data");
+            echo "<script> alert('Input some data'); </script>";
         }
         else{
             $selUser = mysqli_query($conn, "SELECT * FROM user WHERE userID = '$userID'");
             $user = mysqli_fetch_assoc($selUser);
             if($oldPass === $user['password']){
-
                 // UPDATE PASSWORD
                 $passUpdateQuery = "UPDATE `user` SET `password` = '$newPass' WHERE userID = '$userID' ";
-
+                
                 if($newPass === $retypePass){
                     $UpdatePass = mysqli_query($conn,$passUpdateQuery);
-                    header("location:my-account.php?Password Changed");
-
-                }
-                else{
-                    header("location:my-account.php?Your new password and retype password not match!");
+                    echo "<script> alert('Password Changed'); </script>";
+                } 
+                else {
+                    echo "<script> alert('Your new password and retype password did not match!'); </script>";
                 }
             }
-            else{
-                header("location:my-account.php?It's not your password");
+            else {
+                echo "<script> alert('Enter your correct old password first!'); </script>";
             }
         }
-       
     }
 
 
@@ -98,7 +95,46 @@
                 $("#search-box").html(data);
             });
         });
+
+        $("#re-type").keyup(function(){
+            var rPass = $("#re-type").val();
+            var nPass = $("#new-pass").val();
+
+            $.post("./search.php",{
+                rPassword: rPass,
+                nPassword: nPass,
+
+            }, function(data, status){
+                $("#err-handling-pass").html(data);
+            });
+        });
+
+        $("#new-pass").keyup(function(){
+            var oldPass = $("#old-pass").val();
+            var newPass = $("#new-pass").val();
+
+            $.post("./search.php",{
+                oldPassword: oldPass,
+                newPassword: newPass,
+
+            }, function(data, status){
+                $("#err-handling-old").html(data);
+            });
+        });
+
+        $("#old-pass").keyup(function(){
+            var oPass = $("#old-pass").val();
+
+            $.post("./search.php",{
+                oPassword: oPass
+
+            }, function(data, status){
+                $("#err-handling-old-pass").html(data);
+            });
+        });
     });
+
+
 </script>
 
 
@@ -210,25 +246,25 @@
                 <tr>
                     <td> Gender </td>
                     <td> 
-                        <input type="text" name="gender" value="<?=$user['Gender']?>">
+                        <input type="text" name="gender" value="<?=$user['Gender']?>" disabled>
                     </td>
                 </tr>
                 <tr>
                     <td> Birthday </td>
                     <td> 
-                        <input type="date" name="bday" value="<?=$user['Birthday']?>">
+                        <input type="date" name="bday" value="<?=$user['Birthday']?>" disabled>
                     </td>
                 </tr>
                 <tr>
                     <td> Contact number </td>
                     <td> 
-                        <input type="text" name="cnum" value="<?=$user['contactNumber']?>"> 
+                        <input type="text" name="cnum" value="<?=$user['contactNumber']?>" minlength="11" maxlength="11"> 
                     </td>
                 </tr>
                 <tr>
                     <td> Email </td>
                     <td>  
-                        <input type="email" name="email" value="<?=$user['email']?>"> 
+                        <input type="email" name="email" value="<?=$user['email']?>" disabled> 
                     </td>
                 </tr>
                 <tr>
@@ -244,19 +280,23 @@
             <form action="my-account.php" method="POST">
                 <tr>
                     <td> Old Password </td>
-                    <td> <input type="password" name="old-password"></td>
+                    <td> <input type="password" id="old-pass" name="old-password"></td>
+                    <p id="err-handling-old-pass"> </p> 
+                
                 </tr>
                 <tr>
                     <td> New Password </td>
-                    <td> <input type="password" name="new-password"></td>
+                    <td> <input type="password" id="new-pass" name="new-password" minlength="8" maxlength="16"></td>
+                    <p id="err-handling-old"> </p> 
                 </tr>
                 <tr>
                     <td> Re-type Password </td>
-                    <td> <input type="password" name="retype-password"> </td>
+                    <td> <input type="password" id="re-type" name="retype-password" minlength="8" maxlength="16"> </td>
+                    <p id="err-handling-pass"> </p> 
                 </tr>
                 <tr>
                     <td></td>
-                    <td> <input type="submit" name="change-pass-btn" value="Change Password"></td>
+                    <td> <input type="submit" id="change-pass" name="change-pass-btn" value="Change Password"></td>
                 </tr>
             </form>
             </table>
@@ -319,12 +359,30 @@
 <!-- FOOTER -->
 
 
-
+<style>
+#err-handling-pass{
+    position: absolute;
+    top: 83%;
+    left: 71%;
+    z-index: 10;
+}
+#err-handling-old{
+    position: absolute;
+    top: 76%;
+    left: 71%;
+    z-index: 10;
+}
+#err-handling-old-pass{
+    position: absolute;
+    top: 69%;
+    left: 71%;
+    z-index: 10;
+}
+</style>
 
 
 <!-- SCRIPTS --> 
 <script src="./scripts/main.js"> </script>
-<script src="./scripts/my-account.js"></script>
 <!-- SCRIPTS --> 
 </body>
 </html>

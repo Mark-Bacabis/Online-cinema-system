@@ -10,10 +10,8 @@
     if(isset($_POST['update'])){
         $fname = $_POST['fname'];
         $lname = $_POST['lname'];
-        $gender = $_POST['gender'];
-        $bday = $_POST['bday'];
         $cnum = $_POST['cnum'];
-        $email = $_POST['email'];
+
         
 
         echo $userID;
@@ -22,10 +20,7 @@
         SET 
         `firstName` = '$fname',
         `lastName` = '$lname',
-        `Gender` = '$gender',
-        `Birthday` = '$bday',
-        `contactNumber` = '$cnum',
-        `email`= '$email' WHERE userID = '$userID' ";
+        `contactNumber` = '$cnum' WHERE userID = '$userID' ";
 
         $update = mysqli_query($conn, $updateQuery);
 

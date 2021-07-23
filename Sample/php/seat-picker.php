@@ -120,16 +120,16 @@
 <body>
     
 <header>
-    <div class="nav-search-area">
+    <div class="nav-search-area" style="height: 100%">
         <div class="logo">
-            <a href="../index.php"> NXTFLIX <br>
+            <a style="cursor:default"> NXTFLIX <br>
                 <span class="subtitle">
                     Online Ticket Reservation
                 </span>
             </a>   
         </div>
 
-         <!-- SEARCH BAR -->
+         <!-- SEARCH BAR 
             <div class="search">
                 <input type="search" id="search" placeholder="Search movie">
                 <img src="../icon/search.png" class="search-icon">
@@ -138,18 +138,18 @@
 
                 </div>
             </div>
-        <!-- SEARCH BAR -->
+         SEARCH BAR -->
         
 
         <div class="nav-bar-container">
 
-        <!-- IF USER DIDN'T LOGIN -->  
+        <!-- IF USER DIDN'T LOGIN 
             <div class="login" id="login">
                 <a href="../php/sign-up.php?next=<?=$url?>"> Register </a> 
                 <p> | </p> 
                 <a href="../php/login.php?next=<?=$url?>"> Login </a>
             </div>
-        <!-- IF USER DIDN'T LOGIN -->          
+        IF USER DIDN'T LOGIN -->          
         
         <!-- IF USER IS LOGIN -->        
             <div class="isLogin">
@@ -160,11 +160,11 @@
                 ?>
              
 
-                <div class="profile"  id="isLogin">
+                <div class="profile"  id="isLogin" style="cursor:default">
                     <p> <?=$user['firstName']?> <?=$user['lastName']?></p>
                     <img src="../user-profile/<?=$user['profile']?>" alt="">
 
-                    <img src="../icon/down-filled-triangular-arrow.png" alt="" class="drop-down-icon">
+                    <!-- <img src="../icon/down-filled-triangular-arrow.png" alt="" class="drop-down-icon"> -->
                 </div>
        
             </div>
@@ -173,7 +173,7 @@
 
     </div>
 
-    <!-- NAVIGATION LINK -->
+    <!-- NAVIGATION LINK
     <div class="nav-bar">
         <ul>
             <li><a href="../index.php"> Home </a></li>
@@ -182,7 +182,7 @@
             <li><a href="../php/service.php"> About us </a></li>
         </ul>
     </div>
-  <!-- USER MODAL -->
+ USER MODAL -->
   <div class="user-login-container">
                 <ul>
                     <form action="../process/account-process.php?next=<?=$url?>" method="post">
@@ -244,68 +244,68 @@
                     <tr>
                         <th> A </th>
                         <td> <input class="seat" type="checkbox" name="seat[]" id="A1" value="A1"></td>
-                        <td> <input class="seat" type="checkbox" name="seat[]" id="A2" value="A2"></td>
+                        <td> <input class="seat" type="checkbox" name="seat[]" id="A2" value="A2" disabled style="background: gray; cursor:default"></td>
                         <td> <input class="seat" type="checkbox" name="seat[]" id="A3" value="A3"></td>
-                        <td> <input class="seat" type="checkbox" name="seat[]" id="A4" value="A4"></td>
+                        <td> <input class="seat" type="checkbox" name="seat[]" id="A4" value="A4"  disabled style="background: gray; cursor:default"></td>
                         <td> <input class="seat" type="checkbox" name="seat[]" id="A5" value="A5"></td>
-                        <td> <input class="seat" type="checkbox" name="seat[]" id="A6" value="A6"></td>
+                        <td> <input class="seat" type="checkbox" name="seat[]" id="A6" value="A6"  disabled style="background: gray; cursor:default"></td>
                         <td> <input class="seat" type="checkbox" name="seat[]" id="A7" value="A7"></td>
-                        <td> <input class="seat" type="checkbox" name="seat[]" id="A8" value="A8"></td>
+                        <td> <input class="seat" type="checkbox" name="seat[]" id="A8" value="A8"  disabled style="background: gray; cursor:default"></td>
 
                     </tr>
                     <tr>
                         <th> B </th>
-                        <td> <input class="seat" type="checkbox" name="seat[]" id="B1" value="B1"></td>
+                        <td> <input class="seat" type="checkbox" name="seat[]" id="B1" value="B1" disabled style="background: gray; cursor:default"></td>
                         <td> <input class="seat" type="checkbox" name="seat[]" id="B2" value="B2"></td>
-                        <td> <input class="seat" type="checkbox" name="seat[]" id="B3" value="B3"></td>
+                        <td> <input class="seat" type="checkbox" name="seat[]" id="B3" value="B3" disabled style="background: gray; cursor:default"></td>
                         <td> <input class="seat" type="checkbox" name="seat[]" id="B4" value="B4"></td>
-                        <td> <input class="seat" type="checkbox" name="seat[]" id="B5" value="B5"></td>
+                        <td> <input class="seat" type="checkbox" name="seat[]" id="B5" value="B5" disabled style="background: gray; cursor:default"></td>
                         <td> <input class="seat" type="checkbox" name="seat[]" id="B6" value="B6"></td>
-                        <td> <input class="seat" type="checkbox" name="seat[]" id="B7" value="B7"></td>
+                        <td> <input class="seat" type="checkbox" name="seat[]" id="B7" value="B7" disabled style="background: gray; cursor:default"></td>
                         <td> <input class="seat" type="checkbox" name="seat[]" id="B8" value="B8"></td>
                     </tr>
                     <tr>
                         <th> C </th>
                         <td> <input class="seat" type="checkbox" name="seat[]" id="C1" value="C1"></td>
-                        <td> <input class="seat" type="checkbox" name="seat[]" id="C2" value="C2"></td>
+                        <td> <input class="seat" type="checkbox" name="seat[]" id="C2" value="C2" disabled style="background: gray; cursor:default"></td>
                         <td> <input class="seat" type="checkbox" name="seat[]" id="C3" value="C3"></td>
-                        <td> <input class="seat" type="checkbox" name="seat[]" id="C4" value="C4"></td>
+                        <td> <input class="seat" type="checkbox" name="seat[]" id="C4" value="C4" disabled style="background: gray; cursor:default"></td>
                         <td> <input class="seat" type="checkbox" name="seat[]" id="C5" value="C5"></td>
-                        <td> <input class="seat" type="checkbox" name="seat[]" id="C6" value="C6"></td>
+                        <td> <input class="seat" type="checkbox" name="seat[]" id="C6" value="C6" disabled style="background: gray; cursor:default"></td>
                         <td> <input class="seat" type="checkbox" name="seat[]" id="C7" value="C7"></td>
-                        <td> <input class="seat" type="checkbox" name="seat[]" id="C8" value="C8"></td>
+                        <td> <input class="seat" type="checkbox" name="seat[]" id="C8" value="C8" disabled style="background: gray; cursor:default"></td>
                     </tr>
                     <tr>
                         <th> D </th>
-                        <td> <input class="seat" type="checkbox" name="seat[]" id="D1" value="D1"></td>
+                        <td> <input class="seat" type="checkbox" name="seat[]" id="D1" value="D1" disabled style="background: gray; cursor:default"></td>
                         <td> <input class="seat" type="checkbox" name="seat[]" id="D2" value="D2"></td>
-                        <td> <input class="seat" type="checkbox" name="seat[]" id="D3" value="D3"></td>
+                        <td> <input class="seat" type="checkbox" name="seat[]" id="D3" value="D3" disabled style="background: gray; cursor:default"></td>
                         <td> <input class="seat" type="checkbox" name="seat[]" id="D4" value="D4"></td>
-                        <td> <input class="seat" type="checkbox" name="seat[]" id="D5" value="D5"></td>
+                        <td> <input class="seat" type="checkbox" name="seat[]" id="D5" value="D5" disabled style="background: gray; cursor:default"></td>
                         <td> <input class="seat" type="checkbox" name="seat[]" id="D6" value="D6"></td>
-                        <td> <input class="seat" type="checkbox" name="seat[]" id="D7" value="D7"></td>
+                        <td> <input class="seat" type="checkbox" name="seat[]" id="D7" value="D7" disabled style="background: gray; cursor:default"></td>
                         <td> <input class="seat" type="checkbox" name="seat[]" id="D8" value="D8"></td>
                     </tr>
                     <tr>
                         <th> E </th>
                         <td> <input class="seat" type="checkbox" name="seat[]" id="E1" value="E1"></td>
-                        <td> <input class="seat" type="checkbox" name="seat[]" id="E2" value="E2"></td>
+                        <td> <input class="seat" type="checkbox" name="seat[]" id="E2" value="E2" disabled style="background: gray; cursor:default"></td>
                         <td> <input class="seat" type="checkbox" name="seat[]" id="E3" value="E3"></td>
-                        <td> <input class="seat" type="checkbox" name="seat[]" id="E4" value="E4"></td>
+                        <td> <input class="seat" type="checkbox" name="seat[]" id="E4" value="E4" disabled style="background: gray; cursor:default"></td>
                         <td> <input class="seat" type="checkbox" name="seat[]" id="E5" value="E5"></td>
-                        <td> <input class="seat" type="checkbox" name="seat[]" id="E6" value="E6"></td>
+                        <td> <input class="seat" type="checkbox" name="seat[]" id="E6" value="E6" disabled style="background: gray; cursor:default"></td>
                         <td> <input class="seat" type="checkbox" name="seat[]" id="E7" value="E7"></td>
-                        <td> <input class="seat" type="checkbox" name="seat[]" id="E8" value="E8"></td>
+                        <td> <input class="seat" type="checkbox" name="seat[]" id="E8" value="E8" disabled style="background: gray; cursor:default"></td>
                     </tr>
                     <tr>
                         <th> F </th>
-                        <td> <input class="seat" type="checkbox" name="seat[]" id="F1" value="F1"></td>
+                        <td> <input class="seat" type="checkbox" name="seat[]" id="F1" value="F1" disabled style="background: gray; cursor:default"></td>
                         <td> <input class="seat" type="checkbox" name="seat[]" id="F2" value="F2"></td>
-                        <td> <input class="seat" type="checkbox" name="seat[]" id="F3" value="F3"></td>
+                        <td> <input class="seat" type="checkbox" name="seat[]" id="F3" value="F3" disabled style="background: gray; cursor:default"></td>
                         <td> <input class="seat" type="checkbox" name="seat[]" id="F4" value="F4"></td>
-                        <td> <input class="seat" type="checkbox" name="seat[]" id="F5" value="F5"></td>
+                        <td> <input class="seat" type="checkbox" name="seat[]" id="F5" value="F5" disabled style="background: gray; cursor:default"></td>
                         <td> <input class="seat" type="checkbox" name="seat[]" id="F6" value="F6"></td>
-                        <td> <input class="seat" type="checkbox" name="seat[]" id="F7" value="F7"></td>
+                        <td> <input class="seat" type="checkbox" name="seat[]" id="F7" value="F7" disabled style="background: gray; cursor:default"></td>
                         <td> <input class="seat" type="checkbox" name="seat[]" id="F8" value="F8"></td>
                     </tr>
                 </table> 
@@ -338,15 +338,15 @@
                     </tr>
                     <tr>
                         <td> Number of seat/s </td>
-                        <td> <input type="text" name="nthOfSeats" id="seatCount"></td>
+                        <td> <input type="text" name="nthOfSeats" id="seatCount" required></td>
                     </tr>
                     <tr>
                         <td> Seat number </td>
-                        <td> <input type="text" name="seatNo" id="selectedSeats"></td>
+                        <td> <input type="text" name="seatNo" id="selectedSeats" required></td>
                     </tr>
                     <tr>
                         <td> Total Price </td>
-                        <td> <input type="text" name="totalPrice" id="totalPriceOfseats"></td>
+                        <td> <input type="text" name="totalPrice" id="totalPriceOfseats" required></td>
                     </tr>
                 </table>
                 <div class="overlay">

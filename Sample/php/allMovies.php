@@ -5,19 +5,15 @@
     include "../connection.php";
     include "../process/url.php";
 
+    $dateToday = date('Y-m-d');
     
-    $movieTitle = $_GET['movie'];  
+    //$movieTitle = $_GET['movie'];  
     $userID = $_SESSION['userID'];
 
     $query = $_GET['query'];
 
-    echo $movieTitle;
-
-    $selectMovies = mysqli_query($conn, "SELECT DISTINCT a.availableDate, b.movieID, b.Title, b.Poster, b.Year, b.Genre, b.Duration, b.Rating FROM `movie_available_date` a
-    JOIN movie b
-    ON a.movieID = b.movieID
-    WHERE a.availableDate >= '$dateToday' 
-    ORDER BY a.movieID DESC");
+   
+  
 
 ?>
 <!DOCTYPE html>
@@ -184,7 +180,46 @@
 
 <!-- ALL MOVIES -->
     <div class="all-movies-container">
-        <h1 id="title"> All movies </h1>
+        <?php
+             if($query == 'Allmovies'){
+                $selectMovies = mysqli_query($conn, "SELECT DISTINCT a.availableDate, b.movieID, b.Title, b.Poster, b.Year, b.Genre, b.Duration, b.Rating FROM `movie_available_date` a
+                JOIN movie b
+                ON a.movieID = b.movieID
+                WHERE a.availableDate >= '$dateToday'
+                ORDER BY a.movieID DESC");
+                echo "<h1> All Movies </h1>";
+            }
+            else if($query == 'thisWeek'){
+                $monday = strtotime("last monday");
+                $monday = date('w', $monday)==date('w') ? $monday+7*86400 : $monday;
+        
+                $sunday = strtotime(date("Y-m-d",$monday)." +6 days");
+        
+                $this_week_start = date("Y-m-d",$monday);
+                $this_week_end = date("Y-m-d",$sunday);
+        
+                $selectMovies = mysqli_query($conn, "SELECT DISTINCT a.availableDate, b.movieID, b.Title, b.Poster, b.Year, b.Genre, b.Duration, b.Rating FROM `movie_available_date` a
+                JOIN movie b
+                ON a.movieID = b.movieID
+                WHERE a.availableDate BETWEEN '$this_week_start' AND '$this_week_end' AND availableDate >= '$dateToday' ORDER BY a.availableDate");
+
+                echo "<h1> Movies this week </h1>";
+            }
+            else if($query == 'nextWeek'){
+
+                $next_week = strtotime('next week');
+                $date_monday = date("Y-m-d", strtotime('monday', $next_week));
+                $date_sunday = date("Y-m-d", strtotime('sunday', $next_week)); 
+                
+                $selectMovies = mysqli_query($conn, "SELECT DISTINCT a.availableDate, b.movieID, b.Title, b.Poster, b.Year, b.Genre, b.Duration, b.Rating FROM `movie_available_date` a
+                JOIN movie b
+                ON a.movieID = b.movieID
+                WHERE a.availableDate BETWEEN '$date_monday' AND '$date_sunday' AND availableDate >= '$dateToday' ORDER BY a.availableDate");
+                echo "<h1> Movies next week </h1>";
+            }
+        
+        
+        ?>
 
         <ul>
             <?php while ($movieRows = mysqli_fetch_assoc($selectMovies)){ ?>

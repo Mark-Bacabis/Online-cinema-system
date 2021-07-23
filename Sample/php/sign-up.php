@@ -26,9 +26,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/login-signup.css">
+    <!-- aJax jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <title> Sign up now! | NXTFLIX Philippines </title>
 </head>
-
 <style>
     .not-match{
         color: red;
@@ -49,6 +50,24 @@
             }
         </style>
     <?php } ?>
+
+
+<!-- AJAX -->
+<script>
+    $(document).ready(function(){
+        $('#email').keyup(function(){
+            var email = $('#email').val();
+            
+            $.post("./search.php", {
+                pressEm:email
+            }, function(data, status){
+                $("#err-handling").html(data);
+            });
+        });
+    });
+</script>
+
+
 <body>
     <header>
         <div class="logo">
@@ -67,19 +86,27 @@
         <div class="bg-img">
             
         </div>
-        <form action="../process/account-process.php" method="POST">
+        <form action="../process/account-process.php" method="POST" class="sign-up-form">
             <div class="title-form-sign-up">
                 Sign Up
             </div>
             <div class="input-container">
-                <input type="text" name="firstname" placeholder="First name"> <br>
-                <input type="text" name="lastname" placeholder="Lastname">  <br>
-                <input type="text" name="contact-number" maxlength="11" minlength="11" placeholder="Contact number">  <br>
-                <input type="gmail" name="email" placeholder="john.done@gmail.com"> 
+                <input type="text" name="firstname" placeholder="First name" required> <br>
+                <input type="text" name="lastname" placeholder="Lastname" required>  <br>
+                <div class="gen-day">
+                    <select name="gender" id="gender" aria-placeholder="Gender" required> 
+                        <option value="Male"> Male </option>
+                        <option value="Female"> Female </option>
+                        <option value="Others"> Others </option>
+                    </select>
+                    <input type="date" name="bdate" id="bdate" required>
+                </div>
+                <input type="text" name="contact-number" maxlength="11" minlength="11" placeholder="Contact number" required>  <br>
+                <input type="gmail" id="email" name="email" placeholder="john.done@gmail.com" required> 
+                <div id="err-handling">   </div>
+                <input type="password" name="password" placeholder="Password 8-16 characters only" maxlength="16" minlength="8" required>  
                 <br>
-                <input type="password" name="password" placeholder="Password 8-16 characters only" maxlength="16" minlength="8"> 
-                <br>
-                <input type="password" name="re-password" placeholder="Re-type your password" maxlength="16" minlength="8"> 
+                <input type="password" name="re-password" placeholder="Re-type your password" maxlength="16" minlength="8" required> 
                 <br>
                 
                 <p class="not-match"> Password not match </p>

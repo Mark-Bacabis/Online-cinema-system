@@ -1,6 +1,6 @@
 
 <?php
-   error_reporting(0);
+    error_reporting(0);
     session_start();
     include "../connection.php";
     include "../process/url.php";
@@ -20,7 +20,10 @@
     $_SESSION['movieID'] = $movieID;
 
 
-    $movieByGenre = mysqli_query($conn, "SELECT * FROM movie WHERE movieID != '$movieID'  AND Genre LIKE '%' || (SELECT LEFT(Genre, 6) as similarGenre FROM movie WHERE movieID = '$movieID') || '%' LIMIT 4");
+    $movieByGenre = mysqli_query($conn, "SELECT DISTINCT a.movieID, a.Title, a.Poster, b.availableDate FROM movie a 
+    JOIN movie_available_date b
+    ON a.movieID = b.movieID 
+    WHERE a.movieID != '$movieID' AND b.availableDate >= '2021-07-18' AND a.Genre LIKE '%' || (SELECT LEFT(Genre, 6) as similarGenre FROM movie WHERE movieID = '$movieID') || '%' LIMIT 4");
     
         
 ?>

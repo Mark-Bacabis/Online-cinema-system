@@ -12,7 +12,6 @@
         $director = $_POST['director'];
         $cast = $_POST['cast'];
         $price = $_POST['price'];
-
         $date = $_POST['date'];
         $cinema = $_POST['cinema'];
 

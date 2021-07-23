@@ -1,9 +1,18 @@
 <?php
+    error_reporting(0);
     session_start();
     include "../connection.php";
     //$movieID = $_GET['mid']; // Hello
 
     $adminID = $_SESSION['ID'];
+
+    $query = $_GET['query'];
+
+    
+    if($query == 'Update Successful'){
+        echo "<script> alert('Movie Update Successfuly'); </script>";
+    }
+
     
 
 
@@ -101,7 +110,7 @@
                 
 
                 <div class="admin-logo">
-                    <p> Welcome Admin <?=$admin['fullname']?>! </p>
+                    <p> Welcome Admin! </p>
                     <div class="admin-profile">
                         <img src="./admin-profile/admin.png" alt="">
                     </div>
@@ -304,7 +313,7 @@
                 </table>
             </div>
 
-            <!-- CINEMA -->
+            <!-- CINEMA
             <div class="cinema-container" id="cinema-container">
                  <h1 class="title"> Cinema </h1>
 
@@ -344,9 +353,9 @@
                         </tr>
                     <?php } ?>
                 </table>
-            </div>
+            </div> -->
         </div>
-    </div>
+    
                     
     <!-- ADDING MOVIE CONTAINER -->
     <div class="adding-movie-container">
@@ -427,6 +436,7 @@
         </form>
          
         </div>
+    </div>
     </div>
 
 
