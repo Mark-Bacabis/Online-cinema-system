@@ -15,7 +15,7 @@
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
         $bday = $_POST['bdate'];
-        $gender = $_POST['gender'];
+        //$gender = $_POST['gender'];
         $contact = $_POST['contact-number'];
         $email = $_POST['email'];
         $password = $_POST['password'];
