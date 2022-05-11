@@ -203,6 +203,7 @@
 
 <!-- ALL MOVIES -->
     <div class="slider-container" id="slider-container">
+        <?php  if(mysqli_num_rows($query) > 0) { ?>
             <ul class="slide-holder">
                 <li class="imgHolder" id="lastImage"> 
                         <div class="overlay">
@@ -218,6 +219,7 @@
                 </li>
                 
             <?php   
+               
                 while($row = $query-> fetch_assoc()){
             ?>
                     <li class="imgHolder">
@@ -235,9 +237,8 @@
                        
                         <img src="./img/<?= $row['banner']?>" alt="">
                     </li>  
-            <?php
-                }
-            ?>
+            <?php } ?>
+           
                 <li class="imgHolder" > 
                         <div class="overlay">
                             <div class="movie-text">
@@ -265,15 +266,16 @@
                        
                         <img src="./img/<?=$secondImage['banner']?>" alt="">
                 </li>
-
             </ul>
-        <button id="prevBtn"> 
-            <img src="./icon/previous.png" alt=""> 
-        </button>
-        <button id="nxtBtn">
-            <img src="./icon/next.png" alt="">
-        </button>
-
+            <button id="prevBtn"> 
+                <img src="./icon/previous.png" alt=""> 
+            </button>
+            <button id="nxtBtn">
+                <img src="./icon/next.png" alt="">
+            </button>
+        <?php  } else {  ?> 
+            <h1> No Movies yet...</h1>
+        <?php } ?>
     </div>
 <!-- ALL MOVIES -->
 
@@ -293,7 +295,7 @@
         </div>
         <ul>
             <?php
-                while($weeklyShow = $showThisWeek-> fetch_assoc()){
+                while($weeklyShow = $showThisWeek -> fetch_assoc()){
             ?>
             <li>
                 <div class="movie-poster-box">

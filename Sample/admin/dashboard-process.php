@@ -54,7 +54,7 @@
                 // INSERT INTO DATABASE //
                 $insertQuery = "INSERT INTO `movie`
                 (`movieID`, `Title`, `Genre`, `Year`, `Duration`, `Rating`, `Description`,`Director`,`Cast`, `Poster`, `Banner`, `Trailer`, `Price`) VALUES 
-                ('$movieID', '$title', '$genre', '$year', '$duration', '$rating', '$desc', '$director', '$cast', '$new_poster_name', '$new_banner_name', '$trailer', '$price')";
+                ('$movieID', '$title', '$genre', '$year', '$duration', '$rating', '".$desc."', '$director', '$cast', '$new_poster_name', '$new_banner_name', '$trailer', '$price')";
 
                 foreach($cinema as $availableCinema){
                     $cinemaInsert = mysqli_query($conn, "INSERT INTO `movie_available_date`(`movieID`, `availableDate`, `cinemaID`) VALUES ('$movieID','$date','$availableCinema')");
