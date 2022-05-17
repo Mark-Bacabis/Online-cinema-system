@@ -228,7 +228,7 @@
         <ul>
             <li><a href="../index.php"> Home </a></li>
             <li><a href="../php/allMovies.php?query=Allmovies"> Movies </a></li>
-            <li><a href="../php/service.php"> About </a></li>
+            <li><a href="../php/about.php"> About </a></li>
         </ul>
     </div>
     
