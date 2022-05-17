@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 .all-movies-container{
+    min-height: 85vh;
     height: max-content;
     padding: 2% 10%;
     padding-bottom: 5%;

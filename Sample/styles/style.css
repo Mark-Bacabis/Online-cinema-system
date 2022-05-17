@@ -5,10 +5,168 @@
   box-sizing: border-box;
 }
 body{
-  background: #151516;
+  background: #141414;
   padding-top: 15vh;
   color: white;
 }
+
+
+
+/* LIGHT MODE */
+body.light{
+  background-color: #e4e4e4;
+  color: #000;
+}
+
+body.light header .nav-search-area{
+  background: #ffffff;
+}
+
+body.light header .nav-search-area .search input{
+  border: 1px solid #111;
+  color: #111;
+}
+
+body.light header .nav-search-area .search .search-icon{
+  filter: brightness(0) invert(0) opacity(.8);
+}
+
+body.light header .nav-search-area .nav-bar-container .login{
+  color: #111;
+}
+
+body.light header .nav-search-area .nav-bar-container .login a{
+  color: #111;
+}
+
+body.light header .nav-search-area .nav-bar-container .isLogin{
+  color: #111;
+}
+
+body.light header .nav-search-area .nav-bar-container .isLogin .profile img{
+  border: 2px solid rgba(0, 0, 0, 0.5);
+}
+
+
+body.light header .nav-search-area .nav-bar-container .isLogin .profile img.drop-down-icon{
+  filter: invert(0) opacity(.6);
+}
+
+
+/* SUGGESTION LIGHT */
+body.light  header .nav-search-area .search .search-suggestion{
+  background: #e4e4e4;
+}
+
+body.light  header .nav-search-area .search .search-suggestion a{
+  color: rgb(0, 0, 0);
+}
+
+body.light  header .nav-search-area .search .search-suggestion a:hover{
+  background:  #c9c9c9;
+}
+
+body.light  header .nav-search-area .search .search-suggestion a .title p{
+  color: rgb(0, 0, 0);
+}
+
+
+/* NAV BAR */
+
+body.light header .nav-bar{
+  background: #b1b1b1;
+} 
+
+body.light header .nav-bar ul li a{
+  color: rgb(0, 0, 0);
+}
+
+
+
+
+/* USER LOGIN CONTAINER */
+body.light header .user-login-container{
+  background: #ffffff;
+  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.548);
+}
+
+body.light header .user-login-container ul li button{
+  color: rgb(0, 0, 0);
+  
+}
+header .user-login-container ul li:hover{
+  background: rgb(220, 20, 60);
+}
+
+
+
+/* BUTTON NEXT LIGHT */
+
+body.light #prevBtn img{
+  width: 70px;
+  height: 70px;
+  filter: brightness(0) invert(0);
+}
+body.light #nxtBtn img{
+  width: 70px;
+  height: 70px;
+  filter: brightness(0) invert(0);
+}
+
+
+/* SHOWING THIS WEEK LIGHT */
+
+body.light .bg-blur .bottom-gradient{
+  background: linear-gradient(180deg, #e1e1ec28, #e1e1ec91, #e1e1ec);
+}
+
+
+
+/* PREMIERE LIGHT */
+
+body.light .premiere-container{
+  background: #ffffff;
+} 
+
+body.light .no-movie{
+  color: rgba(88, 88, 88, 0.39)
+}
+
+
+/* COMING SOON LIGHT */
+
+body.light .coming-soon-container .container-title{
+  color: #333333;
+}
+
+body.light .coming-soon-container .movie-poster-box .movie-title p{
+  color: #333333;
+}
+
+
+
+
+/* FEEDBACKS */
+body.light .feedback-container{
+  background-color: #d4d4d4;
+  color: rgb(49, 49, 49);
+}
+
+
+
+/* FOOTER */
+body.light .footer-container{
+  background: #292a2c;
+}
+
+
+
+
+
+
+
+
+
 
 
 /* HEADER */
@@ -100,6 +258,7 @@ header .nav-search-area .search .search-suggestion a{
   margin: 5px 0;
   line-height: 20px;
 }
+
 header .nav-search-area .search .search-suggestion a:hover{
   background:  #555555;
   transition: ease-in-out .3s;
@@ -177,12 +336,15 @@ header .nav-search-area .nav-bar-container .isLogin .profile{
   cursor: pointer;
   display: flex;
   align-items: center;
+ 
 }
+
 header .nav-search-area .nav-bar-container .isLogin .profile img{
   width: 35px;
   height: 35px;
   border-radius: 50%;
   margin: 0 10px;
+  border: 2px solid #fff;
 }
 
 header .nav-search-area .nav-bar-container .isLogin .profile img.drop-down-icon{
@@ -227,13 +389,18 @@ header .nav-bar ul li a{
   width: 100%;
   height: 100%;
   padding: 0 15px;
-  
+  position: relative;
 }
+
 header .nav-bar ul li:hover{
   border-bottom: 2px solid crimson;
 }
 header .nav-bar ul li a:hover{
   color: crimson;
+}
+
+.nav-bar .selected{
+  border-bottom: 2px solid crimson;
 }
 
 
@@ -253,6 +420,7 @@ header .login-container{
   color: white;
   display: none;
 }
+
 .login-container table{
   width: 80%;
   position: absolute;
@@ -383,8 +551,6 @@ header .user-login-container ul li button{
 header .user-login-container ul li:hover{
   background: rgba(220, 20, 60, 0.514);
 }
-
-
 
 
 .scrolling{
@@ -563,6 +729,8 @@ header .user-login-container ul li:hover{
 
 .showing-week-container{
   background: none;
+  min-height: 55vh;
+  height: max-content;
 } 
 .showing-week-container .container-title{
   position: relative;
@@ -641,9 +809,11 @@ header .user-login-container ul li:hover{
 
 .premiere-container{
   background: #16171d;
+  min-height: 55vh;
   height: max-content;
   width: 100%;
   padding: 2% 10%;
+
 } 
 .premiere-container .container-title{
   position: relative;
@@ -712,6 +882,14 @@ header .user-login-container ul li:hover{
   padding: 0 5px;
 }
 
+.no-movie{
+  height: 35vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
+  color: rgba(177, 177, 177, 0.39)
+}
 
 
 
@@ -727,6 +905,7 @@ header .user-login-container ul li:hover{
 
 .coming-soon-container{
   background: none;
+  min-height: 55vh;
 } 
 .coming-soon-container .container-title{
   margin-bottom: 20px;
@@ -784,8 +963,58 @@ header .user-login-container ul li:hover{
 
 
 
+/* FEEDBACKS */
+.feedback-container{
+  width: 100%;
+  background-color: #242424;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2% 10%;
+  height: 35vh;
+}
+.feedback-container h1{
+  letter-spacing: 1.5px;
+  margin-bottom: 20px;
+}
+
+.feedback-container .feedbacks{
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.feedback-container .feedbacks .feedback{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+}
+
+.feedback-container .feedbacks .feedback .user-profile{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.feedback-container .feedbacks .feedback .user-profile img{
+  width: 100%;
+  height: 100%;
+}
+
+.feedback-container .feedbacks .feedback .comment{
+  text-align: center;
+  font-style: italic;
+  font-weight: lighter;
+  letter-spacing: 1px;
+  font-size: .9em;
+}
 
 
+/* FEEDBACKS */
 
 
 
@@ -826,7 +1055,7 @@ header .user-login-container ul li:hover{
   
 }
 .footer-container div li a:hover{
-  color: crimson;
+  color: rgb(220, 20, 60);
 }
 
 .footer-container .contactUs input, textarea{

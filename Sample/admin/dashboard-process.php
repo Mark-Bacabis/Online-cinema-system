@@ -50,11 +50,12 @@
                 $countQuery = mysqli_query($conn, "SELECT COUNT(*) AS Count FROM movie");
                 $CountResult = mysqli_fetch_assoc($countQuery);
                 $movieID = 'movie-0'.($CountResult['Count'] + 1);
+        
                 
                 // INSERT INTO DATABASE //
-                $insertQuery = "INSERT INTO `movie`
-                (`movieID`, `Title`, `Genre`, `Year`, `Duration`, `Rating`, `Description`,`Director`,`Cast`, `Poster`, `Banner`, `Trailer`, `Price`) VALUES 
-                ('$movieID', '$title', '$genre', '$year', '$duration', '$rating', '".$desc."', '$director', '$cast', '$new_poster_name', '$new_banner_name', '$trailer', '$price')";
+                $insertQuery = 'INSERT INTO `movie`(`movieID`, `Title`, `Genre`, `Year`, `Duration`, `Rating`, `Description`, `Director`, `Cast`, `Poster`, `Banner`, `Trailer`, `Price`) 
+                VALUES 
+                ("'.$movieID.'", "'.$title.'", "'.$genre.'", "'.$year.'", "'.$duration.'", "'.$rating.'", "'.$desc.'", "'.$director.'", "'.$cast.'", "'.$new_poster_name.'", "'.$new_banner_name.'", "'.$trailer.'", "'.$price.'")';
 
                 foreach($cinema as $availableCinema){
                     $cinemaInsert = mysqli_query($conn, "INSERT INTO `movie_available_date`(`movieID`, `availableDate`, `cinemaID`) VALUES ('$movieID','$date','$availableCinema')");

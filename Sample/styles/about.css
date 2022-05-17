@@ -1,0 +1,133 @@
+*{
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+}
+
+/* LIGHT */
+
+body.light .about-container .team-container{
+   background-color: #b8b8b8;
+}
+
+body.light  .about-container .team-container .members .member .member-info .position p{
+   font-size: .9em;
+   font-weight: lighter;
+   letter-spacing: 1px;
+   color: rgba(0, 0, 0, 0.596);
+}
+
+
+.about-container{
+   width: 100%;
+   min-height: 100vh;
+   height: max-content;
+   
+}
+
+.about-container .faqs-container{
+   padding: 2% 10%;
+}
+
+.about-container .faqs-container ul li{
+   margin-bottom: 15px;
+}
+
+
+
+.about-container .team-container{
+   background-color: #16171d;
+   height: max-content;
+   padding: 3% 10%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+.about-container .team-container .members{
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   margin-top: 20px;
+   width: 100%;
+  
+}
+
+.about-container .team-container .members .member{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   text-align: center;
+   width: 19.5%;
+   justify-content: space-between;
+   
+}
+.about-container .team-container .members .member .member-pic{
+   width: 120px;
+   height: 120px;
+   overflow: hidden;
+   border-radius: 50%;
+   margin-bottom: 10px;
+}
+
+.about-container .team-container .members .member .member-pic img{
+   width: 100%;
+   height: 100%;
+}
+
+.about-container .team-container .members .member .member-info{
+
+   width: 100%;
+}
+.about-container .team-container .members .member .member-info .name h3{
+   font-size: 1em;
+   font-weight: 500;
+   letter-spacing: .51px;
+}
+.about-container .team-container .members .member .member-info .position p{
+   font-size: .9em;
+   font-weight: lighter;
+   letter-spacing: 1px;
+   color: rgba(255, 255, 255, 0.596);
+}
+
+
+.about-container .contact-container{
+   width: 100%;
+   height: max-content;
+   padding: 2% 10%;
+}
+
+.about-container .contact-container .contact-input{
+   display: flex;
+   flex-direction: column;
+}
+
+.about-container .contact-container .contact-input input{
+   width: 400px;
+   padding: 5px 10px;
+   font-size: 1em;
+   outline: none;
+   margin: 10px 0;
+   background: none;
+   border: 1px solid rgb(170, 170, 170);
+   color: white;
+}
+
+.about-container .contact-container .contact-input textarea{
+   width: 100%;
+   height: 150px;
+   resize: none;
+   padding: 5px 10px;
+   font-size: 1em;
+}
+
+
+.about-container .contact-container .contact-input input[type="submit"]{
+   background-color: crimson;
+   border: none;
+   width: max-content;
+   border-radius: 3px;
+   padding: 5px 20px;
+   display: flex;
+   float: right;
+}

@@ -1,8 +1,12 @@
 <?php
     session_start();
     include "../connection.php";
+    include "./method/function.php";
     //SESSION
     $transactID = $_SESSION['transactID'];
+
+    sendEmail($transactID);
+
     $movieID = $_SESSION['movieID'];
     $userID = $_SESSION['userID'];
     $seats = $_SESSION['seats'];
@@ -25,7 +29,7 @@
     ON b.showID = s.showID
     JOIN user u
     ON b.userID = u.userID
-    WHERE b.bookID = '$transactID'");
+    WHERE b.transactionID = '$transactID'");
     $bookResult = mysqli_fetch_assoc($bookQuery);
 
     $dateBooked = $bookResult['dateBooked'];
@@ -38,61 +42,6 @@
     $dateName = mysqli_fetch_assoc($dateQuery);
     // FOR SEATS 
     $seatQuery = mysqli_query($conn, "SELECT * FROM `seat_tbl` WHERE userID = '$userID' AND movieID = '$movieID' AND date = '$date' AND cinemaID = '$cinemaID' AND showID = '$showID'");
-
-
-
-    $email_to = $bookResult['email'];
-    $subject = "NXTFLIX";
-    
-    $header = "MIME-Version: nxtflix.online.system.demo@gmail.com\r\n";
-    $header .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-     
-    $message = "<h2 style='color: black;'>Hello! ".$bookResult['firstName']." ".$bookResult['lastName'].", the image attached below is/are your ticket for movie reservation </h2>";
-
-    $message .= '<html> <body style="display: block;">';
-    while ($selSeats = mysqli_fetch_assoc($seatQuery)){
-    $message .='  <div class="tickets" style="margin: 5px 0;">
-                    <div class="ticket-container" style="
-                        font-family: poppins;
-                        width: 600px;
-                        height: 200px;
-                        background: rgb(37, 37, 37);
-                        display: flex;
-                        overflow: hidden;
-                        margin: 0;">
-
-                        <div class="info" style=" background: whitesmoke;
-                        margin: 0;
-                        padding: 2% 5%;
-                        width: 80%;
-                        color: black;
-                        line-height: 30px;">
-                            <p style="margin:0; padding: 0;"> Transaction ID: '.$transactID.'</p>
-                            <h1 style="margin: 0; color: black;">'.$bookResult['Title'].' ('.$bookResult['Year'].')</h1>
-                            <h2 style="margin: 0; color: black;">'.$bookResult['dateBooked'].', '.$dateName['Result'].'</h2>
-                            <h4 style="margin: 0; color: black;"> Fairview Terraces, '.$bookResult['cinemaName'].'</h4>
-                            <h4 style="margin: 0; color: black;">'.$bookResult['showName'].','.$bookResult['showStart'].' - '.$bookResult['showEnd'].' </h4>
-                            
-                            <p style="font-size: 14px; margin: 0; padding: 0;"> 2021-07-12, 5:05PM </p>
-                        </div>
-                        <div class="seat-number" style="
-                            position: relative; 
-                            width: 10%;
-                            padding: 4% 9%;">
-                            
-                            <h1 style="font-size: 60px; 
-                            color: white;"> 
-                            '.$selSeats['seatNumber'].'
-                            </h1>
-
-                        </div>
-                    </div>
-        </div>';
-        }
-        $message .= '</body> </html> ';
-
-    mail($email_to, $subject, $message, $header);
-
 
 ?>
 <!DOCTYPE html>

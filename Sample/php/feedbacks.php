@@ -5,24 +5,44 @@
     include "../process/url.php";
 
     $userID = $_SESSION['userID'];
+   
+    $userQuery = mysqli_query($conn, "SELECT * FROM user");
+    $user = mysqli_fetch_assoc($userQuery);
 
     if(empty($userID)){
-        header("location:../index.php");
+      header("location:../index.php");
     }
 
-    $selectAll = mysqli_query($conn, "SELECT *, DAYNAME(a.dateBooked) AS dateName FROM `booking_tbl` a
-    JOIN movie b
-    ON a.movieID = b.movieID
-    JOIN user u
-    ON a.userID = u.userID
-    JOIN show_time s
-    ON a.showID = s.showID
-    JOIN cinema c
-    ON a.cinemaID = c.cinemaID
-    WHERE a.userID = '$userID'
-    ORDER BY a.dateBooked DESC");
 
-   
+    // UPDATE PASSWORD
+    if(isset($_POST['change-pass-btn'])){
+        $oldPass = $_POST['old-password'];
+        $newPass = $_POST['new-password'];
+        $retypePass = $_POST['retype-password'];
+
+        if(empty($oldPass) || empty($newPass) || empty($retypePass)){
+            echo "<script> alert('Input some data'); </script>";
+        }
+        else{
+            $selUser = mysqli_query($conn, "SELECT * FROM user WHERE userID = '$userID'");
+            $user = mysqli_fetch_assoc($selUser);
+            if($oldPass === $user['password']){
+                // UPDATE PASSWORD
+                $passUpdateQuery = "UPDATE `user` SET `password` = '$newPass' WHERE userID = '$userID' ";
+                
+                if($newPass === $retypePass){
+                    $UpdatePass = mysqli_query($conn,$passUpdateQuery);
+                    echo "<script> alert('Password Changed'); </script>";
+                } 
+                else {
+                    echo "<script> alert('Your new password and retype password did not match!'); </script>";
+                }
+            }
+            else {
+                echo "<script> alert('Enter your correct old password first!'); </script>";
+            }
+        }
+    }
 
 
     
@@ -34,9 +54,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/style.css">
-    <link rel="stylesheet" href="../styles/booking-history.css">
+    <link rel="stylesheet" href="../styles/feedback.css">
     <link rel="stylesheet" href="../styles/mode.css">
-    <title> My Booking History | NXTFLIX Online cinema reservation </title>
+
+    <title> My Account | NXTFLIX Online cinema reservation </title>
      <!-- aJax jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
@@ -76,13 +97,51 @@
                 $("#search-box").html(data);
             });
         });
+
+        $("#re-type").keyup(function(){
+            var rPass = $("#re-type").val();
+            var nPass = $("#new-pass").val();
+
+            $.post("./search.php",{
+                rPassword: rPass,
+                nPassword: nPass,
+
+            }, function(data, status){
+                $("#err-handling-pass").html(data);
+            });
+        });
+
+        $("#new-pass").keyup(function(){
+            var oldPass = $("#old-pass").val();
+            var newPass = $("#new-pass").val();
+
+            $.post("./search.php",{
+                oldPassword: oldPass,
+                newPassword: newPass,
+
+            }, function(data, status){
+                $("#err-handling-old").html(data);
+            });
+        });
+
+        $("#old-pass").keyup(function(){
+            var oPass = $("#old-pass").val();
+
+            $.post("./search.php",{
+                oPassword: oPass
+
+            }, function(data, status){
+                $("#err-handling-old-pass").html(data);
+            });
+        });
     });
+
+
 </script>
 
 
 <body>
-
-    <header>
+      <header>
         <div class="nav-search-area">
             <div class="logo">
                 <a href="../index.php"> NXTFLIX <br>
@@ -154,13 +213,13 @@
         <div class="nav-bar">
             <ul>
                 <li><a href="../index.php"> Home </a></li>
-                <li><a href="../php/allMovies.php?query=Allmovies"> Movies </a></li>
-                <li><a href="../php/about.php"> About </a></li>
+                <li><a href="./php/allMovies.php?query=Allmovies"> Movies </a></li>
+                <li><a href="./php/about.php"> About </a></li>
             </ul>
         </div>
         
-     <!-- USER MODAL -->
-     <div class="user-login-container">
+         <!-- USER MODAL -->
+          <div class="user-login-container">
                 <ul>
                     <form action="../process/account-process.php?next=<?=$url?>" method="post">
                     <li> <button class="chngePW" name="my-account"> My Account </button> </li>
@@ -170,42 +229,19 @@
                     </form>
                 </ul>
             </div>
-        <!-- USER MODAL -->
-    </header>   
+         <!-- USER MODAL -->
+      </header>   
+   
 
-    
-    <div class="booking-history-container">
-        <div class="title-history">
-            <h1> Booking History </h1>
-        </div>
-
-        <?php while($transaction = mysqli_fetch_assoc($selectAll)) { ?>
-        <div class="booking-box">
-            <div class="movie-poster-history">
-                <img src="../img/<?=$transaction['Banner']?>" alt="">
-            </div>
-
-            <div class="movie-info-history">
-                <h2> <?=$transaction['Title']?> (<?=$transaction['Year']?>)</h2>
-                <p> <?=$transaction['Duration']?> &bullet; <?=$transaction['Genre']?> &bullet; <?=$transaction['Rating']?></p>
-                <p class="desc-transact"> <?=$transaction['Description']?> </p>
-            </div>
-            
-            <div class="transact-info">
-                <p> Transaction ID: <?=$transaction['transactionID']?> </p>
-                <h3 style="color: crimson;"> <?=$transaction['dateBooked']?>, <?=$transaction['dateName']?> </h3>
-                <h4> Fairview Terraces, <?=$transaction['cinemaName']?> </h4>
-                <h4> <?=$transaction['showName']?>: <?=$transaction['showStart']?> - <?=$transaction['showEnd']?> </h4>
-                <h3> <?=$transaction['seatNumber']?> </h3>
-            </div>
-            <div class="price">
-               &#8369; <?=$transaction['totalPrice']?> 
-            </div>
-        </div>
-        <?php } ?>
-    </div>
-
-
+      <!-- FEEDBACKS --> 
+      <div class="feedback-input-container">
+         <h1> Give us some feedbacks </h1>
+         <form action="../process/feedback.php" method="POST">
+            <textarea name="feedback" id="feedback"></textarea>
+            <input type="submit" value="Send" name="btnSubmit">
+         </form>
+       
+      </div>
 
 
 
@@ -256,6 +292,7 @@
         </div>
     </footer>
 <!-- FOOTER -->
+
 
 
 <!-- SCRIPTS --> 

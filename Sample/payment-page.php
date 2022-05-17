@@ -70,6 +70,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/payment.css">
+    <link rel="stylesheet" href="./styles/mode.css">
     <title> Pay here! | NXTFLIX Online ticket reservation </title>
 </head>
 
@@ -118,6 +119,22 @@
                     <img src="./user-profile/<?=$userResult['profile']?>" alt="">
                 </div>
         </div>
+
+          
+        <!-- DARK/LIGHT MODE -->
+        <div class="light-mode" style="display:none;">
+            <input type="checkbox" name="mode" id="mode">
+            <label for="mode" class="mode">
+                <div class="light">
+                    <img src="./icon/brightness.png" alt="">
+                </div>
+               <div class="night">
+                    <img src="./icon/night-mode.png" alt="">
+               </div>
+                <div class="ball"></div>
+            </label>
+        </div>
+
     </header>
     <div class="payment-container">
         <div class="button-container">
@@ -274,5 +291,7 @@
             }
         }).render('#paypal-button-container');
 </script>
+
+<script src="./javascript/mode.js"> </script>
 </body>
 </html>

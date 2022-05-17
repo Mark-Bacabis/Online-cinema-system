@@ -1,11 +1,52 @@
 *{
     box-sizing: border-box;
 }
-.booking-history-container{
 
+/* LIGHT MODE */
+
+body.light .booking-history-container .title-history{
+    background: #b1b1b1;
+}
+
+body.light .booking-history-container .booking-box{
+    background: #cacaca;
+}
+
+body.light .booking-history-container .booking-box .movie-info-history{
+    color: rgb(39, 39, 39);
+}
+body.light .booking-history-container .booking-box .movie-info-history h2{
+    color: rgb(39, 39, 39);
+}
+
+body.light .booking-history-container .booking-box .transact-info{
+    color: rgb(39, 39, 39);
+}
+
+body.light .booking-history-container .booking-box .price{
+    background: rgb(224, 224, 224);
+    color: rgb(0, 0, 0);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.booking-history-container{
     height: max-content;
     padding: 2% 10%;
 }
+
 .booking-history-container .title-history{
     background: rgb(26, 28, 31);
     padding: 0 2%;

@@ -17,7 +17,7 @@
 
 
     if(isset($_POST['logout-btn'])){
-        session_destroy();
+        unset($_SESSION['ID']);
         session_destroy();
         header("location:../admin.php");
     }
@@ -299,7 +299,7 @@
                     </tr>
                     <?php while($book = mysqli_fetch_assoc($bookQuery)) {?>
                         <tr>
-                            <td> <?=$book['bookID']?> </td>
+                            <td> <?=$book['transactionID']?> </td>
                             <td> <?=$book['Title']?> </td>
                             <td> <?=$book['firstName']?> <?=$book['lastName']?> </td>
                             <td> <?=$book['dateToday']?> </td>

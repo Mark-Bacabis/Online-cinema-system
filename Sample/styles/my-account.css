@@ -1,6 +1,49 @@
 *{
     box-sizing: border-box;
 }
+
+/* LIGHT */ 
+
+body.light .my-account-container{
+    color: #000;
+}
+body.light .my-account-container .account-profile{
+    background: rgb(255, 255, 255);
+    box-shadow: -10px 10px 7px 0 rgba(0, 0, 0, 0.055);
+}
+
+body.light .my-account-container .my-account-info .info{
+    background: rgb(255, 255, 255);
+    box-shadow: -10px 10px 7px 0 rgba(0, 0, 0, 0.055);
+}
+
+body.light .my-account-container .my-account-info .info tr td input{
+    background: rgb(204, 204, 204);
+    color: rgb(44, 44, 44);
+}
+
+body.light .my-account-container .my-account-info .change-pass{
+    background: rgb(255, 255, 255);
+    color: rgb(44, 44, 44);
+    box-shadow: -10px 10px 7px 0 rgba(0, 0, 0, 0.055);
+}
+
+body.light .my-account-container .my-account-info .change-pass input[type="password"]{
+    background: rgb(255, 255, 255);
+    border: 1px solid black;
+    color: rgb(44, 44, 44);
+}
+
+
+
+
+
+
+
+
+
+
+
 .my-account-container{
     width: 100%;
     height: 85vh;
@@ -30,16 +73,17 @@
     border-radius: 50%;
     margin: 0 auto;
     margin-bottom: 10px;
-    border: 5px solid rgb(46, 50, 54);
+    border: 5px solid rgb(233, 233, 233);
     overflow: hidden;
 }
+
 .my-account-container .account-profile .profile img{
     width: 100%;
     height: 100%;
 }
 
 .my-account-container .account-profile .change-profile{
-    background: seashell;
+    background: crimson;
     border: none;
     padding: 2px 7px;
     font-size: 16px;
@@ -47,6 +91,7 @@
     margin-top: 10px;
     cursor: pointer;
     width: 100%;
+    color: #fff;
 }
 .my-account-container .account-profile input[type="file"]{
     font-size: 16px;
@@ -57,12 +102,16 @@
 .my-account-container .my-account-info{
     width: 100%;
 }
+
 .my-account-container .my-account-info .info tr .fullname{
     display: flex;
     width: 100%;
-}.my-account-container .my-account-info .info tr .fullname input{
+}
+
+.my-account-container .my-account-info .info tr .fullname input{
     margin: 0 1px;
 }
+
 .my-account-container .my-account-info .info tr td input{
     font-size: 16px;
     width: 100%;

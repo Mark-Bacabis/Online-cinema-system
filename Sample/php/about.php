@@ -4,23 +4,10 @@
    include "../connection.php";
    include "../process/url.php";
    
-   $movieTitle = $_GET['movie'];  
+   //$movieTitle = $_GET['movie'];  
    $userID = $_SESSION['userID'];
 
    $_SESSION['url'] = $url;
-
-
-
-   $selectMovie = mysqli_query($conn, "SELECT * FROM `movie` WHERE Title = '$movieTitle'");
-
-   $movieSelected = $selectMovie->fetch_assoc();
-
-   $movieID = $movieSelected['movieID'];
-   $_SESSION['movieID'] = $movieID;
-
-
-   $movieByGenre = mysqli_query($conn, "SELECT * FROM movie WHERE movieID != '$movieID' AND 
-   isAvailable = 'True' AND Genre LIKE '%' || (SELECT LEFT(Genre, 6) as similarGenre FROM movie WHERE movieID = '$movieID') || '%' LIMIT 4");
 ?>
 
 
@@ -31,8 +18,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/style.css">
-    <link rel="stylesheet" href="../styles/privacy.css">
+    <link rel="stylesheet" href="../styles/mode.css">
+    <!-- <link rel="stylesheet" href="../styles/privacy.css"> -->
+    <link rel="stylesheet" href="../styles/about.css">
     <title> About Us | NXTFLIX Online Ticket Reservation </title>
+    
 </head>
 
 <!-- IF USER LOGGED IN OR NOT -->
@@ -127,14 +117,27 @@
         <!-- IF USER IS LOGIN -->
         </div>
 
+            <!-- DARK/LIGHT MODE -->
+        <div class="light-mode">
+            <input type="checkbox" name="mode" id="mode">
+            <label for="mode" class="mode">
+                <div class="light">
+                    <img src="../icon/brightness.png" alt="">
+                </div>
+               <div class="night">
+                    <img src="../icon/night-mode.png" alt="">
+               </div>
+                <div class="ball"></div>
+            </label>
+        </div>
+
     </div>
     <!-- NAVIGATION LINK -->
     <div class="nav-bar">
         <ul>
             <li><a href="../index.php"> Home </a></li>
-            <li><a href="../php/allMovies.php?query=Allmovies"> Movies </a></li>
-            <li><a href="../php/contact.php"> Contact </a></li>
-            <li style="border-bottom: 2px solid #bbbbbb;"><a href="../php/about.php"> About us </a></li>
+            <li><a href="./allMovies.php?query=Allmovies"> Movies </a></li>
+            <li class="selected"><a href="./about.php"> About </a></li>
         </ul>
     </div>
     
@@ -144,25 +147,135 @@
                     <form action="../process/account-process.php?next=<?=$url?>" method="post">
                     <li> <button class="chngePW" name="my-account"> My Account </button> </li>
                     <li> <button class="bkHistory" name="booking-history"> Booking history </button> </li>
+                    <li> <button class="fdBack" name="feedbacks"> Feedback </button> </li>
                     <li> <button class="logout" type="submit" name="logout"> Logout  </button> </li>
                     </form>
                 </ul>
             </div>
         <!-- USER MODAL -->
 </header>
-    
-    <div class="about">
-        <h1> About us </h1>
-        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint reprehenderit incidunt, fuga assumenda natus, doloremque animi facilis at magni tempore, voluptatibus aperiam eaque dolorum qui ea repudiandae cum. Amet aliquam minus similique fugit odio qui quod. Explicabo at odit magnam laboriosam eum sapiente illo corrupti quis deserunt quia totam tempore non nihil atque magni et culpa harum dolor dicta, labore quasi? Repudiandae vel iste architecto? Eveniet laboriosam labore mollitia autem consequatur architecto iure molestias iusto commodi, sunt harum consequuntur cumque incidunt dolorum similique! Eveniet, placeat! Sint recusandae, hic deserunt rem sapiente illum adipisci magnam maxime similique id asperiores laudantium assumenda!</p> <br>
- 
-        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis autem ipsum vel nesciunt hic aliquid officia non rerum voluptatibus dolorum doloribus magnam voluptatum perspiciatis ad suscipit, earum necessitatibus, aut, id natus iure quaerat provident asperiores! Ducimus ea molestias mollitia voluptate hic molestiae dolorem animi illo amet beatae. Soluta, iusto dicta!</p> <br>
 
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto ipsa, corrupti quos aspernatur non impedit repellendus aperiam nisi laudantium voluptatum possimus atque. Maiores, repudiandae non?</p>
+<div class="about-container">
+    <div class="faqs-container">
+        <h1> FAQs </h1>
+        <ul>
+            <li> <h3> Question 1 </h3> 
+                <p> Answer: <i> Lorem Ipsum </i></p>
+            </li>
+            <li> <h3> Question 2 </h3> 
+                <p> Answer: <i> Lorem Ipsum </i></p>
+            </li>
+            <li> <h3> Question 3 </h3> 
+                <p> Answer: <i> Lorem Ipsum </i></p>
+            </li>
+          
+        </ul>
     </div>
+
+    <div class="team-container">
+        <h1> Team </h1>
+
+        <div class="members">
+            <div class="member">
+                <div class="member-pic">
+                    <img src="../img/team/275541108_945117779700859_5660406515882660493_n.png" alt="">
+                </div>
+                <div class="member-info">
+                    <div class="name">
+                        <h3> Alliah Sandra Lisbo </h3>
+                    </div>
+                    <div class="position">
+                        <p> UI/UX Designer </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="member">
+                <div class="member-pic">
+                    <img src="../img/team/id2x2627da1c26eea90.35706319.jpg" alt="">
+                </div>
+                <div class="member-info">
+                    <div class="name">
+                        <h3> Mark Melvin E. Bacabis </h3>
+                    </div>
+                    <div class="position">
+                        <p> Programmer </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="member">
+                <div class="member-pic">
+                    <img src="../img/team/EBALLES_MARLON_2 BY 2 ID PICTURE.png" alt="">
+                </div>
+                <div class="member-info">
+                    <div class="name">
+                        <h3> Marlon Eballes </h3>
+                    </div>
+                    <div class="position">
+                        <p> Project Manager </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="member">
+                <div class="member-pic">
+                    <img src="../img/team/279336967_296251196043953_751724793257930377_n.png" alt="">
+                </div>
+                <div class="member-info">
+                    <div class="name">
+                        <h3> Jovilyn Camaya </h3>
+                    </div>
+                    <div class="position">
+                        <p> Database Administrator </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="member">
+                <div class="member-pic">
+                    <img src="../img/team/275301289_2123889614428195_7266795276322162415_n.png" alt="">
+                </div>
+                <div class="member-info">
+                    <div class="name">
+                        <h3> Rica Mae Galupo </h3>
+                    </div>
+                    <div class="position">
+                        <p> System Analyst </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="contact-container">
+        <h1> Contact Us </h1>
+        <form action="#">
+            <div class="contact-input">
+                <label for="email"> Email </label>
+                <input type="email" name="email" id="email">
+            </div>
+
+            <div class="contact-input">
+                <label for="sub"> Subject </label>
+                <input type="text" name="sub" id="sub">
+            </div>
+
+            <div class="contact-input">
+                <label for="mess"> Message </label>
+                <textarea name="mess" id="mess"></textarea>
+            </div>
+            
+            <div class="contact-input">
+                <input type="submit" name="btnSubmit" value="Send">
+            </div>
+        </form>
+    </div>
+</div>
 
 
 <!-- FOOTER -->
-<footer class="footer-container">
+    <footer class="footer-container">
         <div class="About">
             <h3> About </h3>
             <ul>
@@ -198,9 +311,9 @@
         <div class="followUs">
             <h3> Follow us </h3>
             <ul>
-                <li><a href="#"><img src="./icon/facebook.png" alt=""></a></li>
-                <li><a href="#"><img src="./icon/twitter.png" alt=""></a></li>
-                <li><a href="#"><img src="./icon/instagram.png" alt=""></a></li>
+                <li><a href="#"><img src="../icon/facebook.png" alt=""></a></li>
+                <li><a href="#"><img src="../icon/twitter.png" alt=""></a></li>
+                <li><a href="#"><img src="../icon/instagram.png" alt=""></a></li>
             </ul>
         </div>
         <div class="copyright">
@@ -211,6 +324,6 @@
 
 <!-- CUSTOM JS -->
 <script src="./scripts/main.js"> </script>
-
+<script src="../javascript/mode.js"></script>
 </body>
 </html>

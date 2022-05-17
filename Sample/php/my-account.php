@@ -55,6 +55,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/my-account.css">
+    <link rel="stylesheet" href="../styles/mode.css">
     <title> My Account | NXTFLIX Online cinema reservation </title>
      <!-- aJax jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -193,6 +194,21 @@
             <!-- IF USER IS LOGIN -->
             </div>
 
+            
+            <!-- DARK/LIGHT MODE -->
+            <div class="light-mode">
+                <input type="checkbox" name="mode" id="mode">
+                <label for="mode" class="mode">
+                    <div class="light">
+                        <img src="../icon/brightness.png" alt="">
+                    </div>
+                <div class="night">
+                        <img src="../icon/night-mode.png" alt="">
+                </div>
+                    <div class="ball"></div>
+                </label>
+            </div>
+
         </div>
 
         <!-- NAVIGATION LINK -->
@@ -200,8 +216,7 @@
             <ul>
                 <li><a href="../index.php"> Home </a></li>
                 <li><a href="../php/allMovies.php?query=Allmovies"> Movies </a></li>
-                <li><a href="../php/contact.php"> Contact </a></li>
-                <li><a href="../php/about.php"> About us </a></li>
+                <li><a href="../php/about.php"> About </a></li>
             </ul>
         </div>
         
@@ -211,6 +226,7 @@
                     <form action="../process/account-process.php?next=<?=$url?>" method="post">
                     <li> <button class="chngePW" name="my-account"> My Account </button> </li>
                     <li> <button class="bkHistory" name="booking-history"> Booking history </button> </li>
+                    <li> <button class="fdBack" name="feedbacks"> Feedback </button> </li>
                     <li> <button class="logout" type="submit" name="logout"> Logout  </button> </li>
                     </form>
                 </ul>
@@ -383,6 +399,7 @@
 
 <!-- SCRIPTS --> 
 <script src="./scripts/main.js"> </script>
+<script src="../javascript/mode.js"></script>
 <!-- SCRIPTS --> 
 </body>
 </html>

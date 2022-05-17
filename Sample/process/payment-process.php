@@ -1,10 +1,10 @@
 <?php
         session_start();
         include "../connection.php";
-        include "./random.php";
-        $transactID = generateRandomString()."NXT";
+        $transactID = "NXT".substr(str_shuffle('1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ'), 0, 10);
+        
         $_SESSION['transactID'] = $transactID;
-
+        echo $transactID;
         //SESSION
         $movieID = $_SESSION['movieID'];
         $userID = $_SESSION['userID'];
@@ -30,7 +30,7 @@
         $userEmail = $userResult['email'];
         $cinemaID = $cinemaResult['cinemaID'];
 
-        echo $cinema;
+        //echo $cinema;
 
         
         foreach($seats as $seatSelected){
@@ -45,7 +45,7 @@
         
 
         $insertIntoBook = "INSERT INTO `booking_tbl`
-        (`bookID`,`dateBooked`, `userID`, `userEmail`, `movieID`, `dateToday`, `cinemaID`, `showID`, `ticketPrice`, `numberOfSeats`, `seatNumber`, `totalPrice`) 
+        (`transactionID`,`dateBooked`, `userID`, `userEmail`, `movieID`, `dateToday`, `cinemaID`, `showID`, `ticketPrice`, `numberOfSeats`, `seatNumber`, `totalPrice`) 
         VALUES 
         ('$transactID','$date','$userID','$userEmail','$movieID',CURRENT_DATE(),'$cinemaID','$showID', $priceTicket,$numberOfSeats,'$seatNumbers', $totalPrice)";
 

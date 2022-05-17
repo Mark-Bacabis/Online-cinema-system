@@ -3,35 +3,59 @@
     padding: 0;
     margin: 0;
 }
+/* LIGHT */ 
+
+
+body.light header{
+    background: #ffffff;
+}
+
+body.light header .title{
+    color: rgb(56, 56, 56);
+}
+
+
+body.light header .user-account{
+    color: rgb(0, 0, 0);
+}
+
+body.light .payment-container{
+    background-color: #e4e4e4;
+    color: #000;
+}
+
+
+
 body{
     background: #141414;
 }
 header{
-  height: 12vh;
-  width: 100%;
-  background: #141414;
-  display: flex;
-  align-items: center;
+    position: relative;
+    height: 12vh;
+    width: 100%;
+    background: #141414;
+    display: flex;
+    align-items: center;
 }
 
 header .logo {
-  line-height: 12px;
-  margin-left: 10%;
-  margin-right: 20px;
+    line-height: 12px;
+    margin-left: 10%;
+    margin-right: 20px;
 }
 header .logo a{
-  font-size: 32px;
-  color: crimson;
-  text-decoration: none;
-  font-weight: bold;
-  padding: 0;
-  height: max-content;
+    font-size: 32px;
+    color: crimson;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0;
+    height: max-content;
 }
 header .logo .subtitle{
-  font-size: 10px;
-  margin-top: 2px;
-  position: absolute;
-  width: max-content;
+    font-size: 10px;
+    margin-top: 2px;
+    position: absolute;
+    width: max-content;
 }
 
 header .title{
@@ -84,9 +108,9 @@ header .user-account .profile-pic img{
     height: 69.6vh;
     padding: 2.5% 10%;
     background: #202022;
-    display: flex;
-   
+    display: flex;   
 }
+
 .payment-container .table{
     margin-left: 20px;
     padding: 10px 20px;

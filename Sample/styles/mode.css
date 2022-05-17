@@ -1,0 +1,68 @@
+.light-mode{
+   position: absolute;
+   right: 3%;
+   top: 50%;
+   transform: translateY(-50%);
+   display: flex;
+}
+.light-mode input[type="checkbox"]{
+   display: none;
+}
+
+.mode{
+   position: relative;
+   display: flex;
+   width: 50px;
+   height: 23px;
+   background-color: rgb(0, 0, 0);
+   border-radius: 5em;
+   justify-content: space-between;
+   align-items: center;
+   border: 1px solid rgba(255, 255, 255, 0.24);
+}
+
+.mode .light, .mode .night{
+   width: 50%;
+   height: 100%;
+   border-radius: 50%;
+   overflow: hidden;
+   padding: 10%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.mode .light img, .mode .night img{
+   width: 100%;
+   height: 100%;
+   filter: invert(1);
+}
+
+.mode .ball{
+   position: absolute;
+   left: 0%;
+   height: 100%;
+   width: 50%;
+   background-color: rgb(255, 255, 255);
+   border-radius: 50%;
+   border: none;
+   transition: left linear .2s;
+}
+
+#mode:checked + .mode .ball{
+   left: 50%;
+   background: #000;
+}
+
+#mode:checked + .mode{
+   background-color: rgb(255, 255, 255);
+   border: 1px solid rgba(0, 0, 0, 0.24);
+}
+
+#mode:checked + .mode .light img{
+   filter: invert(0);
+}
+
+#mode:checked + .mode .night img{
+   filter: invert(0);
+}

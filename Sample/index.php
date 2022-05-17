@@ -12,7 +12,7 @@
     $select = "SELECT DISTINCT a.availableDate, b.movieID, b.Title, b.banner, b.Year, b.Genre, b.Duration, b.Rating FROM `movie_available_date` a
     JOIN movie b
     ON a.movieID = b.movieID
-    WHERE a.availableDate >= '$dateToday' 
+    WHERE a.availableDate >= '$dateToday' AND b.isAvailable = 1 
     ORDER BY a.movieID DESC";
 
     $query = mysqli_query($conn, $select);
@@ -20,19 +20,19 @@
     $firstData  = mysqli_query($conn, "SELECT DISTINCT a.availableDate, b.movieID, b.Title, b.banner, b.Year, b.Genre, b.Duration, b.Rating FROM `movie_available_date` a
     JOIN movie b
     ON a.movieID = b.movieID
-    WHERE a.availableDate >= '$dateToday' 
+    WHERE a.availableDate >= '$dateToday' AND b.isAvailable = 1
     ORDER BY a.movieID DESC LIMIT 1");
 
     $secondData  = mysqli_query($conn, "SELECT DISTINCT a.availableDate, b.movieID, b.Title, b.banner, b.Year, b.Genre, b.Duration, b.Rating FROM `movie_available_date` a
     JOIN movie b
     ON a.movieID = b.movieID
-    WHERE a.availableDate >= '$dateToday' 
+    WHERE a.availableDate >= '$dateToday' AND b.isAvailable = 1
     ORDER BY a.movieID DESC LIMIT 1,1");
 
     $lastData  = mysqli_query($conn, "SELECT DISTINCT a.availableDate, b.movieID, b.Title, b.banner, b.Year, b.Genre, b.Duration, b.Rating FROM `movie_available_date` a
     JOIN movie b
     ON a.movieID = b.movieID
-    WHERE a.availableDate >= '$dateToday' 
+    WHERE a.availableDate >= '$dateToday' AND b.isAvailable = 1
     ORDER BY a.movieID ASC LIMIT 1");
 
     $lastImage = $lastData-> fetch_assoc();
@@ -67,6 +67,18 @@
     BETWEEN '$date_monday' AND '$date_sunday' ORDER BY a.availableDate DESC LIMIT 5");
 // SELECT MOVIE THAT SHOWS NEXT WEEK
 
+
+
+// SELECT MOVIE THAT SHOWS NEXT WEEK
+    $next_next_week = strtotime("+2 month");
+    $date_next_monday = date("Y-m-d", strtotime('monday', $next_next_week));
+    $date_next_sunday = date("Y-m-d", strtotime('sunday', $next_next_week));              
+    $commingSoon = mysqli_query($conn, "SELECT DISTINCT a.availableDate, b.movieID, b.Title, b.Poster FROM `movie_available_date` a
+    JOIN movie b
+    ON a.movieID = b.movieID
+    WHERE availableDate >= '$date_next_monday' ORDER BY a.availableDate DESC LIMIT 5");
+    // SELECT MOVIE THAT SHOWS NEXT WEEK
+   
 ?>
 
 <!DOCTYPE html>
@@ -77,6 +89,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> NXTFLIX | Online Ticket Reservation </title>
     <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/mode.css">
      <!-- aJax jQuery -->
     <script src="http://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
@@ -173,17 +186,32 @@
             </div>
         <!-- IF USER IS LOGIN -->
         </div>
+        
+        <!-- DARK/LIGHT MODE -->
+        <div class="light-mode">
+            <input type="checkbox" name="mode" id="mode">
+            <label for="mode" class="mode">
+                <div class="light">
+                    <img src="./icon/brightness.png" alt="">
+                </div>
+               <div class="night">
+                    <img src="./icon/night-mode.png" alt="">
+               </div>
+                <div class="ball"></div>
+            </label>
+        </div>
 
     </div>
 
     <!-- NAVIGATION LINK -->
     <div class="nav-bar">
         <ul>
-            <li style="border-bottom: 2px solid #bbbbbb;"><a href="./index.php"> Home </a></li>
+            <li class="selected"> <a href="./index.php"> Home </a></li>
             <li><a href="./php/allMovies.php?query=Allmovies"> Movies </a></li>
-            <li><a href="./php/contact.php"> Contact </a></li>
-            <li><a href="./php/about.php"> About us </a></li>
+            <li><a href="./php/about.php"> About </a></li>
         </ul>
+
+      
     </div>
     
      <!-- USER MODAL -->
@@ -192,11 +220,14 @@
                     <form action="./process/account-process.php?next=<?=$url?>" method="post">
                     <li> <button class="chngePW" name="my-account"> My Account </button> </li>
                     <li> <button class="bkHistory" name="booking-history"> Booking history </button> </li>
+                    <li> <button class="fdBack" name="feedbacks"> Feedback </button> </li>
                     <li> <button class="logout" type="submit" name="logout"> Logout  </button> </li>
                     </form>
                 </ul>
             </div>
         <!-- USER MODAL -->
+
+      
 </header>
 
 
@@ -295,8 +326,8 @@
         </div>
         <ul>
             <?php
-                while($weeklyShow = $showThisWeek -> fetch_assoc()){
-            ?>
+            if(mysqli_num_rows($showThisWeek) > 0){
+                while($weeklyShow = $showThisWeek -> fetch_assoc()){ ?>
             <li>
                 <div class="movie-poster-box">
                     <div class="movie-poster">
@@ -307,7 +338,10 @@
                     </div>
                 </div>
             </li>
-            <?php } ?>
+            <?php }
+            } else{
+                echo "<div class='no-movie'> No movie(s) </div>";
+            } ?>
         </ul>
     </div>
 <!-- SHOWING THIS WEEK -->
@@ -324,8 +358,8 @@
         </div>
         <ul>
             <?php
-                while($nextWeekShow = mysqli_fetch_assoc($premiere)){
-            ?>
+                if(mysqli_num_rows($premiere) > 0){ 
+                    while($nextWeekShow = mysqli_fetch_assoc($premiere)){ ?>
             <li>
                 <div class="movie-poster-box">
                     <div class="movie-poster">
@@ -336,7 +370,10 @@
                     </div>
                 </div>
             </li>
-            <?php } ?>
+            <?php } 
+            } else{
+                echo "<div class='no-movie'> No movie(s) </div>";
+            } ?>
         </ul>
     </div>
 <!-- SHOWING NEXT WEEK -->
@@ -348,73 +385,62 @@
             <h2> Coming Soon </h2>
         </div>
         <ul>
-            <li>
-                <div class="movie-poster-box">
-                    <div class="movie-poster">
-                        <img src="./img/Coming movies/eternals.ar_240x360_crop_center.progressive.jpg" alt="">
-                    </div>
-                    <div class="movie-title">
-                        <p>
-                           Eternals (2021)
-                        </p>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="movie-poster-box">
-                    <div class="movie-poster">
-                        <img src="./img/Coming movies/candyman_ver2_240x360_crop_center.progressive.jpg" alt="">
-                    </div>
-                    <div class="movie-title">
-                        <p>
-                           Candyman (2021)
-                        </p>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="movie-poster-box">
-                    <div class="movie-poster">
-                        <img src="./img/Coming movies/halloween_kills_240x360_crop_center.progressive.jpg" alt="">
-                    </div>
-                    <div class="movie-title">
-                        <p>
-                           Holloween Kills (2021)
-                        </p>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="movie-poster-box">
-                    <div class="movie-poster">
-                        <img src="./img/Coming movies/rons-gone-wrong_xh1kjpu4_240x360_crop_center.progressive.jpg" alt="">
-                    </div>
-                    <div class="movie-title">
-                        <p>
-                           Rons gone wrong (2021)
-                        </p>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="movie-poster-box">
-                    <div class="movie-poster">
-                        <img src="./img/Coming movies/jurassic-world-dominion_imy7xudl_240x360_crop_center.progressive.jpg" alt="">
-                    </div>
-                    <div class="movie-title">
-                        <p>
-                           Jurassic World Dominion (2021)
-                        </p>
-                    </div>
-                </div>
-            </li>
+            <?php
+                if(mysqli_num_rows($commingSoon) > 0){
+                    while($rows = mysqli_fetch_assoc($commingSoon)) { ?>
+                     <li>
+                        <div class="movie-poster-box">
+                            <div class="movie-poster">
+                                <img src="./img/<?=$rows['Poster']?>" alt="">
+                            </div>
+                            <div class="movie-title">
+                                <p> <?=$rows['Title']?>  </p>
+                            </div>
+                        </div>
+                    </li>
+                <?php }
+                } else{
+                    echo "<div class='no-movie'> No movie(s) </div>";
+                } 
+            ?>
+           
+           
         </ul>
     </div>
 <!-- COMING SOON -->
 
 
 
-
+<!-- FEEDBACK -->
+    <div class="feedback-container">
+        <h1> Feedbacks </h1>
+        <div class="feedbacks">
+            <?php
+                $join = "SELECT * FROM `user` a 
+                JOIN `user_feedbacks` b
+                ON a.userID = b.userID ORDER BY id ASC LIMIT 3";
+                $feedback = mysqli_query($conn, $join);
+            
+                if(mysqli_num_rows($feedback) > 0){
+                    while($row = mysqli_fetch_assoc($feedback)){ ?>
+                    <div class="feedback">
+                        <div class="user-profile">
+                            <img src="./user-profile/<?=$row['profile']?>" alt="">
+                        </div>
+                        <div class="comment">
+                            <p> "<?=$row['feedback']?>" </p>
+                        </div>
+                    </div>
+            <?php    }
+            } else{ 
+                echo "No feedbacks yet.";
+            }
+            ?>
+                
+          
+        </div>
+    </div>
+<!-- FEEDBACK -->
 
 <!-- FOOTER -->
     <footer class="footer-container">
@@ -469,5 +495,7 @@
 </body>
 <!-- SCRIPTS --> 
     <script src="./javascript/main.js"> </script>
+    <script src="./javascript/mode.js"></script>
+
 <!-- SCRIPTS --> 
 </html>

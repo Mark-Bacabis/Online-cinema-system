@@ -24,6 +24,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/allMovies.css">
+    <link rel="stylesheet" href="../styles/mode.css">
     <!-- aJax jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <title> All Movies | NXTFLIX Online Ticket Reservation </title>
@@ -149,6 +150,20 @@
         <!-- IF USER IS LOGIN -->
         </div>
 
+            <!-- DARK/LIGHT MODE -->
+            <div class="light-mode">
+                <input type="checkbox" name="mode" id="mode">
+                <label for="mode" class="mode">
+                    <div class="light">
+                        <img src="../icon/brightness.png" alt="">
+                    </div>
+                <div class="night">
+                        <img src="../icon/night-mode.png" alt="">
+                </div>
+                    <div class="ball"></div>
+                </label>
+            </div>
+
     </div>
 
     
@@ -156,9 +171,8 @@
     <div class="nav-bar">
         <ul>
             <li><a href="../index.php"> Home </a></li>
-            <li style="border-bottom: 2px solid #bbbbbb;"><a href="../php/allMovies.php?query=Allmovies"> Movies </a></li>
-            <li><a href="../php/contact.php"> Contact </a></li>
-            <li><a href="../php/about.php"> About us </a></li>
+            <li class="selected"><a href="./allMovies.php?query=Allmovies"> Movies </a></li>
+            <li><a href="./about.php"> About </a></li>
         </ul>
     </div>
     
@@ -169,6 +183,7 @@
                     <form action="../process/account-process.php?next=<?=$url?>" method="post">
                     <li> <button class="chngePW" name="my-account"> My Account </button> </li>
                     <li> <button class="bkHistory" name="booking-history"> Booking history </button> </li>
+                    <li> <button class="fdBack" name="feedbacks"> Feedback </button> </li>
                     <li> <button class="logout" type="submit" name="logout"> Logout  </button> </li>
                     </form>
                 </ul>
@@ -185,7 +200,7 @@
                 $selectMovies = mysqli_query($conn, "SELECT DISTINCT a.availableDate, b.movieID, b.Title, b.Poster, b.Year, b.Genre, b.Duration, b.Rating FROM `movie_available_date` a
                 JOIN movie b
                 ON a.movieID = b.movieID
-                WHERE a.availableDate >= '$dateToday'
+                WHERE a.availableDate >= '$dateToday' AND b.isAvailable = 1
                 ORDER BY a.movieID DESC");
                 echo "<h1> All Movies </h1>";
             }
@@ -201,7 +216,7 @@
                 $selectMovies = mysqli_query($conn, "SELECT DISTINCT a.availableDate, b.movieID, b.Title, b.Poster, b.Year, b.Genre, b.Duration, b.Rating FROM `movie_available_date` a
                 JOIN movie b
                 ON a.movieID = b.movieID
-                WHERE a.availableDate BETWEEN '$this_week_start' AND '$this_week_end' AND availableDate >= '$dateToday' ORDER BY a.availableDate");
+                WHERE a.availableDate BETWEEN '$this_week_start' AND '$this_week_end' AND availableDate >= '$dateToday' AND b.isAvailable = 1 ORDER BY a.availableDate");
 
                 echo "<h1> Movies this week </h1>";
             }
@@ -214,7 +229,7 @@
                 $selectMovies = mysqli_query($conn, "SELECT DISTINCT a.availableDate, b.movieID, b.Title, b.Poster, b.Year, b.Genre, b.Duration, b.Rating FROM `movie_available_date` a
                 JOIN movie b
                 ON a.movieID = b.movieID
-                WHERE a.availableDate BETWEEN '$date_monday' AND '$date_sunday' AND availableDate >= '$dateToday' ORDER BY a.availableDate");
+                WHERE a.availableDate BETWEEN '$date_monday' AND '$date_sunday' AND availableDate >= '$dateToday' AND b.isAvailable = 1 ORDER BY a.availableDate");
                 echo "<h1> Movies next week </h1>";
             }
         
@@ -222,20 +237,25 @@
         ?>
 
         <ul>
-            <?php while ($movieRows = mysqli_fetch_assoc($selectMovies)){ ?>
-                <li>
-                    <div class="movie-box">
-                        <div class="movie-info poster">
-                            <img src="../img/<?=$movieRows['Poster']?>" alt="<?=$movieRows['Title']?>">
+            <?php if(mysqli_num_rows($selectMovies) > 0){
+                while ($movieRows = mysqli_fetch_assoc($selectMovies)){ ?>
+                    <li>
+                        <div class="movie-box">
+                            <div class="movie-info poster">
+                                <img src="../img/<?=$movieRows['Poster']?>" alt="<?=$movieRows['Title']?>">
+                            </div>
+                            <div class="movie-info title">
+                            <a href="movie.php?movie=<?=$movieRows['Title']?>">
+                                    <p> <?=$movieRows['Title']?> (<?=$movieRows['Year']?>) </p>
+                                </a>
+                            </div>
                         </div>
-                        <div class="movie-info title">
-                        <a href="movie.php?movie=<?=$movieRows['Title']?>">
-                                <p> <?=$movieRows['Title']?> (<?=$movieRows['Year']?>) </p>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-            <?php } ?>
+                    </li>
+                <?php }
+            } else  {
+                echo "No Movies";
+            } 
+            ?>
         </ul>
     </div>
 <!-- ALL MOVIES -->
@@ -280,9 +300,9 @@
         <div class="followUs">
             <h3> Follow us </h3>
             <ul>
-                <li><a href="#"><img src="./icon/facebook.png" alt=""></a></li>
-                <li><a href="#"><img src="./icon/twitter.png" alt=""></a></li>
-                <li><a href="#"><img src="./icon/instagram.png" alt=""></a></li>
+                <li><a href="#"><img src="../icon/facebook.png" alt=""></a></li>
+                <li><a href="#"><img src="../icon/twitter.png" alt=""></a></li>
+                <li><a href="#"><img src="../icon/instagram.png" alt=""></a></li>
             </ul>
         </div>
         <div class="copyright">
@@ -295,6 +315,7 @@
 
 <!-- CUSTOM JS -->
     <script src="./scripts/main.js"> </script>
+    <script src="../javascript/mode.js"></script>
 </body>
 
 <?php

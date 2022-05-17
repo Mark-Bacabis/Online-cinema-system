@@ -1,7 +1,19 @@
-
 *{
     box-sizing: border-box;
 }
+
+/* LIGHT */
+
+body.light{
+    background-color: #e6e6e6;
+    color: #000;
+}
+
+
+
+
+
+  
 .picker-container {
     position: relative;
     height: 84vh;
@@ -202,7 +214,20 @@
 .output-container .buttons button.book{
     background: green;
 }
-.output-container .buttons button.cancel{
+
+.output-container .buttons a{
+    padding: 7px 12px;
+    margin-left: 5px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    border-radius: 5px;
+    margin-top: 10px;
+    text-decoration: none;
+}
+
+.output-container .buttons a.cancel{
     background: red;
 }
 

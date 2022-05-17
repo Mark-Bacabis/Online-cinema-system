@@ -9,6 +9,8 @@
     $userID = $_SESSION['userID'];
 
     $_SESSION['url'] = $url;
+    
+    $dateToday = DATE('Y-m-d');
 
 
 
@@ -23,7 +25,7 @@
     $movieByGenre = mysqli_query($conn, "SELECT DISTINCT a.movieID, a.Title, a.Poster, b.availableDate FROM movie a 
     JOIN movie_available_date b
     ON a.movieID = b.movieID 
-    WHERE a.movieID != '$movieID' AND b.availableDate >= '2021-07-18' AND a.Genre LIKE '%' || (SELECT LEFT(Genre, 6) as similarGenre FROM movie WHERE movieID = '$movieID') || '%' LIMIT 4");
+    WHERE a.movieID != '$movieID' AND b.availableDate >= '$dateToda' AND a.isAvailable = 1 AND a.Genre LIKE '%' || (SELECT LEFT(Genre, 6) as similarGenre FROM movie WHERE movieID = '$movieID') || '%'  LIMIT 4;");
     
         
 ?>
@@ -35,6 +37,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/movies.css">
+    <link rel="stylesheet" href="../styles/mode.css">
     <title> <?=$movieSelected['Title']?> | NXTFLIX - Online Ticket Reservation </title>
     <!-- aJax jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -203,6 +206,21 @@
         <!-- IF USER IS LOGIN -->
         </div>
 
+        
+            <!-- DARK/LIGHT MODE -->
+            <div class="light-mode">
+                <input type="checkbox" name="mode" id="mode">
+                <label for="mode" class="mode">
+                    <div class="light">
+                        <img src="../icon/brightness.png" alt="">
+                    </div>
+                <div class="night">
+                        <img src="../icon/night-mode.png" alt="">
+                </div>
+                    <div class="ball"></div>
+                </label>
+            </div>
+
     </div>
 
       <!-- NAVIGATION LINK -->
@@ -210,7 +228,6 @@
         <ul>
             <li><a href="../index.php"> Home </a></li>
             <li><a href="../php/allMovies.php?query=Allmovies"> Movies </a></li>
-            <li><a href="../php/contact.php"> Contact </a></li>
             <li><a href="../php/service.php"> About us </a></li>
         </ul>
     </div>
@@ -221,6 +238,7 @@
                     <form action="../process/account-process.php?next=<?=$url?>" method="post">
                     <li> <button class="chngePW" name="my-account"> My Account </button> </li>
                     <li> <button class="bkHistory" name="booking-history"> Booking history </button> </li>
+                    <li> <button class="fdBack" name="feedbacks"> Feedback </button> </li>
                     <li> <button class="logout" type="submit" name="logout"> Logout  </button> </li>
                     </form>
                 </ul>
@@ -405,6 +423,7 @@
 
 <!-- CUSTOM JS -->
     <script src="./scripts/main.js"> </script>
+    <script src="../javascript/mode.js"></script>
 </body>
 
 </html>

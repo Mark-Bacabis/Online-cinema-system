@@ -47,6 +47,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/seat-picker.css">
     <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/mode.css">
     <title> <?=$result['Title']?> } Seat Picker </title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
@@ -128,29 +129,9 @@
                 </span>
             </a>   
         </div>
-
-         <!-- SEARCH BAR 
-            <div class="search">
-                <input type="search" id="search" placeholder="Search movie">
-                <img src="../icon/search.png" class="search-icon">
-                
-                <div class="search-suggestion" id="search-box">
-
-                </div>
-            </div>
-         SEARCH BAR -->
         
 
         <div class="nav-bar-container">
-
-        <!-- IF USER DIDN'T LOGIN 
-            <div class="login" id="login">
-                <a href="../php/sign-up.php?next=<?=$url?>"> Register </a> 
-                <p> | </p> 
-                <a href="../php/login.php?next=<?=$url?>"> Login </a>
-            </div>
-        IF USER DIDN'T LOGIN -->          
-        
         <!-- IF USER IS LOGIN -->        
             <div class="isLogin">
                 <?php
@@ -163,13 +144,25 @@
                 <div class="profile"  id="isLogin" style="cursor:default">
                     <p> <?=$user['firstName']?> <?=$user['lastName']?></p>
                     <img src="../user-profile/<?=$user['profile']?>" alt="">
-
-                    <!-- <img src="../icon/down-filled-triangular-arrow.png" alt="" class="drop-down-icon"> -->
                 </div>
        
             </div>
         <!-- IF USER IS LOGIN -->
         </div>
+
+          <!-- DARK/LIGHT MODE -->
+          <div class="light-mode" style="display:none">
+                <input type="checkbox" name="mode" id="mode">
+                <label for="mode" class="mode">
+                    <div class="light">
+                        <img src="../icon/brightness.png" alt="">
+                    </div>
+                <div class="night">
+                        <img src="../icon/night-mode.png" alt="">
+                </div>
+                    <div class="ball"></div>
+                </label>
+            </div>
 
     </div>
 
@@ -353,7 +346,8 @@
 
                 </div>
                 <div class="buttons">
-                    <button type="submit" name="cancel" class="cancel"> Cancel </button>
+                    <a href="#" class="cancel"> Cancel </a>
+                    <!--<button type="submit" name="cancel" class="cancel"> Cancel </button> -->
                     <button type="submit" name="book" class="book"> Book </button>
                 </div>
     </form>
@@ -415,6 +409,7 @@
 
 <!-- CUSTOM JS -->
     <script src="./scripts/main.js"> </script>
+    <script src="../javascript/mode.js"></script>
 </body>
 
 <?php
