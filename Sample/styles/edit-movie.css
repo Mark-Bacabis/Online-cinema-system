@@ -9,6 +9,8 @@
     width: 100%;
     height: 100vh;
     padding: 5% 10%;
+    overflow: hidden;
+    color: #fff;
 }
 
 .movie-edit-container .title{
@@ -43,7 +45,7 @@
 .movie-edit-container .movie-container .info table{
     padding: 10px;
     font-size: 16px;
-    color: black;
+    color: #fff;
     margin-bottom: 10px;
     line-height: 29px;
 }
@@ -76,4 +78,11 @@
     outline: none;
     font-size: 16px;
     padding: 5px 10px;
+}
+
+#isAvailable{
+    padding: 5px 10px;
+    font-size: 1em;
+    outline: none;
+    margin-left: 10px;
 }

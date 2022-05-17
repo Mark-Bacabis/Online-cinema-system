@@ -36,12 +36,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/admin-login.css">
-    <title> ADMIN | NXTFLIX </title>
+    <title> ADMIN | FILMIFY </title>
 </head>
 <body>
     <header>
         <div class="logo">
-            <h1>NXTFLIX <br>
+            <h1> FILMIFY <br>
                 <span class="subtitle">
                     Online Dashboard
                 </span>
@@ -60,7 +60,7 @@
             <input type="submit" name="login" value="Login">
         </form>
         <div class="copyright">
-            <h3> NXTFLIX </h3>
+            <h3> FILMIFY </h3>
         </div>
     </div>
 </body>

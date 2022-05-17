@@ -51,8 +51,7 @@
     $showThisWeek = mysqli_query($conn, "SELECT DISTINCT a.availableDate, b.movieID, b.Title, b.Poster FROM `movie_available_date` a
     JOIN movie b
     ON a.movieID = b.movieID
-    WHERE availableDate
-    BETWEEN '$this_week_start' AND '$this_week_end' AND availableDate >= '$dateToday' ORDER BY a.availableDate DESC LIMIT 5");
+    WHERE availableDate BETWEEN '$this_week_start' AND '$this_week_end' AND availableDate >= '$dateToday' AND `isAvailable` = 1 ORDER BY a.availableDate DESC LIMIT 5");
 // SELECT SHOWING THIS WEEK MOVIE
 
 

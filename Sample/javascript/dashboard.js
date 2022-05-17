@@ -29,7 +29,7 @@ dashboardLink.addEventListener('click', function(){
     customerContainer.style.display = 'none';
     //cinemaContainer.style.display = 'none';
 
-    dashboardLink.style.color = 'crimson';
+    dashboardLink.style.color = 'rgb(225, 169, 110)';
     movieLink.style.color = 'white';
     customerLink.style.color = 'white';
     bookingLink.style.color = 'white';
@@ -43,7 +43,7 @@ movieLink.addEventListener('click', function(){
     customerContainer.style.display = 'none';
     //cinemaContainer.style.display = 'none';
 
-    movieLink.style.color = 'crimson';
+    movieLink.style.color = 'rgb(225, 169, 110)';
     dashboardLink.style.color = 'white';
     customerLink.style.color = 'white';
     bookingLink.style.color = 'white';
@@ -57,7 +57,7 @@ customerLink.addEventListener('click', function(){
     movieContainer.style.display = 'none';
     //cinemaContainer.style.display = 'none';
 
-    customerLink.style.color = 'crimson';
+    customerLink.style.color = 'rgb(225, 169, 110)';
     dashboardLink.style.color = 'white';
     movieLink.style.color = 'white';
     bookingLink.style.color = 'white';
@@ -72,7 +72,7 @@ bookingLink.addEventListener('click', function(){
     movieContainer.style.display = 'none';
     //cinemaContainer.style.display = 'none';
 
-    bookingLink.style.color = 'crimson';
+    bookingLink.style.color = 'rgb(225, 169, 110)';
     customerLink.style.color = 'white';
     dashboardLink.style.color = 'white';
     movieLink.style.color = 'white';

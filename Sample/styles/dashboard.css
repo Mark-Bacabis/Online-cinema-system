@@ -1,6 +1,8 @@
 :root{
     --primary-btn-success: seagreen;
     --primary-btn-success-hover: rgb(38, 112, 70);
+    --mainColor: rgb(225, 169, 110);
+
 }
 
 *{
@@ -33,7 +35,7 @@
 }
 
 .admin-container .admin-panel .admin-header{
-    color: crimson;
+    color: var(--mainColor);
     padding: 15% 10%;
     line-height: 12px;
 }
@@ -619,7 +621,7 @@
     z-index: 1;
 }
 .adding-movie-container .movie-box .table-date .cinema-holder .cinema input[type="checkbox"]:checked{
-    border: 1px solid crimson;
+    border: 1px solid var(--mainColor);
     background: rgba(220, 20, 60, 0.288);
 }
 

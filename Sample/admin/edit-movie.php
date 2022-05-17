@@ -6,9 +6,11 @@
 
     if(isset($_POST['update'])){
         $price = $_POST['price'];
-        $query = "UPDATE `movie` SET `Price`='$price' WHERE movieID = '$movieID'";
+        $isAvailable = $_POST['isAvailable'];
+        $query = "UPDATE `movie` SET `Price`='$price', isAvailable = '$isAvailable' WHERE movieID = '$movieID'";
         $updatePrice = mysqli_query($conn, $query);
 
+        
         if(!$updatePrice){
             echo mysqli_error($conn);
         }
@@ -45,6 +47,11 @@
 
 <body>
     <div class="movie-edit-container">
+        <div class="background-movie">
+            <div class="bg-overlay">
+
+            </div>
+        </div>
         <div class="title">
             <h1> EDIT MOVIE </h1>
         </div>
@@ -87,6 +94,13 @@
                     <tr>
                         <td> Price </td>
                         <td> <input type="text" name="price" value="<?=$movie['Price']?>"></td>
+                        <td> 
+                            <label for="isAvailable"> Available: </label>
+                            <select name="isAvailable" id="isAvailable">
+                                <option value="1"> Yes </option>
+                                <option value="0"> No </option>
+                            </select>    
+                        </td>
                         <td>
                             <button type="submit" name="update"> Update Movie </button>
                         </td>
@@ -100,4 +114,34 @@
 
 ?>
 </body>
+<style>
+    .background-movie{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: white;
+        z-index: -1;
+        background-image: url('../img/<?=$movie['Banner']?>');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        filter: blur(5px);
+    }
+
+    .background-movie .bg-overlay{
+        position: absolute;
+        background-color: black;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        opacity: .5;
+    }
+
+    .movie-edit-container{
+        position: relative;
+    }
+</style>
 </html>

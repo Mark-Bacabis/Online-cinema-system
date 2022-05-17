@@ -14,6 +14,7 @@
         $price = $_POST['price'];
         $date = $_POST['date'];
         $cinema = $_POST['cinema'];
+        $isAvailable = $_POST['isAvailable'];
 
        
     
@@ -53,9 +54,9 @@
         
                 
                 // INSERT INTO DATABASE //
-                $insertQuery = 'INSERT INTO `movie`(`movieID`, `Title`, `Genre`, `Year`, `Duration`, `Rating`, `Description`, `Director`, `Cast`, `Poster`, `Banner`, `Trailer`, `Price`) 
+                $insertQuery = 'INSERT INTO `movie`(`movieID`, `Title`, `Genre`, `Year`, `Duration`, `Rating`, `Description`, `Director`, `Cast`, `Poster`, `Banner`, `Trailer`, `Price`, `isAvailable`) 
                 VALUES 
-                ("'.$movieID.'", "'.$title.'", "'.$genre.'", "'.$year.'", "'.$duration.'", "'.$rating.'", "'.$desc.'", "'.$director.'", "'.$cast.'", "'.$new_poster_name.'", "'.$new_banner_name.'", "'.$trailer.'", "'.$price.'")';
+                ("'.$movieID.'", "'.$title.'", "'.$genre.'", "'.$year.'", "'.$duration.'", "'.$rating.'", "'.$desc.'", "'.$director.'", "'.$cast.'", "'.$new_poster_name.'", "'.$new_banner_name.'", "'.$trailer.'", "'.$price.'", "'.$isAvailable.'")';
 
                 foreach($cinema as $availableCinema){
                     $cinemaInsert = mysqli_query($conn, "INSERT INTO `movie_available_date`(`movieID`, `availableDate`, `cinemaID`) VALUES ('$movieID','$date','$availableCinema')");

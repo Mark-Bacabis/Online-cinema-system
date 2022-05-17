@@ -1,3 +1,7 @@
+:root{
+    --mainColor: rgb(225, 169, 110);
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -22,7 +26,7 @@ header .logo {
 }
 header .logo h1{
     font-size: 2em;
-    color: crimson;
+    color: var(--mainColor);
     text-decoration: none;
     font-weight: bold;
     padding: 0;
@@ -92,5 +96,5 @@ header .logo .subtitle{
 }
 .login-container .copyright{
     margin-top: 40px;
-    color: rgba(220, 20, 60, 0.788);
+    color: var(--mainColor);
 }

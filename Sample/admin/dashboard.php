@@ -52,7 +52,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/dashboard.css">
-    <title> NXTFLIX DASHBOARD </title>
+    <title> FILMIFY DASHBOARD </title>
     <!-- PIE CHART -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     
@@ -64,7 +64,7 @@
     <div class="admin-container">
         <div class="admin-panel">
             <div class="admin-header">
-                <h1> NXTFLIX </h1><br>
+                <h1> FILMIFY </h1><br>
                 <p> Dashboard </p>
             </div>
             
@@ -73,7 +73,7 @@
            <div class="admin">
                 <h3> ADMIN </h3>
                 <ul>
-                    <li><a class="dashboard" style="color: crimson"> Dashboard </a></li>
+                    <li><a class="dashboard" style="color: rgb(225, 169, 110);"> Dashboard </a></li>
                     <li><a class="movie"> Movies </a></li>
                     <li><a class="customer"> Customers </a></li>
                     <li><a class="booking"> Bookings </a></li>
@@ -94,7 +94,7 @@
 
            
            <div class="admin-footer">
-               <p> &copysr; NXTFLIX &bullet; 2021 </p>
+               <p> &copysr; FILMIFY &bullet; 2021 </p>
            </div>
 
         </div>
@@ -292,9 +292,9 @@
                         <th> Movie Title </th>
                         <th> Customer Name </th>
                         <th> Date of booking </th>
-                        <th> Cinema No</th>
+                        <th> Cinema Name </th>
                         <th> Show </th>
-                        <th> No. of seat/s </th>
+                        <th> seat number/s </th>
                         <th> Total Price </th>
                     </tr>
                     <?php while($book = mysqli_fetch_assoc($bookQuery)) {?>
@@ -303,9 +303,9 @@
                             <td> <?=$book['Title']?> </td>
                             <td> <?=$book['firstName']?> <?=$book['lastName']?> </td>
                             <td> <?=$book['dateToday']?> </td>
-                            <td> <?=$book['cinemaID']?> </td>
+                            <td> <?=$book['cinemaName']?> </td>
                             <td> <?=$book['showID']?> </td>
-                            <td> <?=$book['numberOfSeats']?> </td>
+                            <td> <?=$book['seatNumber']?> </td>
                             <td> <?=$book['totalPrice']?> </td>
                         </tr>
                     <?php } ?>
@@ -390,6 +390,7 @@
                     <td> Trailer Link </td>
                     <td> <input type="text" name="trailer" id="trailer" required> </td>
                 </tr>
+                </tr>
                 <tr>
                     <td> Rating </td>
                     <td> <input type="text" name="rating" id="rating" required></td>
@@ -401,7 +402,10 @@
                     <td> <textarea name="desc" class="description" maxlength="255" id="desc" required></textarea> </td>
                     <td> Banner </td>
                     <td> <input type="file" name="banner" id=""></td>
+                 
                 </tr>
+                <tr>
+                
                
             </table>
             
@@ -426,6 +430,13 @@
                     <?php } ?>
                     </td>
                    <!-- <td> <button type="button" class="add" id="add-movie"> Add </button></td>-->
+                   <td> 
+                        <label for="isAvailable"> Available: </label>
+                        <select name="isAvailable" id="isAvailable">
+                            <option value="1"> Yes </option>
+                            <option value="0"> No </option>
+                        </select>
+                    </td>
                 </tr>
             </table>
 
@@ -437,7 +448,12 @@
         </div>
     </div>
     </div>
-
+<style>
+    #isAvailable{
+        outline: none;
+        font-size: 1em;
+    }
+</style>
 
 <!-- SCRIPT -->
 <script src="../javascript/dashboard.js"></script>
