@@ -38,7 +38,7 @@
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/movies.css">
     <link rel="stylesheet" href="../styles/mode.css">
-    <title> <?=$movieSelected['Title']?> | NXTFLIX - Online Ticket Reservation </title>
+    <title> <?=$movieSelected['Title']?> | FILMIFY - Online Ticket Reservation </title>
     <!-- aJax jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     
@@ -157,7 +157,7 @@
 <header>
     <div class="nav-search-area">
         <div class="logo">
-            <a href="../index.php"> NXTFLIX <br>
+            <a href="../index.php"> FILMIFY <br>
                 <span class="subtitle">
                     Online Ticket Reservation
                 </span>
@@ -228,7 +228,7 @@
         <ul>
             <li><a href="../index.php"> Home </a></li>
             <li><a href="../php/allMovies.php?query=Allmovies"> Movies </a></li>
-            <li><a href="../php/service.php"> About us </a></li>
+            <li><a href="../php/service.php"> About </a></li>
         </ul>
     </div>
     

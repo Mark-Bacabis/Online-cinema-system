@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="../styles/login-signup.css">
     <!-- aJax jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <title> Sign up now! | NXTFLIX Philippines </title>
+    <title> Sign up now! | FILMIFY Philippines </title>
 </head>
 <style>
     .not-match{
@@ -71,7 +71,7 @@
 <body>
     <header>
         <div class="logo">
-            <a href="../index.php"> NXTFLIX <br>
+            <a href="../index.php"> FILMIFY <br>
                 <span class="subtitle">
                     Online Ticket Reservation
                 </span>

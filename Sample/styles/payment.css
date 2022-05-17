@@ -1,3 +1,6 @@
+:root{
+    --mainColor: rgb(225, 169, 110);
+}
 *{
     font-family: poppins;
     padding: 0;
@@ -45,7 +48,7 @@ header .logo {
 }
 header .logo a{
     font-size: 32px;
-    color: crimson;
+    color: var(--mainColor);
     text-decoration: none;
     font-weight: bold;
     padding: 0;

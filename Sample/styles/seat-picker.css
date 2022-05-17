@@ -70,7 +70,7 @@ body.light{
     background: #38393f;
 }
 .legend-container .seat-legend .selected{
-    background: crimson;
+    background: var(--mainColor);
 }
 
 .legend-container .seat-legend .occupied{
@@ -106,7 +106,7 @@ body.light{
 }
   
 .picker-container .seat-picker .picker-1 tr td [type="checkbox"]:checked {
-    background-color: crimson;
+    background-color: var(--mainColor);
 }
   
 .picker-container .seat-picker .picker-1 tr .seat {
@@ -163,7 +163,7 @@ body.light{
 }
   
 .picker-container .guide ul li .selected {
-    background-color: crimson;
+    background-color: var(--mainColor);
 }
   
 .picker-container .guide ul li .occupied {

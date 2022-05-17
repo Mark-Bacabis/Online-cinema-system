@@ -71,7 +71,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/payment.css">
     <link rel="stylesheet" href="./styles/mode.css">
-    <title> Pay here! | NXTFLIX Online ticket reservation </title>
+    <title> Pay here! | FILMIFY Online ticket reservation </title>
 </head>
 
 <!-- IF USER LOG IN OR NOT -->
@@ -101,7 +101,7 @@
    
     <header>
         <div class="logo">
-            <a href="#"> NXTFLIX <br>
+            <a href="#"> FILMIFY <br>
                 <span class="subtitle">
                     Online Ticket Reservation
                 </span>

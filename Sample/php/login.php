@@ -17,7 +17,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/login-signup.css">
-    <title> Login now! | NXTFLIX Philippines </title>
+    <title> Login now! | FILMIFY Philippines </title>
 </head>
     <style>
         .wrong-pass{
@@ -41,7 +41,7 @@
 <body>
     <header>
         <div class="logo">
-            <a href="../index.php"> NXTFLIX <br>
+            <a href="../index.php"> FILMIFY <br>
                 <span class="subtitle">
                     Online Ticket Reservation
                 </span>
@@ -75,7 +75,7 @@
             </div>
 
             <div class="log-reg">
-                <p> New to NXTFLIX? <a href="./sign-up.php?next=<?=$getLink?>"> Register now </a></p>
+                <p> New to FILMIFY? <a href="./sign-up.php?next=<?=$getLink?>"> Register now </a></p>
             </div>
         </form>
     </main>

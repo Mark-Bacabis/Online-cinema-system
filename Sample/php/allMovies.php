@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="../styles/mode.css">
     <!-- aJax jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <title> All Movies | NXTFLIX Online Ticket Reservation </title>
+    <title> All Movies | FILMIFY Online Ticket Reservation </title>
 </head>
 
 <!-- AJAX FOR SEARCH -->
@@ -101,7 +101,7 @@
 <header>
     <div class="nav-search-area">
         <div class="logo">
-            <a href="../index.php"> NXTFLIX <br>
+            <a href="../index.php"> FILMIFY <br>
                 <span class="subtitle">
                     Online Ticket Reservation
                 </span>

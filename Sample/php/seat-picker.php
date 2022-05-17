@@ -123,7 +123,7 @@
 <header>
     <div class="nav-search-area" style="height: 100%">
         <div class="logo">
-            <a style="cursor:default"> NXTFLIX <br>
+            <a style="cursor:default"> FILMIFY <br>
                 <span class="subtitle">
                     Online Ticket Reservation
                 </span>

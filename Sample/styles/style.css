@@ -1,3 +1,7 @@
+:root{
+  --mainColor: rgb(225, 169, 110);
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -195,7 +199,7 @@ header .nav-search-area .logo {
 }
 header .nav-search-area .logo a{
   font-size: 32px;
-  color: crimson;
+  color: var(--mainColor);
   text-decoration: none;
   font-weight: bold;
   padding: 0;
@@ -393,14 +397,14 @@ header .nav-bar ul li a{
 }
 
 header .nav-bar ul li:hover{
-  border-bottom: 2px solid crimson;
+  border-bottom: 2px solid var(--mainColor);
 }
 header .nav-bar ul li a:hover{
-  color: crimson;
+  color: var(--mainColor);
 }
 
 .nav-bar .selected{
-  border-bottom: 2px solid crimson;
+  border-bottom: 2px solid var(--mainColor);
 }
 
 
@@ -449,12 +453,12 @@ header .login-container{
   width: 215px;
   border: none;
   font-size: 16px;
-  background: crimson;
+  background: var(--mainColor);
   cursor: pointer;
   color: white;
 }
 .login-container table td a{
-  color: crimson;
+  color: var(--mainColor);
   font-size: 12px;
   text-decoration: none;
   text-align: left;
@@ -506,7 +510,7 @@ header .login-container{
 .login-container .reg a{
   font-size: 12px;
   margin-left: 5px;
-  color: crimson;
+  color: var(--mainColor);
 }
 
 
@@ -750,7 +754,7 @@ header .user-login-container ul li:hover{
   position: relative;
   width: 200px;
   height: 280px;
-  background: crimson;
+  background: var(--mainColor);
   list-style: none;
   display: inline-block;
   overflow: hidden;
@@ -785,7 +789,7 @@ header .user-login-container ul li:hover{
 .showing-week-container .movie-poster-box .movie-title a{
   width: 100%;
   height: 100%;
-  background: crimson;
+  background: var(--mainColor);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -824,19 +828,19 @@ header .user-login-container ul li:hover{
   position: absolute;
   right: 2%;
   bottom: 5%;
-  color: #b6142c;
+  color: var(--mainColor);
   font-weight: normal;
   text-decoration: none;
   transition: all ease .4s;
 }
 .premiere-container .container-title .see-all:hover{
-  color: crimson;
+  color: var(--mainColor);
 }
 .premiere-container ul li{
   position: relative;
   width: 202.1px;
   height: 280px;
-  background: crimson;
+  background: var(--mainColor);
   list-style: none;
   display: inline-block;
   overflow: hidden;
@@ -872,7 +876,7 @@ header .user-login-container ul li:hover{
 .premiere-container .movie-poster-box .movie-title a{
   width: 100%;
   height: 100%;
-  background: crimson;
+  background: var(--mainColor);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1071,7 +1075,7 @@ header .user-login-container ul li:hover{
   margin-top: -20px;
   padding: 7px 10px;
   border-radius: 20px;
-  background: crimson;
+  background: var(--mainColor);
   color: white;
   border: none;
   cursor: pointer;

@@ -28,7 +28,7 @@
     position: relative;
     width: 200px;
     height: 300px;
-    border: 3px solid crimson;
+    border: 3px solid var(--mainColor);
     transition: margin ease .5s;
 }
 
@@ -52,7 +52,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: crimson;
+    background: var(--mainColor);
 }
 .movie-box .title a{
     line-height: 20px;

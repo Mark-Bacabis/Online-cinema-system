@@ -29,7 +29,7 @@
     top: 0%;
     width: 280px;
     height: 400px;
-    border: 3px solid crimson;
+    border: 3px solid var(--mainColor);
     border-radius: 5px;
     overflow: hidden;
 }
@@ -67,8 +67,8 @@
 .movie-details .movie-info table td .btn-watch-trailer{
     padding: 5px 10px;
     background: none;
-    border: 2px solid crimson;
-    color: crimson;
+    border: 2px solid var(--mainColor);
+    color: var(--mainColor);
     cursor: pointer;
 }
 .movie-details .movie-info table td .btn-watch-trailer:hover{
@@ -76,7 +76,7 @@
     color: rgb(255, 255, 255);
 }
 .movie-details .movie-info table td h1{
-    color: crimson;
+    color: var(--mainColor);
 }
 .movie-details .movie-info table td p{
     color: gray;
@@ -94,13 +94,13 @@
 
 .movie-details .similar-movie img{
     width: 110px;
-    border: 2px solid crimson;
+    border: 2px solid var(--mainColor);
 }
 
 .movie-info-container .trailer{
     width: 80%;
     height: 50vh;
-    background: crimson;
+    background: var(--mainColor);
     position: absolute;
     left: 9.5%;
     top: 6%;
@@ -120,7 +120,7 @@
 }
 
 .details-transact select, input[type="text"]{
-    background: crimson;
+    background: var(--mainColor);
     padding: 5px 10px;
     font-size: 16px;
     outline: none;

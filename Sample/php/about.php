@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="../styles/mode.css">
     <!-- <link rel="stylesheet" href="../styles/privacy.css"> -->
     <link rel="stylesheet" href="../styles/about.css">
-    <title> About Us | NXTFLIX Online Ticket Reservation </title>
+    <title> About Us | FILMIFY Online Ticket Reservation </title>
     
 </head>
 
@@ -69,7 +69,7 @@
 <header>
     <div class="nav-search-area">
         <div class="logo">
-            <a href="../index.php"> NXTFLIX <br>
+            <a href="../index.php"> FILMIFY <br>
                 <span class="subtitle">
                     Online Ticket Reservation
                 </span>

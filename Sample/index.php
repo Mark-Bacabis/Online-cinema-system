@@ -137,7 +137,7 @@
 <header>
     <div class="nav-search-area">
         <div class="logo">
-            <a href="./index.php"> NXTFLIX <br>
+            <a href="./index.php"> FILMIFY <br>
                 <span class="subtitle">
                     Online Ticket Reservation
                 </span>
