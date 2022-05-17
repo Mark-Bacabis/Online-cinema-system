@@ -31,9 +31,12 @@ body.light  .about-container .team-container .members .member .member-info .posi
 
 .about-container .faqs-container ul li{
    margin-bottom: 15px;
+   color: rgba(255, 255, 255, 0.89);
 }
 
-
+.about-container .faqs-container ul li p{
+   color: rgba(255, 255, 255, 0.507);
+}
 
 .about-container .team-container{
    background-color: #16171d;

@@ -249,6 +249,7 @@
 
 .admin-container .content-container .admin-content .content-sales .user-feedbacks{
     width: 40%;
+    min-height: 100%;
     height: max-content;
     background: rgb(248, 252, 255);
 

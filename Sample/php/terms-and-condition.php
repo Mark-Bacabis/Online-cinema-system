@@ -31,7 +31,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/privacy.css">
-    <title> Terms and Agreement | NXTFLIX Online Ticket Reservation </title>
+    <title> Terms and Agreement | FILMIFY Online Ticket Reservation </title>
       <!-- aJax jQuery -->
       <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
@@ -82,7 +82,7 @@
 <header>
     <div class="nav-search-area">
         <div class="logo">
-            <a href="../index.php"> NXTFLIX <br>
+            <a href="../index.php"> FILMIFY <br>
                 <span class="subtitle">
                     Online Ticket Reservation
                 </span>
@@ -137,10 +137,8 @@
     <div class="nav-bar">
         <ul>
             <li ><a href="../index.php"> Home </a></li>
-            <li><a href="../php/allMovies.php?query=Allmovies"> Movies </a></li>
-            <li><a href="../php/contact.php"> Contact us</a></li>
-            <li><a href="../php/About.php"> About </a></li>
-            <li><a href="../php/privacy.php"> Privacy Policy </a></li>
+            <li><a href="./allMovies.php?query=Allmovies"> Movies </a></li>
+            <li><a href="./About.php"> About </a></li>
         </ul>
     </div>
   <!-- USER MODAL -->
@@ -174,7 +172,7 @@
         <p><strong>Country</strong> refers to:  Philippines</p>
         </li>
         <li>
-        <p><strong>Company</strong> (referred to as either &quot;the Company&quot;, &quot;We&quot;, &quot;Us&quot; or &quot;Our&quot; in this Agreement) refers to NXTFLIX.</p>
+        <p><strong>Company</strong> (referred to as either &quot;the Company&quot;, &quot;We&quot;, &quot;Us&quot; or &quot;Our&quot; in this Agreement) refers to FILMIFY.</p>
         </li>
         <li>
         <p><strong>Device</strong> means any device that can access the Service such as a computer, a cellphone or a digital tablet.</p>
@@ -189,7 +187,7 @@
         <p><strong>Third-party Social Media Service</strong> means any services or content (including data, information, products or services) provided by a third-party that may be displayed, included or made available by the Service.</p>
         </li>
         <li>
-        <p><strong>Website</strong> refers to NXTFLIX, accessible from <a href="http://localhost/online-cinema-system/sample/index.php" rel="external nofollow noopener" target="_blank">http://localhost/online-cinema-system/sample/index.php</a></p>
+        <p><strong>Website</strong> refers to FILMIFY, accessible from <a href="http://localhost/online-cinema-system/sample/index.php" rel="external nofollow noopener" target="_blank">http://localhost/online-cinema-system/sample/index.php</a></p>
         </li>
         <li>
         <p><strong>You</strong> means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable.</p>

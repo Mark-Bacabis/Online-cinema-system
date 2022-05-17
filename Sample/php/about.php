@@ -159,14 +159,22 @@
     <div class="faqs-container">
         <h1> FAQs </h1>
         <ul>
-            <li> <h3> Question 1 </h3> 
-                <p> Answer: <i> Lorem Ipsum </i></p>
+            <li> <h3> Do you offer contactless payment and pre-ordering? </h3> 
+                <p> Answer: <i> FILMIFY accepts a variety of contactless payment methods including credit cards and Paypal. You may also order tickets and concessions in advance via our website. </i></p>
             </li>
-            <li> <h3> Question 2 </h3> 
-                <p> Answer: <i> Lorem Ipsum </i></p>
+            <li> <h3> How do I cancel an order or request a refund? </h3> 
+                <p> Answer: <i>To reserve your seats in advance please visit our website www.filmify.com.ph for your local cinema and select your preferred movie, showtimez date/time and your desire seats. Don't forget - You can only book your tickets If you login your account. If you don't have account, you can sign up at www.register.filmify.com. </i></p>
             </li>
-            <li> <h3> Question 3 </h3> 
-                <p> Answer: <i> Lorem Ipsum </i></p>
+            <li> <h3> How do I pre-order my movie tickets? </h3> 
+                <p> Answer: <i> Ticket prices may not vary by location because we are only focusses at Fairview Terraces and may not be change based on time of day as well as available services and options. You will be able to view the total cost of your tickets before completing your purchase online.
+ </i></p>
+            </li>
+            <li> <h3> How much do movie tickets cost at my FILMIFY location? </h3> 
+                <p> Answer: <i> When you purchase your tickets online, you will often be presented with the option to choose which seats you'd like to reserve. This eliminates the need to wait in line for popular movies and allows you enough time before the movie to eat or purchase concessions. In addition, knowing exactly where you're sitting eliminates the need to search for the best available seats when entering the theater.
+ </i></p>
+            </li>
+            <li> <h3>How do i get my ticket that i purchased online? </h3> 
+                <p> Answer: <i> You will receive an email confirmation upon successful purchase </i></p>
             </li>
           
         </ul>
@@ -279,9 +287,9 @@
         <div class="About">
             <h3> About </h3>
             <ul>
-                <li><a href="./php/about.php"> About us</a></li>
-                <li><a href="./php/terms-and-condition.php"> Terms and agreement </a></li>
-                <li><a href="./php/privacy.php"> Privacy Policy </a></li>
+                <li><a href="./about.php"> About </a></li>
+                <li><a href="./terms-and-condition.php"> Terms and agreement </a></li>
+                <li><a href="./privacy.php"> Privacy Policy </a></li>
             </ul>
         </div>
         <div class="movies">

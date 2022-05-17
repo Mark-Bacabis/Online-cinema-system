@@ -188,7 +188,9 @@
                     <div class="sales user-feedbacks">
                         <h3> New customer </h3>
                         <?php
-                            $newCustomerQuery = mysqli_query($conn, "SELECT * FROM user ORDER BY userID DESC LIMIT 4"); 
+                            $newCustomerQuery = mysqli_query($conn, "SELECT * FROM `user_feedbacks` a 
+                            JOIN `user` b
+                            ON a.userID = b.userID ORDER BY a.id DESC LIMIT 4"); 
                             while($newCustomer = mysqli_fetch_assoc($newCustomerQuery)) {
                         ?>
                         <div class="new-customer">
@@ -197,18 +199,13 @@
                             </div>
                             <div class="user-name">
                                 <h5> <?=$newCustomer['firstName']?> <?=$newCustomer['lastName']?> </h5>
-                                <h6> <?=$newCustomer['email']?> </h6>
+                                <h6> <?=$newCustomer['feedback']?> </h6>
                             </div>
                         </div>
                         <?php } ?>
                     </div>
 
-                </div> 
-
-                <!--
-                <div class="sales-report">
-                        
-                </div>-->
+                </div>
             </div>
 
 
