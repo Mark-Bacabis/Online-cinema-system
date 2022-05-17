@@ -87,14 +87,38 @@
     top: 0;
     width: 250px;
     height: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
 }
+
+
+.movie-details .similar-movie .movie-holder{
+    display: flex;
+    width: 110px;
+    margin: 5px;
+}
+
+
+.movie-details .similar-movie .movie-holder a{
+    width: 100%;
+    height: 100%;
+}
+
+.movie-details .similar-movie .movie-holder a img{
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--mainColor);
+}
+
 .movie-details .similar-movie h3{
     text-align: left;
 }
 
 .movie-details .similar-movie img{
     width: 110px;
-    border: 2px solid var(--mainColor);
+    
 }
 
 .movie-info-container .trailer{

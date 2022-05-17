@@ -293,12 +293,15 @@
 
         <div class="similar-movie">
             <h3> Similar movies </h3>
-            <div class="movie-holder">
+            
 
             <?php while($row = $movieByGenre->fetch_assoc()){?>
-                <a href="movie.php?movie=<?=$row['Title']?>"><img src="../img/<?=$row['Poster']?>"></a>
+                <div class="movie-holder">
+                    <a href="movie.php?movie=<?=$row['Title']?>"> 
+                    <img src="../img/<?=$row['Poster']?>"></a>
+                </div>
             <?php } ?>
-            </div>
+            
         </div>
     </div>
 
