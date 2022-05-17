@@ -144,8 +144,8 @@ function send($email, $subject, $message) {
     // RECEPIENTS
     $mail ->Subject = ("$email ($subject)");
     $mail ->setFrom($email);
-    $mail ->addAddress("$email");
-    $mail ->addReplyTo("$email");
+    $mail ->addAddress($email);
+    $mail ->addReplyTo("nxtflix.online.system.demo@gmail.com");
     $mail ->Body = "$message";
  
  
