@@ -17,6 +17,22 @@ body.light  .about-container .team-container .members .member .member-info .posi
    color: rgba(0, 0, 0, 0.596);
 }
 
+body.light .about-container .faqs-container ul li{
+   margin-bottom: 15px;
+   color: rgba(0, 0, 0, 0.89);
+}
+
+body.light .about-container .faqs-container ul li p{
+   color: rgba(0, 0, 0, 0.507);
+}
+
+
+
+
+
+
+
+
 
 .about-container{
    width: 100%;

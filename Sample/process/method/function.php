@@ -119,4 +119,46 @@ function sendEmail($transactID) {
    $mail ->smtpClose();
 }
 
+
+
+
+function send($email, $subject, $message) {
+    session_start();
+    include "../include/PHPMailer.php";
+    include "../include/SMTP.php";
+    include "../include/Exception.php";
+ 
+    // FUNCTION FOR SENDING A MESSAGE TO USER'S EMAIL   
+    // SERVER 
+    $mail = new PHPMailer();
+    $mail -> isSMTP();
+    $mail ->isHTML(true);
+    $mail -> Host = 'smtp.gmail.com';
+    $mail -> SMTPAuth = 'true';
+    $mail ->Username = "nxtflix.online.system.demo@gmail.com";
+    $mail ->Password = '123456789Abc!';
+    $mail -> SMTPSecure = 'tls';
+    $mail -> Port = 587;
+ 
+    
+    // RECEPIENTS
+    $mail ->Subject = ("$email ($subject)");
+    $mail ->setFrom($email);
+    $mail ->addAddress("nxtflix.online.system.demo@gmail.com");
+    $mail ->addReplyTo("nxtflix.online.system.demo@gmail.com");
+    $mail ->Body = "$message";
+ 
+ 
+ 
+    $mail ->Send();
+ 
+    if($mail){
+        $_SESSION['status'] = "Send";
+    }
+    else{
+        $_SESSION['status'] = "Error";
+    }
+ 
+    $mail ->smtpClose();
+ }
 ?>

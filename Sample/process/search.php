@@ -10,7 +10,7 @@
         $searchQuery = mysqli_query($conn, "SELECT DISTINCT a.movieID, a.Title, a.Year, a.Poster, a.Genre, a.Rating, b.availableDate FROM movie a
         JOIN movie_available_date b
         ON a.movieID = b.movieID 
-        WHERE Title LIKE '%$name%' AND b.availableDate >= '$dateToday' LIMIT 5");
+        WHERE Title LIKE '%$name%' AND b.availableDate >= '$dateToday' AND a.isAvailable = 1 LIMIT 5;");
        
 
         if(!empty($name)){

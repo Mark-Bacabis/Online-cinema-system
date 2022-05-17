@@ -3,11 +3,21 @@
    session_start();
    include "../connection.php";
    include "../process/url.php";
+   include "../process/method/function.php";
+   $status = $_SESSION['status'];
    
    //$movieTitle = $_GET['movie'];  
    $userID = $_SESSION['userID'];
 
    $_SESSION['url'] = $url;
+
+   if(isset($_POST['btnSubmit'])){
+    $email = $_POST['email'];
+    $subject = $_POST['sub']; 
+    $message = $_POST['mess'];
+
+    send($email, $subject, $message);
+    }
 ?>
 
 
@@ -22,6 +32,9 @@
     <!-- <link rel="stylesheet" href="../styles/privacy.css"> -->
     <link rel="stylesheet" href="../styles/about.css">
     <title> About Us | FILMIFY Online Ticket Reservation </title>
+
+     <!-- aJax jQuery -->
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     
 </head>
 
@@ -49,7 +62,7 @@
     <?php } ?>
 <!-- IF USER LOG IN OR NOT -->
 
-    <!-- AJAX FOR SEARCH -->
+<!-- AJAX FOR SEARCH -->
 <script>
    $(document).ready(function(){
         $("#search").keyup(function(){
@@ -63,6 +76,8 @@
         });
     });
 </script>
+
+
 <body>
 
 
@@ -167,11 +182,11 @@
             </li>
             <li> <h3> How do I pre-order my movie tickets? </h3> 
                 <p> Answer: <i> Ticket prices may not vary by location because we are only focusses at Fairview Terraces and may not be change based on time of day as well as available services and options. You will be able to view the total cost of your tickets before completing your purchase online.
- </i></p>
+            </i></p>
             </li>
             <li> <h3> How much do movie tickets cost at my FILMIFY location? </h3> 
                 <p> Answer: <i> When you purchase your tickets online, you will often be presented with the option to choose which seats you'd like to reserve. This eliminates the need to wait in line for popular movies and allows you enough time before the movie to eat or purchase concessions. In addition, knowing exactly where you're sitting eliminates the need to search for the best available seats when entering the theater.
- </i></p>
+            </i></p>
             </li>
             <li> <h3>How do i get my ticket that i purchased online? </h3> 
                 <p> Answer: <i> You will receive an email confirmation upon successful purchase </i></p>
@@ -258,7 +273,7 @@
 
     <div class="contact-container">
         <h1> Contact Us </h1>
-        <form action="#">
+        <form action="./about.php" method="POST">
             <div class="contact-input">
                 <label for="email"> Email </label>
                 <input type="email" name="email" id="email">

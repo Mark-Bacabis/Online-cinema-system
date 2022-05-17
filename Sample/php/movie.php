@@ -87,8 +87,7 @@
     });
 </script>
 
-
-    <!-- AJAX FOR SEARCH -->
+<!-- AJAX FOR SEARCH -->
 <script>
    $(document).ready(function(){
         $("#search").keyup(function(){
